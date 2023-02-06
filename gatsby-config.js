@@ -1,6 +1,3 @@
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -34,6 +31,7 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-google-gtag',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
