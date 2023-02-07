@@ -3,7 +3,7 @@ import React from 'react';
 const IndexPage = () => (
   <main>
     <title>Home Page</title>
-    <h1 className="text-3xl text-red-500">Greentech site!</h1>
+    <h3>Pierwszy krok do niezależności energetycznej</h3>
   </main>
 );
 
