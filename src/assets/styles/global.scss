@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './theme.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family;
+  font-weight: 800;
+  line-height: 1.2;
+  color: $secondary-color;
+}
+
+p,
+li,
+a {
+  font-family: $font-family;
+}
+
+@layer base {
+  li {
+    @apply text-sm
+      p-2;
+  }
+
+  h5 {
+    @apply font-extrabold
+      text-base;
+  }
+}

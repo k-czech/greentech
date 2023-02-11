@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from 'assets/styles/global.css';
+import { GlobalStyle } from 'assets/styles/global.scss';
 import { theme } from 'assets/styles/theme';
 import { Navigation } from 'components/Navigation';
 import { Footer } from 'components/Footer';
@@ -11,9 +11,7 @@ export const MainTemplate = ({ children }) => (
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <Navigation />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </ThemeProvider>
   </>
