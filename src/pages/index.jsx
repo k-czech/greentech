@@ -1,10 +1,22 @@
 import React from 'react';
+import { Link } from 'gatsby';
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import { Oferta } from '../components/Oferta';
+
 
 const IndexPage = () => (
-  <main>
-    <title>Home Page</title>
-    <h1 className="text-3xl text-red-500">Greentech site!</h1>
-  </main>
+
+  <>
+    <section className="">
+      <Navbar />
+    </section>
+    <div><Oferta /></div>
+    <footer className="">
+      <Footer />
+    </footer>
+  </>
+
 );
 
 export default IndexPage;
