@@ -1,18 +1,25 @@
-import React from 'react';
-import { useSiteMetadata } from 'hooks/use-site-metadata';
+import React, { ReactNode } from 'react'
+import { useSiteMetadata } from '../hooks/use-site-metadata'
 
-export const SEO = ({ title, description, pathname, children }) => {
+interface SeoProps {
+  title: string
+  description: string
+  pathname?: string
+  children?: ReactNode
+}
+
+const Seo = ({ title, description, pathname, children }: SeoProps) => {
   const {
     title: defaultTitle,
     description: defaultDescription,
     siteUrl,
-  } = useSiteMetadata();
+  } = useSiteMetadata()
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     url: `${siteUrl}${pathname || ``}`,
-  };
+  }
 
   return (
     <>
@@ -20,5 +27,7 @@ export const SEO = ({ title, description, pathname, children }) => {
       <meta name="description" content={seo.description} />
       {children}
     </>
-  );
-};
+  )
+}
+
+export default Seo

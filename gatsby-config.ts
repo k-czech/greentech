@@ -1,8 +1,8 @@
-const path = require('path');
+const path = require('path')
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 
 const gatsbyRequiredRules = path.join(
   process.cwd(),
@@ -11,7 +11,7 @@ const gatsbyRequiredRules = path.join(
   'dist',
   'utils',
   'eslint-rules',
-);
+)
 
 module.exports = {
   siteMetadata: {
@@ -62,7 +62,7 @@ module.exports = {
           ],
         },
         eslint: {
-          patterns: '**/*.{js,jsx,ts,tsx}',
+          patterns: '**/*.{ts,tsx}',
           customOptions: {
             fix: true,
             cache: true,
@@ -102,5 +102,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        jsxPragma: `jsx`,
+        allExtensions: true,
+      },
+    },
   ],
-};
+}
