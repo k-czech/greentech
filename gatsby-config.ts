@@ -1,8 +1,9 @@
+const path = require('path')
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const path = require('path')
 const gatsbyRequiredRules = path.join(
   process.cwd(),
   'node_modules',
@@ -14,8 +15,8 @@ const gatsbyRequiredRules = path.join(
 
 module.exports = {
   siteMetadata: {
-    title: `greentech`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: 'Greentech Instalacje fotowoltaiczne',
+    siteUrl: 'https://green-tech.com.pl',
   },
   plugins: [
     {
@@ -35,7 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/assets/images/icon.png',
+        icon: 'src/assets/images/favicon.png',
       },
     },
     {
@@ -61,7 +62,7 @@ module.exports = {
           ],
         },
         eslint: {
-          patterns: '**/*.{js,jsx,ts,tsx}',
+          patterns: '**/*.{ts,tsx}',
           customOptions: {
             fix: true,
             cache: true,
@@ -81,9 +82,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
-        root: path.join(__dirname, 'src'),
-        assets: path.join(__dirname, 'src', 'assets'),
-        components: path.join(__dirname, 'src', 'components'),
+        assets: path.join(__dirname, 'src/assets'),
+        components: path.join(__dirname, 'src/components'),
+        hooks: path.join(__dirname, 'src/hooks'),
       },
     },
     {
@@ -91,6 +92,22 @@ module.exports = {
       options: {
         fonts: [`plus jakarta sans\:300,400,600,700, 800`],
         display: 'swap',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        jsxPragma: `jsx`,
+        allExtensions: true,
       },
     },
   ],
