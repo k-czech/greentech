@@ -26,13 +26,14 @@ export const Navbar = () => (
           <Link to="/">Kontakt</Link>
         </li>
       </ul>
-      <Link
-        to="https://sklep.green-tech.com.pl/"
+      <a
+        href="https://sklep.green-tech.com.pl/"
         target="_blank"
         className="w-12 h-12 bg-blue-color hover:bg-base-color transition-all flex items-center justify-center"
+        rel="noreferrer"
       >
         <Basket />
-      </Link>
+      </a>
     </div>
   </nav>
 )

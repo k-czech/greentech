@@ -38,15 +38,3 @@ a {
   text-decoration: none;
   color: $secondary-color;
 }
-
-@layer base {
-  li {
-    @apply text-sm
-      p-2;
-  }
-
-  h5 {
-    @apply font-extrabold
-      text-base;
-  }
-}
