@@ -1,0 +1,8 @@
+.welcome-image {
+  &::after {
+    position: absolute;
+    content: '';
+    clip-path: polygon(100% 0%, 100% 100%, 0 100%, 0 82%, 82% 82%, 82% 0);
+    @apply bg-gray-color;
+  }
+}

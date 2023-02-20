@@ -3,17 +3,30 @@ import Seo from '../components/Seo'
 import MainTemplate from '../components/MainTemplate'
 import { Button } from '../components/Button/Button'
 import { graphql } from 'gatsby'
+import '../assets/styles/homepage/homepage.scss'
 
 interface HeroProps {
   imageSource: string
 }
 
+interface ImagePublicUrl {
+  publicURL: string
+}
+
 interface QueryDataProps {
   data: {
-    file: {
-      publicURL: string
-    }
+    hero: ImagePublicUrl
+    welcome: ImagePublicUrl
   }
+}
+
+interface TitleProps {
+  title: string
+  className?: string | undefined
+}
+
+interface DescriptionProps {
+  description: string
 }
 
 const HeroHeading = () => (
@@ -37,28 +50,50 @@ const Hero = ({ imageSource }: HeroProps) => (
   </div>
 )
 
-const Homepage = ({ data }: QueryDataProps) => (
-  <MainTemplate>
-    <Hero imageSource={data.file.publicURL} />
-    <section>
-      <div>
-        <h3>Pierwszy krok do niezależności energetycznej</h3>
-        <p>
-          Postaw na swobodę finansową i bądź jedną z wielu osób, które zaufały
+const Title = ({ title, className }: TitleProps) => (
+  <h3
+    className={`text-secondary-color text-3xl mb-6 md:mb-11 lg:text-4xl ${className}`}
+  >
+    {title}
+  </h3>
+)
+
+const DescriptionParagraph = ({ description }: DescriptionProps) => (
+  <p className="text-secondary-color">{description}</p>
+)
+
+const WelcomeSection = () => (
+  <section className="bg-gray-color p-12 lg:py-24 lg:m-11">
+    <div className="container mx-auto flex flex-col md:flex-row  md:justify-between">
+      <div className="md:w-2/3 md:mr-14">
+        <Title
+          title={`Pierwszy krok do niezależności energetycznej`}
+          className="md:mb-0"
+        />
+      </div>
+      <div className="md:w-1/3">
+        <DescriptionParagraph
+          description="Postaw na swobodę finansową i bądź jedną z wielu osób, które zaufały
           Odnawialnym Źródłom Energii! Instalacja fotowoltaiczna to pierwszy
           krok do niezależności energetycznej. Decydując się na oferowane przez
           nas rozwiązania, które są dla każdego personalizowane, masz możliwość
-          zredukowania kosztów energii elektrycznej do zera.
-        </p>
+          zredukowania kosztów energii elektrycznej do zera."
+        />
       </div>
-    </section>
-    <section>
-      <div>
-        <img src="" alt="" />
-        <div>
-          <h3>Projektujemy panele generujące prąd</h3>
-          <p>
-            Decydując się na budowę fotowoltaiki należy w pierwszej kolejności
+    </div>
+  </section>
+)
+
+const Homepage = ({ data }: QueryDataProps) => (
+  <MainTemplate>
+    <Hero imageSource={data.hero.publicURL} />
+    <WelcomeSection />
+    <section className="m-12 lg:m-24">
+      <div className="container mx-auto flex flex-col md:flex-row md:items-center md:justify-between">
+        <div className="md:w-2/5 md:order-last mb-5 md:mb-0">
+          <Title title="Projektujemy panele generujące prąd" />
+          <DescriptionParagraph
+            description="Decydując się na budowę fotowoltaiki należy w pierwszej kolejności
             oszacować dotychczasowe zużycie energii elektrycznej oraz znaleźć
             odpowiednie miejsce na jej budowę. Kompletna instalacja
             fotowoltaiczna składa się z konstrukcji wsporczej, modułów
@@ -66,12 +101,16 @@ const Homepage = ({ data }: QueryDataProps) => (
             oraz zmiennego a także uziemienia. Dopełnieniem budowy instalacji
             fotowoltaicznej jest jej zgłoszenie do Zakładu Energetycznego.
             Zapraszamy do obejrzenia naszych realizacji i poznania metod
-            wykorzystywanych przez naszą firmę w pracy.
-          </p>
-          <p>
-            Zapraszamy do obejrzenia naszych realizacji i poznania metod
-            wykorzystywanych przez naszą firmę w pracy.
-          </p>
+            wykorzystywanych przez naszą firmę w pracy."
+          />
+          <br />
+          <DescriptionParagraph
+            description="Zapraszamy do obejrzenia naszych realizacji i poznania metod
+            wykorzystywanych przez naszą firmę w pracy."
+          />
+        </div>
+        <div className="md:w-1/2 mb-5 md:mb-0 md:mr-14 md:order-first relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8">
+          <img src={data.welcome.publicURL} alt="#" />
         </div>
       </div>
     </section>
@@ -245,7 +284,10 @@ const Homepage = ({ data }: QueryDataProps) => (
 
 export const query = graphql`
   query {
-    file(relativePath: { regex: "/0_hero.jpg/" }) {
+    hero: file(relativePath: { regex: "/0_hero.jpg/" }) {
+      publicURL
+    }
+    welcome: file(relativePath: { regex: "/1_welcome.jpg/" }) {
       publicURL
     }
   }

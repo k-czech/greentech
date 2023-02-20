@@ -8,6 +8,7 @@ module.exports = {
         'complementary-color': '#f5f5f5',
         'blue-color': '#00567a',
         'yellow-color': '#f9b939',
+        'gray-color': '#F5F5F5',
       },
     },
   },

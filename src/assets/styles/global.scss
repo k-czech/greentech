@@ -21,20 +21,21 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-family;
   font-weight: 800;
   color: $secondary-color;
   @apply text-4xl;
+  @apply antialiased;
 }
 
 p,
-li,
-a {
-  font-family: $font-family;
-  padding: 0.5rem 0;
+li {
+  @apply text-base;
+  font-weight: 300;
 }
 
 a {
+  font-weight: 400;
+  padding: 0.5rem 0;
   text-decoration: none;
   color: $secondary-color;
 }
