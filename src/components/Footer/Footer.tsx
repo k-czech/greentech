@@ -1,22 +1,19 @@
+import { Link } from 'gatsby'
 import React from 'react'
 
 export const Footer = () => (
   <footer className="text-center bg-white lg:text-left">
-    <div className="container mx-auto mt-24 mb-11">
-      <div className="grid lg:grid-cols-5 md:grid-cols-2">
+    <div className="container mx-auto my-12">
+      <div className="grid lg:grid-cols-5 md:grid-cols-2 space-y-5">
         <div className="footer__columns">
-          <h5 className="mb-0.5 text-base text-extrabold">
+          <h5 className="mb-2.5 text-base text-extrabold">
             GreenTech Sp.z.o.o.
           </h5>
 
           <ul className="list-none mb-0">
-            <li className="text-gray-800 text-sm">Niedźwiedź 180</li>
-            <li>
-              <a href="#!" className="text-gray-800">
-                34-735 Niedźwiedź
-              </a>
-            </li>
-            <li className="text-gray-800 text-sm">woj. małopolskie</li>
+            <li className="text-secondary-color text-sm">Niedźwiedź 180</li>
+            <li className="text-secondary-color text-sm">34-735 Niedźwiedź</li>
+            <li className="text-secondary-color text-sm">woj. małopolskie</li>
             <li className="text-gray-400 text-sm">KRS: 0000452799</li>
             <li className="text-gray-400 text-sm">NIP: 7010372020</li>
             <li className="text-gray-400 text-sm">Regon: 146560527</li>
@@ -25,62 +22,62 @@ export const Footer = () => (
         </div>
 
         <div className="footer__columns">
-          <h5 className="uppercase mb-0.5 text-base text-extrabold">
+          <h5 className="uppercase mb-2.5 text-base text-extrabold">
             Na skróty
           </h5>
 
           <ul className="list-none mb-0">
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 O firmie
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Oferta
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Realizacje
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Blog
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Kontakt
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
 
         <div className="footer__columns">
-          <h5 className="uppercase mb-0.5 text-base text-extrabold">Oferta</h5>
+          <h5 className="uppercase mb-2.5 text-base text-extrabold">Oferta</h5>
 
           <ul className="list-none mb-0">
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Pionowe instalacje PV
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Pompy ciepła
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Fotowoltaika
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Rekuperacja
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -90,24 +87,24 @@ export const Footer = () => (
 
           <ul className="list-none mb-0">
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Zapytaj o ofertę
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Klienci indywidualni
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Fotowoltaika dla rolnictwa
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#!" className="text-gray-400 text-sm">
+              <Link to="#" className="text-gray-400 text-sm">
                 Nasz sklep
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -172,14 +169,18 @@ export const Footer = () => (
 
       <div className="footer__social mt-24">
         <a
+          target="_blank"
           href="https://tailwind-elements.com/"
           className="mr-6 text-base font-extrabold"
+          rel="noreferrer"
         >
           facebook
         </a>
         <a
+          target="_blank"
           href="https://tailwind-elements.com/"
           className="text-base font-extrabold"
+          rel="noreferrer"
         >
           instagram
         </a>

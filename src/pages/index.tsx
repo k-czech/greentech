@@ -2,8 +2,9 @@ import React from 'react'
 import Seo from '../components/Seo'
 import MainTemplate from '../components/MainTemplate'
 import { Button } from '../components/Button/Button'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import '../assets/styles/homepage/homepage.scss'
+import PlayButton from '../assets/icons/play.svg'
 
 interface HeroProps {
   imageSource: string
@@ -17,16 +18,23 @@ interface QueryDataProps {
   data: {
     hero: ImagePublicUrl
     welcome: ImagePublicUrl
+    gallery_1: ImagePublicUrl
+    gallery_2: ImagePublicUrl
+    gallery_3: ImagePublicUrl
+    gallery_4: ImagePublicUrl
+    gallery_5: ImagePublicUrl
+    gallery_6: ImagePublicUrl
+    video: ImagePublicUrl
+    blog_1: ImagePublicUrl
+    blog_2: ImagePublicUrl
+    blog_3: ImagePublicUrl
+    blog_4: ImagePublicUrl
   }
 }
 
-interface TitleProps {
-  title: string
+interface TextProps {
+  text: string
   className?: string | undefined
-}
-
-interface DescriptionProps {
-  description: string
 }
 
 const HeroHeading = () => (
@@ -41,39 +49,41 @@ const HeroParagraph = () => (
 
 const Hero = ({ imageSource }: HeroProps) => (
   <div
-    className="w-full h-screen flex flex-col justify-center bg-no-repeat bg-cover space-y-4 px-5"
+    className="w-full h-screen min-h-[560px] flex flex-col justify-center bg-no-repeat bg-cover px-10"
     style={{ backgroundImage: `url(${imageSource})` }}
   >
-    <HeroHeading />
-    <HeroParagraph />
-    <Button path="/" text="Zapytaj o ofertę" />
+    <div className="container mx-auto space-y-4">
+      <HeroHeading />
+      <HeroParagraph />
+      <Button path="/" text="Zapytaj o ofertę" />
+    </div>
   </div>
 )
 
-const Title = ({ title, className }: TitleProps) => (
+const Title = ({ text, className }: TextProps) => (
   <h3
     className={`text-secondary-color text-3xl mb-6 md:mb-11 lg:text-4xl ${className}`}
   >
-    {title}
+    {text}
   </h3>
 )
 
-const DescriptionParagraph = ({ description }: DescriptionProps) => (
-  <p className="text-secondary-color">{description}</p>
+const DescriptionParagraph = ({ text, className }: TextProps) => (
+  <p className={`text-secondary-color ${className}`}>{text}</p>
 )
 
 const WelcomeSection = () => (
-  <section className="bg-gray-color p-12 lg:py-24 lg:m-11">
+  <section className="bg-gray-color p-10 lg:py-24 lg:m-11">
     <div className="container mx-auto flex flex-col md:flex-row  md:justify-between">
       <div className="md:w-2/3 md:mr-14">
         <Title
-          title={`Pierwszy krok do niezależności energetycznej`}
+          text={`Pierwszy krok do niezależności energetycznej`}
           className="md:mb-0"
         />
       </div>
       <div className="md:w-1/3">
         <DescriptionParagraph
-          description="Postaw na swobodę finansową i bądź jedną z wielu osób, które zaufały
+          text="Postaw na swobodę finansową i bądź jedną z wielu osób, które zaufały
           Odnawialnym Źródłom Energii! Instalacja fotowoltaiczna to pierwszy
           krok do niezależności energetycznej. Decydując się na oferowane przez
           nas rozwiązania, które są dla każdego personalizowane, masz możliwość
@@ -88,12 +98,12 @@ const Homepage = ({ data }: QueryDataProps) => (
   <MainTemplate>
     <Hero imageSource={data.hero.publicURL} />
     <WelcomeSection />
-    <section className="m-12 lg:m-24">
+    <section className="m-10 lg:m-24">
       <div className="container mx-auto flex flex-col md:flex-row md:items-center md:justify-between">
         <div className="md:w-2/5 md:order-last mb-5 md:mb-0">
-          <Title title="Projektujemy panele generujące prąd" />
+          <Title text="Projektujemy panele generujące prąd" />
           <DescriptionParagraph
-            description="Decydując się na budowę fotowoltaiki należy w pierwszej kolejności
+            text="Decydując się na budowę fotowoltaiki należy w pierwszej kolejności
             oszacować dotychczasowe zużycie energii elektrycznej oraz znaleźć
             odpowiednie miejsce na jej budowę. Kompletna instalacja
             fotowoltaiczna składa się z konstrukcji wsporczej, modułów
@@ -105,7 +115,7 @@ const Homepage = ({ data }: QueryDataProps) => (
           />
           <br />
           <DescriptionParagraph
-            description="Zapraszamy do obejrzenia naszych realizacji i poznania metod
+            text="Zapraszamy do obejrzenia naszych realizacji i poznania metod
             wykorzystywanych przez naszą firmę w pracy."
           />
         </div>
@@ -114,168 +124,210 @@ const Homepage = ({ data }: QueryDataProps) => (
         </div>
       </div>
     </section>
-    <section>
-      <h3>Nasze realizacje</h3>
-      <p>
-        A few words about what is depicted on the images or photos. Be concise
-        and creative
-      </p>
-      <div>
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
+    <section className="m-10">
+      <div className="text-center">
+        <Title text="Nasze realizacje" />
+        <DescriptionParagraph
+          text="A few words about what is depicted on the images or photos. Be concise
+            and creative"
+        />
+      </div>
+
+      <div className="flex flex-col">
+        <div className="mt-5">
+          <img src={data.gallery_1.publicURL} alt="#" />
+        </div>
+        <div className="mt-5">
+          <img src={data.gallery_2.publicURL} alt="#" />
+        </div>
+        <div className="mt-5">
+          <img src={data.gallery_3.publicURL} alt="#" />
+        </div>
+        <div className="mt-5">
+          <img src={data.gallery_4.publicURL} alt="#" />
+        </div>
+        <div className="mt-5">
+          <img src={data.gallery_5.publicURL} alt="#" />
+        </div>
+        <div className="mt-5">
+          <img src={data.gallery_6.publicURL} alt="#" />
+        </div>
       </div>
     </section>
-    <section>
-      <h3>Dlaczego warto nam zaufać?</h3>
-      <div>
-        <div>
-          <span>12</span>
-          <p>tyle lat na rynku energii odnawialnej</p>
+    <section className="p-10 bg-yellow-color">
+      <div className="container mx-auto">
+        <Title text="Dlaczego warto nam zaufać?" className="text-white" />
+        <div className="flex flex-col space-y-5">
+          <div>
+            <span className="text-white text-6xl font-extrabold pb-2 block">
+              12
+            </span>
+            <p className="text-white text-base font-light">
+              tyle lat na rynku energii odnawialnej
+            </p>
+          </div>
+          <div>
+            <span className="text-white text-6xl font-extrabold pb-2 block">
+              500
+            </span>
+            <p className="text-white text-base font-light">
+              Zrealizowanych projektów fotowoltaicznych
+            </p>
+          </div>
+          <div>
+            <span className="text-white text-6xl font-extrabold pb-2 block">
+              59
+            </span>
+            <p className="text-white text-base font-light">
+              MW wytworzonej energii
+            </p>
+          </div>
+          <div>
+            <span className="text-white text-6xl font-extrabold pb-2 block">
+              4
+            </span>
+            <p className="text-white text-base font-light">
+              kraje poza Polską w których działaliśmy
+            </p>
+          </div>
         </div>
-        <div>
-          <span>500</span>
-          <p>Zrealizowanych projektów fotowoltaicznych</p>
-        </div>
-        <div>
-          <span>59</span>
-          <p>MW wytworzonej energii</p>
-        </div>
-        <div>
-          <span>4</span>
-          <p>kraje poza Polską w których działaliśmy</p>
-        </div>
+        <Button path="/" text="Zapytaj o ofertę" className="mt-5" />
       </div>
-      <Button path="/" text="Zapytaj o ofertę" />
     </section>
-    <section>
-      <div>
-        <div>
-          <h5>Zaopatrz się w darmowy prąd</h5>
-          <p>
-            Warto także wspomnieć, że panele fotowoltaiczne są nie tylko
-            polecane do montażu na dachach prywatnych domów. Wielką
-            popularnością cieszą się wśród przedsiębiorców, zmniejszając tym
-            samym koszty utrzymania biznesu. Podobnie sytuacja wygląda w
-            przypadku gospodarstw rolnych, gdzie można uzyskać dofinansowanie na
-            instalację systemu energii odnawialnej.
-          </p>
+    <section className="m-10">
+      <div className="container mx-auto flex flex-col space-y-5">
+        <div className="space-y-3">
+          <h5 className="text-xl font-bold text-secondary-color">
+            Zaopatrz się w darmowy prąd
+          </h5>
+          <DescriptionParagraph
+            text="Warto także wspomnieć, że panele fotowoltaiczne są nie tylko
+          polecane do montażu na dachach prywatnych domów. Wielką
+          popularnością cieszą się wśród przedsiębiorców, zmniejszając tym
+          samym koszty utrzymania biznesu. Podobnie sytuacja wygląda w
+          przypadku gospodarstw rolnych, gdzie można uzyskać dofinansowanie na
+          instalację systemu energii odnawialnej."
+          />
         </div>
         <div>
-          <h5>Fotowoltaika jest dobra w każdym miejscu</h5>
-          <p>
-            Czas porzucić jeszcze jeden mit! Mówi on, że panele są nieskuteczne
+          <h5 className="text-xl font-bold text-secondary-color">
+            Fotowoltaika jest dobra w każdym miejscu
+          </h5>
+          <DescriptionParagraph
+            text="Czas porzucić jeszcze jeden mit! Mówi on, że panele są nieskuteczne
             w miejscach pozbawionych słońca przez część roku. Produkowane
             obecnie moduły są jednak przystosowane do tego, aby zachować moc i
             wydajność również przy rozproszonym świetle, częstym zacienieniu czy
-            nawet zabrudzeniach na powierzchni ogniwa!
-          </p>
+            nawet zabrudzeniach na powierzchni ogniwa!"
+          />
         </div>
-        <div>
-          <img src="" alt="" />
+        <div className="relative">
+          <img src={data.video.publicURL} alt="#" />
+          <button
+            onClick={() => console.log('dupa')}
+            className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+          >
+            <PlayButton />
+          </button>
         </div>
       </div>
     </section>
-    <section>
-      <div>
-        <h3>Co nas wyróżnia?</h3>
-        <p>
-          Zapewne już wiesz, jak skuteczne w odkładaniu pieniędzy jest
+    <section className="bg-base-color p-10 space-y-10">
+      <div className="container mx-auto flex flex-col">
+        <Title text="Co nas wyróżnia?" className="text-white" />
+        <DescriptionParagraph
+          text="Zapewne już wiesz, jak skuteczne w odkładaniu pieniędzy jest
           posiadanie na dachu domu lub na swojej posesji paneli
           fotowoltaicznych. Pozyskiwanie prądu z energii słonecznej pozwala
           wytwarzać niezbędną do życia elektryczność i magazynować jej nadwyżki,
-          które występują szczególnie w ciepłych miesiącach.
-        </p>
+          które występują szczególnie w ciepłych miesiącach."
+          className="text-white"
+        />
       </div>
-      <div>
-        <ul>
-          <li>
-            <span>01</span>
-            <p>
+      <div className="stands">
+        <ul className="flex flex-col space-y-5">
+          <li className="text-white">
+            <span className="font-bold">01</span>
+            <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
               własna linia wysokowydajnych modułów fotowoltaicznych z serii
               Green-Tech
             </p>
           </li>
-          <li>
-            <span>02</span>
-            <p>
+          <li className="text-white">
+            <span className="font-bold">02</span>
+            <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
               wykorzystujemy inwertery sieciowe Growatt, Solar Edge, Fronius
             </p>
           </li>
-          <li>
-            <span>03</span>
-            <p>stosujemy wysokiej jakości zabezpieczenia sieciowe</p>
+          <li className="text-white">
+            <span className="font-bold">03</span>
+            <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+              stosujemy wysokiej jakości zabezpieczenia sieciowe
+            </p>
           </li>
-          <li>
-            <span>04</span>
-            <p>wykorzystujemy konstrukcje wsporcze z Polskiej huty</p>
+          <li className="text-white">
+            <span className="font-bold">04</span>
+            <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+              wykorzystujemy konstrukcje wsporcze z Polskiej huty
+            </p>
           </li>
         </ul>
       </div>
     </section>
-    <section>
-      <div>
-        <h3></h3>
-        <div>
-          <button>{'<'}</button>
-          <button>{'>'}</button>
-        </div>
-      </div>
-      <div>
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
-      </div>
-      <Button path="/" text="Zapytaj o ofertę" />
-    </section>
-    <section>
-      <h3>Blog</h3>
-      <div>
-        <div>
-          <img src="" alt="" />
-          <a href="#">Moduły hybrydowe – czym są i jak działają?</a>
-          <p>
+    <section className="m-10">
+      <Title text="Blog" />
+      <div className="container mx-auto flex flex-col space-y-5">
+        <div className="flex flex-col space-y-3">
+          <img src={data.blog_1.publicURL} alt="#" />
+          <Link to="#" className="text-secondary-color font-bold text-lg">
+            Moduły hybrydowe – czym są i jak działają?
+          </Link>
+          <p className="text-secondary-color font-light text-base">
             Jeśli myślisz o tym, żeby nie tylko pozyskiwać prąd ze słońca, ale
             dodatkowo...
           </p>
-          <span>Sierpień, 2022</span>
+          <span className="text-secondary-color/40 text-sm">
+            Sierpień, 2022
+          </span>
         </div>
-        <div>
-          <img src="" alt="" />
-          <a href="#">
+        <div className="flex flex-col space-y-3">
+          <img src={data.blog_2.publicURL} alt="#" />
+          <Link to="#" className="text-secondary-color font-bold text-lg">
             Optymalizator mocy paneli fotowoltaicznych – czy warto?
-          </a>
-          <p>
+          </Link>
+          <p className="text-secondary-color font-light text-base">
             Panel fotowoltaiczny to sprawdzony sposób na pozyskiwanie prądu z
             odnawialnych źródeł...
           </p>
-          <span>Sierpień, 2022</span>
+          <span className="text-secondary-color/40 text-sm">
+            Sierpień, 2022
+          </span>
         </div>
-        <div>
-          <img src="" alt="" />
-          <a href="#">
+        <div className="flex flex-col space-y-3">
+          <img src={data.blog_3.publicURL} alt="#" />
+          <Link to="#" className="text-secondary-color font-bold text-lg">
             Jak sprawdzić panel fotowoltaiczny – usterki i uszkodzenia paneli...
-          </a>
-          <p>
+          </Link>
+          <p className="text-secondary-color font-light text-base">
             Jak każde urządzenie, także panele fotowoltaiczne mogą ulec
             uszkodzeniu lub posiadać wady...
           </p>
-          <span>Sierpień, 2022</span>
+          <span className="text-secondary-color/40 text-sm">
+            Sierpień, 2022
+          </span>
         </div>
-        <div>
-          <img src="" alt="" />
-          <a href="#">
+        <div className="flex flex-col space-y-3">
+          <img src={data.blog_4.publicURL} alt="#" />
+          <Link to="/" className="text-secondary-color font-bold text-lg">
             Montaż paneli fotowoltaicznych - różne konstrukcje i rozwiązania
-          </a>
-          <p>
+          </Link>
+          <p className="text-secondary-color font-light text-base">
             Nie bez przyczyny coraz więcej osób decyduje się na montaż paneli
             fotowoltaicznych...
           </p>
-          <span>Sierpień, 2022</span>
+          <span className="text-secondary-color/40 text-sm">
+            Sierpień, 2022
+          </span>
         </div>
       </div>
     </section>
@@ -288,6 +340,39 @@ export const query = graphql`
       publicURL
     }
     welcome: file(relativePath: { regex: "/1_welcome.jpg/" }) {
+      publicURL
+    }
+    gallery_1: file(relativePath: { regex: "/2_gallery.jpg/" }) {
+      publicURL
+    }
+    gallery_2: file(relativePath: { regex: "/3_gallery.jpg/" }) {
+      publicURL
+    }
+    gallery_3: file(relativePath: { regex: "/4_gallery.jpg/" }) {
+      publicURL
+    }
+    gallery_4: file(relativePath: { regex: "/5_gallery.jpg/" }) {
+      publicURL
+    }
+    gallery_5: file(relativePath: { regex: "/6_gallery.jpg/" }) {
+      publicURL
+    }
+    gallery_6: file(relativePath: { regex: "/7_gallery.jpg/" }) {
+      publicURL
+    }
+    video: file(relativePath: { regex: "/8_video.jpg/" }) {
+      publicURL
+    }
+    blog_1: file(relativePath: { regex: "/12_blog.jpg/" }) {
+      publicURL
+    }
+    blog_2: file(relativePath: { regex: "/13_blog.jpg/" }) {
+      publicURL
+    }
+    blog_3: file(relativePath: { regex: "/14_blog.jpg/" }) {
+      publicURL
+    }
+    blog_4: file(relativePath: { regex: "/15_blog.jpg/" }) {
       publicURL
     }
   }
