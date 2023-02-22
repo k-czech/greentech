@@ -38,8 +38,9 @@ interface TextProps {
 }
 
 const HeroHeading = () => (
-  <h1 className="text-white font-bold text-4xl lg:text-5xl">
-    Instalacje fotowoltaiczne tworzone z pasją
+  <h1 className="text-white font-bold text-4xl lg:text-5xl lg:mb-10">
+    Instalacje fotowoltaiczne
+    <br /> tworzone z pasją
   </h1>
 )
 
@@ -49,13 +50,15 @@ const HeroParagraph = () => (
 
 const Hero = ({ imageSource }: HeroProps) => (
   <div
-    className="w-full h-screen min-h-[560px] flex flex-col justify-center bg-no-repeat bg-cover px-10"
+    className="w-full h-screen min-h-[560px] xl:max-h-[711px] xl:mx-10 xl:w-auto flex flex-col justify-center xl:justify-end bg-no-repeat bg-cover px-10"
     style={{ backgroundImage: `url(${imageSource})` }}
   >
-    <div className="container mx-auto space-y-4">
+    <div className="container mx-auto space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
       <HeroHeading />
-      <HeroParagraph />
-      <Button path="/" text="Zapytaj o ofertę" />
+      <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
+        <HeroParagraph />
+        <Button path="/" text="Zapytaj o ofertę" className="lg:mt-0 lg:ml-20" />
+      </div>
     </div>
   </div>
 )
@@ -75,10 +78,10 @@ const DescriptionParagraph = ({ text, className }: TextProps) => (
 const WelcomeSection = () => (
   <section className="bg-gray-color p-10 lg:py-24 lg:m-11">
     <div className="container mx-auto flex flex-col md:flex-row  md:justify-between">
-      <div className="md:w-2/3 md:mr-14">
+      <div className="md:w-2/3 lg:w-2/5 md:mr-14">
         <Title
-          text={`Pierwszy krok do niezależności energetycznej`}
-          className="md:mb-0"
+          text="Pierwszy krok do niezależności energetycznej"
+          className="lg:mb-0"
         />
       </div>
       <div className="md:w-1/3">
@@ -129,36 +132,40 @@ const Homepage = ({ data }: QueryDataProps) => (
         <Title text="Nasze realizacje" />
         <DescriptionParagraph
           text="A few words about what is depicted on the images or photos. Be concise
-            and creative"
+          and creative"
         />
       </div>
 
-      <div className="flex flex-col">
-        <div className="mt-5">
-          <img src={data.gallery_1.publicURL} alt="#" />
+      <div className="flex flex-col lg:mt-16">
+        <div className="flex flex-col lg:flex-row lg:space-x-5">
+          <div className="mt-5 lg:w-2/5">
+            <img src={data.gallery_1.publicURL} alt="#" />
+          </div>
+          <div className="mt-5 lg:w-1/5">
+            <img src={data.gallery_2.publicURL} alt="#" />
+          </div>
+          <div className="mt-5 lg:w-2/5">
+            <img src={data.gallery_3.publicURL} alt="#" />
+          </div>
         </div>
-        <div className="mt-5">
-          <img src={data.gallery_2.publicURL} alt="#" />
-        </div>
-        <div className="mt-5">
-          <img src={data.gallery_3.publicURL} alt="#" />
-        </div>
-        <div className="mt-5">
-          <img src={data.gallery_4.publicURL} alt="#" />
-        </div>
-        <div className="mt-5">
-          <img src={data.gallery_5.publicURL} alt="#" />
-        </div>
-        <div className="mt-5">
-          <img src={data.gallery_6.publicURL} alt="#" />
+        <div className="flex flex-col lg:flex-row lg:space-x-5">
+          <div className="mt-5 lg:w-1/5">
+            <img src={data.gallery_4.publicURL} alt="#" />
+          </div>
+          <div className="mt-5 lg:w-2/5">
+            <img src={data.gallery_5.publicURL} alt="#" />
+          </div>
+          <div className="mt-5 lg:w-2/5">
+            <img src={data.gallery_6.publicURL} alt="#" />
+          </div>
         </div>
       </div>
     </section>
-    <section className="p-10 bg-yellow-color">
-      <div className="container mx-auto">
+    <section className="p-10 lg:py-20 lg:mx-10 bg-yellow-color">
+      <div className="container mx-auto lg:space-y-16">
         <Title text="Dlaczego warto nam zaufać?" className="text-white" />
-        <div className="flex flex-col space-y-5">
-          <div>
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-5 lg:space-y-0">
+          <div className="">
             <span className="text-white text-6xl font-extrabold pb-2 block">
               12
             </span>
@@ -166,15 +173,16 @@ const Homepage = ({ data }: QueryDataProps) => (
               tyle lat na rynku energii odnawialnej
             </p>
           </div>
-          <div>
+          <div className="">
             <span className="text-white text-6xl font-extrabold pb-2 block">
               500
             </span>
             <p className="text-white text-base font-light">
-              Zrealizowanych projektów fotowoltaicznych
+              Zrealizowanych projektów
+              <br /> fotowoltaicznych
             </p>
           </div>
-          <div>
+          <div className="">
             <span className="text-white text-6xl font-extrabold pb-2 block">
               59
             </span>
@@ -182,7 +190,7 @@ const Homepage = ({ data }: QueryDataProps) => (
               MW wytworzonej energii
             </p>
           </div>
-          <div>
+          <div className="">
             <span className="text-white text-6xl font-extrabold pb-2 block">
               4
             </span>
@@ -191,37 +199,42 @@ const Homepage = ({ data }: QueryDataProps) => (
             </p>
           </div>
         </div>
-        <Button path="/" text="Zapytaj o ofertę" className="mt-5" />
+        <div className="mt-11 lg:mt-0 lg:w-full flex justify-center">
+          <Button path="/" text="Zapytaj o ofertę" />
+        </div>
       </div>
     </section>
-    <section className="m-10">
-      <div className="container mx-auto flex flex-col space-y-5">
-        <div className="space-y-3">
-          <h5 className="text-xl font-bold text-secondary-color">
-            Zaopatrz się w darmowy prąd
-          </h5>
-          <DescriptionParagraph
-            text="Warto także wspomnieć, że panele fotowoltaiczne są nie tylko
+    <section className="m-10 lg:my-20">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:space-x-10">
+        <div className="flex flex-col lg:flex-row lg:w-2/3 lg:space-x-10 space-y-5 lg:space-y-0">
+          <div className="space-y-3 lg:w-1/2">
+            <h5 className="text-xl font-bold text-secondary-color">
+              Zaopatrz się w darmowy prąd
+            </h5>
+            <DescriptionParagraph
+              text="Warto także wspomnieć, że panele fotowoltaiczne są nie tylko
           polecane do montażu na dachach prywatnych domów. Wielką
           popularnością cieszą się wśród przedsiębiorców, zmniejszając tym
           samym koszty utrzymania biznesu. Podobnie sytuacja wygląda w
           przypadku gospodarstw rolnych, gdzie można uzyskać dofinansowanie na
           instalację systemu energii odnawialnej."
-          />
-        </div>
-        <div>
-          <h5 className="text-xl font-bold text-secondary-color">
-            Fotowoltaika jest dobra w każdym miejscu
-          </h5>
-          <DescriptionParagraph
-            text="Czas porzucić jeszcze jeden mit! Mówi on, że panele są nieskuteczne
+            />
+          </div>
+          <div className="lg:w-1/2">
+            <h5 className="text-xl font-bold text-secondary-color">
+              Fotowoltaika jest dobra
+              <br /> w każdym miejscu
+            </h5>
+            <DescriptionParagraph
+              text="Czas porzucić jeszcze jeden mit! Mówi on, że panele są nieskuteczne
             w miejscach pozbawionych słońca przez część roku. Produkowane
             obecnie moduły są jednak przystosowane do tego, aby zachować moc i
             wydajność również przy rozproszonym świetle, częstym zacienieniu czy
             nawet zabrudzeniach na powierzchni ogniwa!"
-          />
+            />
+          </div>
         </div>
-        <div className="relative">
+        <div className="relative lg:w-1/3">
           <img src={data.video.publicURL} alt="#" />
           <button
             onClick={() => console.log('dupa')}
@@ -232,20 +245,24 @@ const Homepage = ({ data }: QueryDataProps) => (
         </div>
       </div>
     </section>
-    <section className="bg-base-color p-10 space-y-10">
-      <div className="container mx-auto flex flex-col">
-        <Title text="Co nas wyróżnia?" className="text-white" />
-        <DescriptionParagraph
-          text="Zapewne już wiesz, jak skuteczne w odkładaniu pieniędzy jest
+    <section className="bg-base-color p-10 space-y-10 lg:space-y-16 lg:py-20 lg:mx-10">
+      <div className="container mx-auto flex flex-col lg:flex-row">
+        <div className="lg:w-2/5">
+          <Title text="Co nas wyróżnia?" className="text-white lg:mb-0" />
+        </div>
+        <div className="lg:w-2/5 lg:ml-36">
+          <DescriptionParagraph
+            text="Zapewne już wiesz, jak skuteczne w odkładaniu pieniędzy jest
           posiadanie na dachu domu lub na swojej posesji paneli
           fotowoltaicznych. Pozyskiwanie prądu z energii słonecznej pozwala
           wytwarzać niezbędną do życia elektryczność i magazynować jej nadwyżki,
           które występują szczególnie w ciepłych miesiącach."
-          className="text-white"
-        />
+            className="text-white"
+          />
+        </div>
       </div>
-      <div className="stands">
-        <ul className="flex flex-col space-y-5">
+      <div className="stands container mx-auto">
+        <ul className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10">
           <li className="text-white">
             <span className="font-bold">01</span>
             <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
