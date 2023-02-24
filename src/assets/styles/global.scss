@@ -39,3 +39,14 @@ a {
   text-decoration: none;
   color: $secondary-color;
 }
+
+section {
+  max-width: 1350px;
+  margin: auto;
+  @apply p-10 md:px-14 lg:px-0 lg:py-20;
+}
+
+.container-1160 {
+  max-width: 1160px;
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+.desktop {
+  @apply hidden lg:flex underline text-lg;
+
+  li {
+    @apply text-base font-semibold px-3.5;
+  }
+}
+
+.mobile {
+  @apply flex flex-col items-center justify-center underline;
+
+  li {
+    @apply text-base my-2 font-semibold px-3.5;
+  }
+}

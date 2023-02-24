@@ -19,18 +19,18 @@ module.exports = {
     siteUrl: 'https://green-tech.com.pl',
   },
   plugins: [
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        accessToken: process.env.CONTENTFUL_CONTENT_DELIVERY_ACCESS_TOKEN,
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-contentful',
+    //   options: {
+    //     accessToken: process.env.CONTENTFUL_CONTENT_DELIVERY_ACCESS_TOKEN,
+    //     spaceId: process.env.CONTENTFUL_SPACE_ID,
+    //   },
+    // },
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
-    'gatsby-plugin-google-gtag',
+    //'gatsby-plugin-google-gtag',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-postcss',
     {
@@ -47,29 +47,29 @@ module.exports = {
       },
       __key: 'images',
     },
-    {
-      resolve: 'gatsby-plugin-prettier-eslint',
-      options: {
-        prettier: {
-          patterns: [
-            // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
-            '**/*.{css,scss,less}',
-            '**/*.{json,json5}',
-            '**/*.{graphql}',
-            '**/*.{md,mdx}',
-            '**/*.{html}',
-            '**/*.{yaml,yml}',
-          ],
-        },
-        eslint: {
-          patterns: '**/*.{ts,tsx}',
-          customOptions: {
-            fix: true,
-            cache: true,
-          },
-        },
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-prettier-eslint',
+    //   options: {
+    //     prettier: {
+    //       patterns: [
+    //         // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
+    //         '**/*.{css,scss,less}',
+    //         '**/*.{json,json5}',
+    //         '**/*.{graphql}',
+    //         '**/*.{md,mdx}',
+    //         '**/*.{html}',
+    //         '**/*.{yaml,yml}',
+    //       ],
+    //     },
+    //     eslint: {
+    //       patterns: '**/*.{ts,tsx}',
+    //       customOptions: {
+    //         fix: true,
+    //         cache: true,
+    //       },
+    //     },
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
