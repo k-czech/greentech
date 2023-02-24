@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from 'react'
+import { useLocation } from '@reach/router'
 import { Link } from 'gatsby'
 import Basket from '../../assets/icons/shop-basket.svg'
 import Logo from '../../assets/icons/logo.svg'
@@ -7,6 +8,14 @@ import MenuLinks from '../MenuLinks/MenuLinks'
 
 interface menuMobileProps {
   closeMenuMobile: MouseEventHandler<HTMLButtonElement>
+}
+
+const usePrevious = <T,>(value: T): T | undefined => {
+  const ref = React.useRef<T>()
+  React.useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
 }
 
 const MenuMobile = ({ closeMenuMobile }: menuMobileProps) => {
@@ -23,6 +32,8 @@ const MenuMobile = ({ closeMenuMobile }: menuMobileProps) => {
 
 export const Navbar = () => {
   const [isOpen, setOpen] = React.useState(false)
+  const location = useLocation()
+  const prevLocation = usePrevious(location)
 
   const openMenuMobile = () => {
     setOpen(true)
@@ -32,8 +43,14 @@ export const Navbar = () => {
     setOpen(false)
   }
 
+  React.useEffect(() => {
+    if (location !== prevLocation) {
+      closeMenuMobile()
+    }
+  }, [location, prevLocation])
+
   return (
-    <nav className="mx-auto max-w-[1350px] flex items-center py-7 px-2 xl:px-0">
+    <nav className="mx-auto max-w-[1350px] flex items-center py-7 px-2 xl:px-0 z-30">
       <Wrapper className="flex mx-auto justify-between">
         <Link to="/">
           <Logo />
