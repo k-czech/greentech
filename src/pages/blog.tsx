@@ -12,26 +12,26 @@ import '../assets/styles/categoryList/category-list.scss'
 const Blog = () => {
   return (
     <Wrapper className="mx-auto px-10 lg:px-0 mt-32 lg:mt-0">
-      <div className="text-center mb-16">
+      <div className="max-w-[760px] mx-auto text-center mb-16">
         <Title text="Blog" />
         <DescriptionParagraph
           className="base-color"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et."
         />
         <div className="cat-list">
-          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer">
+          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer uppercase hover:bg-base-color transition-colors">
             Wszystkie
           </div>
-          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer">
+          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer uppercase hover:bg-base-color transition-colors">
             kategoria1
           </div>
-          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer">
+          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer uppercase hover:bg-base-color transition-colors">
             kategoria2
           </div>
-          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer">
+          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer uppercase hover:bg-base-color transition-colors">
             kategoria3
           </div>
-          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer">
+          <div className="py-1.5 px-3 bg-blue-color text-white cursor-pointer  uppercase hover:bg-base-color transition-colors">
             kategoria4
           </div>
         </div>

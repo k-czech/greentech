@@ -17,13 +17,13 @@ const MenuLinks = ({ className }: links) => {
           <Link to="/ourOffer">Oferta</Link>
         </li>
         <li>
-          <Link to="/">Realizacje</Link>
+          <Link to="/realisations">Realizacje</Link>
         </li>
         <li>
           <Link to="/blog">Blog</Link>
         </li>
         <li>
-          <Link to="/">Kontakt</Link>
+          <Link to="/contact">Kontakt</Link>
         </li>
       </ul>
     </>
