@@ -3,10 +3,9 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 import React from 'react'
 import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
+import { ListWrapper } from 'src/components/OffersListWrapper/OffersListWrapper'
 import Title from 'src/components/Title/Title'
 import Wrapper from 'src/components/Wrapper/Wrapper'
-
-import '../assets/styles/offers/offers.scss'
 
 const ourOffer = () => {
   return (
@@ -19,7 +18,7 @@ const ourOffer = () => {
         />
       </div>
 
-      <div className="grid offers-list gap-10 mb-24">
+      <ListWrapper classname="justify-center">
         <div className="max-w-[260px] place-self-center">
           <StaticImage
             src="../assets/images/offers/instalacje.png"
@@ -83,7 +82,7 @@ const ourOffer = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </ListWrapper>
     </Wrapper>
   )
 }

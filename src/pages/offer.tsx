@@ -1,6 +1,5 @@
 import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
-import '../assets/styles/offers/offers.scss'
 import RichSection from 'src/components/RichSection/RichSection'
 import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
 import Wrapper from 'src/components/Wrapper/Wrapper'
@@ -9,9 +8,13 @@ import Title from 'src/components/Title/Title'
 const Offer = () => {
   return (
     <>
-      <div className="flex max-w-[1350px] mx-auto">
-        <StaticImage src="../assets/images/offer/offer-hero.png" alt="hero" />
-        <div className="flex items-center justify-center grow">
+      <div className="flex flex-col sm:flex-row max-w-[1350px] mx-auto lg:-mt-28 bg-gray-color ">
+        <StaticImage
+          src="../assets/images/offer/offer-hero.png"
+          className="max-h-[560px] sm:max-h-none "
+          alt="hero"
+        />
+        <div className="flex items-center justify-center grow p-10 sm:p-0 sm:pl-10">
           <div className="flex flex-col max-w-[560px]">
             <Title
               text="Panele fotowoltaniczne Next2Sun"

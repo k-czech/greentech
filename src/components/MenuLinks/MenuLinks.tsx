@@ -20,10 +20,7 @@ const MenuLinks = ({ className }: links) => {
           <Link to="/">Realizacje</Link>
         </li>
         <li>
-          <Link to="/">Blog</Link>
-        </li>
-        <li>
-          <Link to="/">Kontakt</Link>
+          <Link to="/blog">Blog</Link>
         </li>
         <li>
           <Link to="/">Kontakt</Link>

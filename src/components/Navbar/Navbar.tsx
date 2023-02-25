@@ -52,10 +52,10 @@ export const Navbar = () => {
   return (
     <nav className="mx-auto max-w-[1350px] flex items-center py-7 px-2 xl:px-0 z-30">
       <Wrapper className="flex mx-auto justify-between">
-        <Link to="/">
+        <Link to="/" className="z-30">
           <Logo />
         </Link>
-        <div className="flex flex-wrap items-center justify-end w-6/12">
+        <div className="flex flex-wrap items-center justify-end w-6/12 z-50">
           <div
             onClick={openMenuMobile}
             className="w-12 h-12 flex items-center justify-center lg:hidden"
