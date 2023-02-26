@@ -3,31 +3,34 @@ import Seo from '../components/Seo'
 import { Button } from '../components/Button/Button'
 import { graphql, Link } from 'gatsby'
 import '../assets/styles/homepage/homepage.scss'
-import PlayButton from '../assets/icons/play.svg'
 import { Hero } from 'src/components/Hero/Hero'
 import Title from 'src/components/Title/Title'
 import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
 import Wrapper from 'src/components/Wrapper/Wrapper'
+import Image from 'src/components/Image/Image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
+import ModalWithVideo from 'src/components/ModalWithVideo/ModalWithVideo'
 
-interface ImagePublicUrl {
-  publicURL: string
+interface ImageProps {
+  childImageSharp: {
+    gatsbyImageData: IGatsbyImageData
+  }
 }
 
 interface QueryDataProps {
   data: {
-    hero: ImagePublicUrl
-    welcome: ImagePublicUrl
-    gallery_1: ImagePublicUrl
-    gallery_2: ImagePublicUrl
-    gallery_3: ImagePublicUrl
-    gallery_4: ImagePublicUrl
-    gallery_5: ImagePublicUrl
-    gallery_6: ImagePublicUrl
-    video: ImagePublicUrl
-    blog_1: ImagePublicUrl
-    blog_2: ImagePublicUrl
-    blog_3: ImagePublicUrl
-    blog_4: ImagePublicUrl
+    welcome: ImageProps
+    gallery_1: ImageProps
+    gallery_2: ImageProps
+    gallery_3: ImageProps
+    gallery_4: ImageProps
+    gallery_5: ImageProps
+    gallery_6: ImageProps
+    video: ImageProps
+    blog_1: ImageProps
+    blog_2: ImageProps
+    blog_3: ImageProps
+    blog_4: ImageProps
   }
 }
 
@@ -55,7 +58,7 @@ const WelcomeSection = () => (
 
 const Homepage = ({ data }: QueryDataProps) => (
   <>
-    <Hero imageSource={data.hero.publicURL} />
+    <Hero />
     <WelcomeSection />
     <section className="my-10 lg:my-24">
       <Wrapper className="container mx-auto flex flex-col md:flex-row md:items-center md:justify-between">
@@ -79,7 +82,7 @@ const Homepage = ({ data }: QueryDataProps) => (
           />
         </div>
         <div className="md:w-1/2 mb-5 md:mb-0 md:mr-14 md:order-first relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8">
-          <img src={data.welcome.publicURL} alt="#" />
+          <Image imgData={data.welcome} />
         </div>
       </Wrapper>
     </section>
@@ -95,33 +98,33 @@ const Homepage = ({ data }: QueryDataProps) => (
       <div className="flex flex-col lg:mt-16">
         <div className="flex flex-col lg:flex-row lg:space-x-5">
           <div className="mt-5 max-w-[524px]  mx-auto lg:w-2/5">
-            <img src={data.gallery_1.publicURL} alt="#" />
+            <Image imgData={data.gallery_1} />
           </div>
           <div className="mt-5 max-w-[524px] mx-auto lg:w-1/5">
-            <img src={data.gallery_2.publicURL} alt="#" />
+            <Image imgData={data.gallery_2} />
           </div>
           <div className="mt-5 max-w-[524px] mx-auto lg:w-2/5">
-            <img src={data.gallery_3.publicURL} alt="#" />
+            <Image imgData={data.gallery_3} />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row lg:space-x-5">
           <div className="mt-5 max-w-[524px] mx-auto lg:w-1/5">
-            <img src={data.gallery_4.publicURL} alt="#" />
+            <Image imgData={data.gallery_4} />
           </div>
           <div className="mt-5 max-w-[524px] mx-auto lg:w-2/5">
-            <img src={data.gallery_5.publicURL} alt="#" />
+            <Image imgData={data.gallery_1} />
           </div>
           <div className="mt-5 max-w-[524px] mx-auto lg:w-2/5">
-            <img src={data.gallery_6.publicURL} alt="#" />
+            <Image imgData={data.gallery_3} />
           </div>
         </div>
       </div>
     </section>
 
-    <section className="bg-yellow-color">
+    <section className="bg-yellow-color pt-24 pb-16">
       <Wrapper className="mx-auto lg:space-y-16">
         <Title text="Dlaczego warto nam zaufać?" className="text-white" />
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-5 lg:space-y-0">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start space-y-5 md:space-y-0">
           <div className="">
             <span className="text-white text-6xl font-extrabold pb-2 block">
               12
@@ -161,7 +164,7 @@ const Homepage = ({ data }: QueryDataProps) => (
         </div>
       </Wrapper>
     </section>
-    <section className="my-10 lg:my-20">
+    <section>
       <Wrapper className="container mx-auto flex flex-col lg:flex-row items-center space-y-5 lg:space-y-0 lg:space-x-10">
         <div className="flex flex-col lg:flex-row lg:w-2/3 lg:space-x-10 space-y-5 lg:space-y-0">
           <div className="space-y-3 lg:w-1/2">
@@ -191,18 +194,13 @@ const Homepage = ({ data }: QueryDataProps) => (
             />
           </div>
         </div>
-        <div className="relative lg:w-1/3">
-          <img src={data.video.publicURL} alt="#" />
-          <button
-            onClick={() => console.log('dupa')}
-            className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
-          >
-            <PlayButton />
-          </button>
+        <div className="relative max-w-[400px] lg:max-w-none lg:w-1/3">
+          <Image imgData={data.video} />
+          <ModalWithVideo />
         </div>
       </Wrapper>
     </section>
-    <section className="bg-base-color space-y-10 lg:space-y-16 mx-auto">
+    <section className="bg-base-color space-y-10 lg:space-y-16 pt-24 pb-16">
       <Wrapper className="container mx-auto flex flex-col">
         <div className="flex flex-col mb-16 lg:flex-row lg:justify-between lg:mb-36 ">
           <div className="lg:w-2/5">
@@ -224,26 +222,26 @@ const Homepage = ({ data }: QueryDataProps) => (
           <ul className="flex flex-col lg:flex-row space-y-5 lg:space-y-0 lg:space-x-10">
             <li className="text-white">
               <span className="font-bold">01</span>
-              <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+              <p className="text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
                 własna linia wysokowydajnych modułów fotowoltaicznych z serii
                 Green-Tech
               </p>
             </li>
             <li className="text-white">
               <span className="font-bold">02</span>
-              <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+              <p className="text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
                 wykorzystujemy inwertery sieciowe Growatt, Solar Edge, Fronius
               </p>
             </li>
             <li className="text-white">
               <span className="font-bold">03</span>
-              <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+              <p className="text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
                 stosujemy wysokiej jakości zabezpieczenia sieciowe
               </p>
             </li>
             <li className="text-white">
               <span className="font-bold">04</span>
-              <p className="font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+              <p className="text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
                 wykorzystujemy konstrukcje wsporcze z Polskiej huty
               </p>
             </li>
@@ -257,11 +255,8 @@ const Homepage = ({ data }: QueryDataProps) => (
 
         <div className="container mx-auto grid gap-y-10 lg:grid-cols-2 lg:gap-10">
           <div className="flex flex-row flex-wrap items-center">
-            <img
-              className="w-40 h-40 mr-8"
-              src={data.blog_1.publicURL}
-              alt="#"
-            />
+            <Image imgData={data.blog_1} className="w-40 h-40 mr-8" />
+
             <div className="flex flex-col grow shrink basis-52">
               <Link to="#" className="text-secondary-color font-bold text-lg">
                 Moduły hybrydowe – czym są i jak działają?
@@ -277,11 +272,7 @@ const Homepage = ({ data }: QueryDataProps) => (
           </div>
 
           <div className="flex flex-row flex-wrap items-center">
-            <img
-              className="w-40 h-40 mr-8"
-              src={data.blog_2.publicURL}
-              alt="#"
-            />
+            <Image imgData={data.blog_2} className="w-40 h-40 mr-8" />
             <div className="flex flex-col grow shrink basis-52">
               <Link to="#" className="text-secondary-color font-bold text-lg">
                 Optymalizator mocy paneli fotowoltaicznych – czy warto?
@@ -297,11 +288,7 @@ const Homepage = ({ data }: QueryDataProps) => (
           </div>
 
           <div className="flex flex-row flex-wrap items-center">
-            <img
-              className="w-40 h-40 mr-8"
-              src={data.blog_3.publicURL}
-              alt="#"
-            />
+            <Image imgData={data.blog_3} className="w-40 h-40 mr-8" />
             <div className="flex flex-col grow shrink basis-52">
               <Link to="#" className="text-secondary-color font-bold text-lg">
                 Jak sprawdzić panel fotowoltaiczny – usterki i uszkodzenia
@@ -318,11 +305,7 @@ const Homepage = ({ data }: QueryDataProps) => (
           </div>
 
           <div className="flex flex-row flex-wrap items-center">
-            <img
-              className="w-40 h-40 mr-8"
-              src={data.blog_4.publicURL}
-              alt="#"
-            />
+            <Image imgData={data.blog_4} className="w-40 h-40 mr-8" />
             <div className="flex flex-col grow shrink basis-52">
               <Link to="/" className="text-secondary-color font-bold text-lg">
                 Montaż paneli fotowoltaicznych - różne konstrukcje i rozwiązania
@@ -344,44 +327,65 @@ const Homepage = ({ data }: QueryDataProps) => (
 
 export const query = graphql`
   query {
-    hero: file(relativePath: { regex: "/0_hero.jpg/" }) {
-      publicURL
-    }
     welcome: file(relativePath: { regex: "/1_welcome.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     gallery_1: file(relativePath: { regex: "/2_gallery.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     gallery_2: file(relativePath: { regex: "/3_gallery.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     gallery_3: file(relativePath: { regex: "/4_gallery.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     gallery_4: file(relativePath: { regex: "/5_gallery.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     gallery_5: file(relativePath: { regex: "/6_gallery.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     gallery_6: file(relativePath: { regex: "/7_gallery.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     video: file(relativePath: { regex: "/8_video.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     blog_1: file(relativePath: { regex: "/12_blog.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     blog_2: file(relativePath: { regex: "/13_blog.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     blog_3: file(relativePath: { regex: "/14_blog.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
     blog_4: file(relativePath: { regex: "/15_blog.jpg/" }) {
-      publicURL
+      childImageSharp {
+        gatsbyImageData
+      }
     }
   }
 `

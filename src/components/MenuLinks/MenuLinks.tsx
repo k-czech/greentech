@@ -11,7 +11,7 @@ const MenuLinks = ({ className }: links) => {
     <>
       <ul className={className}>
         <li>
-          <Link to="/">O firmie</Link>
+          <Link to="/about-us">O firmie</Link>
         </li>
         <li>
           <Link to="/ourOffer">Oferta</Link>
