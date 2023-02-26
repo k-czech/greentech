@@ -15,7 +15,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "dotenv": "^16.0.3",
+    "emailjs-com": "^3.2.0",
     "gatsby": "^5.5.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-gtag": "^5.5.0",
@@ -31,6 +33,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.2",
     "react-modal-video": "^2.0.0",
     "sass": "^1.58.0"
   },

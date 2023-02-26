@@ -11,7 +11,7 @@ const ModalWithVideo = () => {
       <ModalVideo
         channel="youtube"
         isOpen={isOpen}
-        videoId="L61p2uyiMSo"
+        videoId="XmttZ-BnwaI"
         onClose={() => setOpen(false)}
       />
 

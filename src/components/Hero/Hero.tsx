@@ -35,7 +35,7 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
           <HeroParagraph />
           <Button
-            path="/"
+            path="/ask"
             text="Zapytaj o ofertę"
             className="max-w-[260px] lg:max-w-none lg:mt-0 lg:ml-20"
           />
