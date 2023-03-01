@@ -56,8 +56,19 @@ const ContactPage = ({ data }: QueryDataProps) => {
             <BigText text="sklep@green-tech.com.pl" />
             <BigText text="18 473 18 62" span="+48" />
             <p className="mb-10">Instalacje fotowoltaiczne</p>
-            <BigText text="531 831 555" span="+48" />
-            <BigText text="530 821 814" span="+48" />
+            <div>
+              <p>Edyta</p>
+              <BigText text="797 189 015" span="+48" />
+            </div>
+            <div>
+              <p>Angelika</p>
+              <BigText text="531 831 555" span="+48" />
+            </div>
+            <p className="mb-10">Pompy ciepła</p>
+            <div>
+              <p>Hubert</p>
+              <BigText text="531 831 555" span="+48" />
+            </div>
           </div>
           <p className="mt-auto text-secondary-color text-xs font-light">
             *Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

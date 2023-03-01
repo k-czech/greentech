@@ -27,6 +27,8 @@ const ContentfulReferences = ({ references }: propTypes) => {
             return <ColumnSection key={index} {...reference} />
           case 'ContentfulOurStrengths':
             return <Features key={index} {...reference} />
+          default:
+            return <div></div>
         }
       })}
     </>

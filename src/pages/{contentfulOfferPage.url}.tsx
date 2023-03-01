@@ -38,23 +38,26 @@ const BlogPost = ({ data }: PageProps) => {
   const { title, shortDesc, image } = contentfulOfferPage.offerHero
 
   return (
-    <Wrapper className="mx-auto px-10 lg:px-0 ">
-      <div className="flex flex-col sm:flex-row max-w-[1350px] mx-auto mt-32 lg:-mt-32 bg-gray-color ">
-        <div className="order-last sm:order-first max-h-[560px] sm:max-h-none overflow-hidden">
-          <Image image={image} alt={image.title} />
-        </div>
-        y
-        <div className="flex items-center justify-center order-first sm:order-last grow p-10 sm:p-0 sm:pl-10">
-          <div className="flex flex-col max-w-[560px]">
-            <Title text={title} className="lg:text-6xl" />
-            <DescriptionParagraph text={shortDesc} />
+    <>
+      <div>
+        <div className="flex flex-col sm:flex-row max-w-[1350px] mx-auto mt-32 lg:-mt-32 bg-gray-color ">
+          <div className="order-last sm:order-first max-h-[560px] sm:max-h-none overflow-hidden">
+            <Image image={image} alt={image.title} />
+          </div>
+          <div className="flex items-center justify-center order-first sm:order-last grow p-10 sm:p-0 sm:pl-10">
+            <div className="flex flex-col max-w-[560px]">
+              <Title text={title} className="lg:text-6xl" />
+              <DescriptionParagraph text={shortDesc} />
+            </div>
           </div>
         </div>
       </div>
-      <div className="mt-16">
-        <ContentfulRichTech richText={contentfulOfferPage.content} />
-      </div>
-    </Wrapper>
+      <Wrapper className="mx-auto">
+        <div className="mt-16">
+          <ContentfulRichTech richText={contentfulOfferPage.content} />
+        </div>
+      </Wrapper>
+    </>
   )
 }
 
