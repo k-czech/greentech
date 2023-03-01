@@ -2,19 +2,22 @@ import React from 'react'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface imgProps {
-  imgData: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData
-    }
+  image: {
+    gatsbyImageData: IGatsbyImageData
   }
+  alt: string
   className?: string
 }
 
-const Image = ({ imgData, className }: imgProps) => {
-  if (!imgData) return null
-  const img = getImage(imgData.childImageSharp)
+const Image = ({ image, alt = '', className }: imgProps) => {
+  if (!image) return null
+  const img = getImage(image)
   if (!img) return null
-  return <GatsbyImage image={img} alt="" className={`${className}`} />
+  return (
+    <div className={`${className}`}>
+      <GatsbyImage image={img} alt={alt} />
+    </div>
+  )
 }
 
 export default Image

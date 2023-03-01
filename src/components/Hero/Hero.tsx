@@ -27,7 +27,8 @@ export const Hero = () => {
 
   return (
     <BackgroundSection
-      imgData={file}
+      image={file}
+      alt="sdsd"
       className="max-w-[1350px] mx-auto min-h-[500px] lg:min-h-full"
     >
       <div className="container place-self-end mx-auto mb-16 space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
@@ -35,7 +36,7 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
           <HeroParagraph />
           <Button
-            path="/ask"
+            path="/zapytaj"
             text="Zapytaj o ofertę"
             className="max-w-[260px] lg:max-w-none lg:mt-0 lg:ml-20"
           />

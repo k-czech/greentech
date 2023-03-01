@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import React from 'react'
 
 interface ButtonProps {
-  text: string
+  text?: string
   path: string
   className?: string | undefined
 }

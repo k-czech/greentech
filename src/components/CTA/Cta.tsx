@@ -8,7 +8,7 @@ export const Cta = () => (
       <h3 className="text-white text-3xl">
         Porozmawiajmy o Twoich oczekiwaniach
       </h3>
-      <Button path="/ask" text="Zapytaj o ofertę" className="mt-5" />
+      <Button path="/zapytaj" text="Zapytaj o ofertę" className="mt-5" />
     </Wrapper>
   </section>
 )

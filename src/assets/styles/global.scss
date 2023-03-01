@@ -23,8 +23,11 @@ h5,
 h6 {
   font-weight: 800;
   color: $secondary-color;
-  @apply text-4xl;
+  @apply text-2xl mb-6 md:mb-11 lg:text-3xl;
   @apply antialiased;
+}
+h1 {
+  @apply text-3xl lg:text-4xl;
 }
 
 p,

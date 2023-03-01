@@ -32,27 +32,27 @@ export const Footer = () => (
 
             <ul className="list-none mb-0">
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/o-nas" className="text-gray-400 text-sm">
                   O firmie
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/oferty" className="text-gray-400 text-sm">
                   Oferta
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/realizacje" className="text-gray-400 text-sm">
                   Realizacje
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/blog" className="text-gray-400 text-sm">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/kontakt" className="text-gray-400 text-sm">
                   Kontakt
                 </Link>
               </li>
@@ -66,22 +66,22 @@ export const Footer = () => (
 
             <ul className="list-none mb-0">
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/oferty" className="text-gray-400 text-sm">
                   Pionowe instalacje PV
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/pompy-ciepla" className="text-gray-400 text-sm">
                   Pompy ciepła
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/fotowoltaika" className="text-gray-400 text-sm">
                   Fotowoltaika
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/oferty" className="text-gray-400 text-sm">
                   Rekuperacja
                 </Link>
               </li>
@@ -93,7 +93,7 @@ export const Footer = () => (
 
             <ul className="list-none mb-0">
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link to="/zapytaj" className="text-gray-400 text-sm">
                   Zapytaj o ofertę
                 </Link>
               </li>
@@ -108,7 +108,10 @@ export const Footer = () => (
                 </Link>
               </li>
               <li>
-                <Link to="#" className="text-gray-400 text-sm">
+                <Link
+                  to="https://sklep.green-tech.com.pl/"
+                  className="text-gray-400 text-sm"
+                >
                   Nasz sklep
                 </Link>
               </li>

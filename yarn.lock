@@ -1081,7 +1081,7 @@
   dependencies:
     "@contentful/rich-text-types" "^16.0.2"
 
-"@contentful/rich-text-types@^15.15.1":
+"@contentful/rich-text-types@^15.13.2", "@contentful/rich-text-types@^15.15.1":
   version "15.15.1"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-15.15.1.tgz#96835cf0d0eba9e54f92ee43a4a1ce2a74014b53"
   integrity sha512-oheW0vkxWDuKBIIXDeJfZaRYo+NzKbC4gETMhH+MGJd4nfL9cqrOvtRxZBgnhICN4vDpH4my/zUIZGKcFqGSjQ==
@@ -1544,6 +1544,13 @@
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/@lmdb/lmdb-win32-x64/-/lmdb-win32-x64-2.5.3.tgz#c72e8b6faae31d925d23a6db0379cc3fe0216fdd"
   integrity sha512-cK+Elf3RjEzrm3SerAhrFWL5oQAsZSJ/LmjL1joIpTfEP1etJJ9CTRvdaV6XLYAxaEkfdhk/9hOvHLbR9yIhCA==
+
+"@madebyconnor/rich-text-to-jsx@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@madebyconnor/rich-text-to-jsx/-/rich-text-to-jsx-2.2.1.tgz#4e7a9594fe3c90a67fdab88611e2b2b552877aa0"
+  integrity sha512-JSa+gT187/OCllXn5YmdHZYyv2h6TeoMy03xxWn6b5kSF19kciqAsApUvP+b4X8hH+saho7w6vL3oBJV5dUmyA==
+  dependencies:
+    "@contentful/rich-text-types" "^15.13.2"
 
 "@mischnic/json-sourcemap@^0.1.0":
   version "0.1.0"

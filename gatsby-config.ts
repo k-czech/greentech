@@ -19,13 +19,13 @@ module.exports = {
     siteUrl: 'https://green-tech.com.pl',
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-source-contentful',
-    //   options: {
-    //     accessToken: process.env.CONTENTFUL_CONTENT_DELIVERY_ACCESS_TOKEN,
-    //     spaceId: process.env.CONTENTFUL_SPACE_ID,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        accessToken: process.env.ACCESS_TOKEN,
+        spaceId: process.env.SPACE_ID,
+      },
+    },
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
-import RichSection from 'src/components/RichSection/RichSection'
+import RichSection from 'src/components/RichSection/ImageTextSection'
 import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
 import Wrapper from 'src/components/Wrapper/Wrapper'
 import Title from 'src/components/Title/Title'

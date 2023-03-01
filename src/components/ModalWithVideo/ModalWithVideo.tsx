@@ -1,17 +1,29 @@
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React, { useState } from 'react'
 import ModalVideo from 'react-modal-video'
 import PlayButton from 'src/assets/icons/play.svg'
 import 'src/assets/styles/modalVideo/modal-video.scss'
+import Image from '../Image/Image'
 
-const ModalWithVideo = () => {
+interface videoProps {
+  data: {
+    videoId: string
+    image: {
+      gatsbyImageData: IGatsbyImageData
+    }
+  }
+}
+
+const ModalWithVideo = ({ data }: videoProps) => {
   const [isOpen, setOpen] = useState(false)
-
+  const { videoId, image } = data
   return (
-    <>
+    <div className="relative max-w-[400px] lg:max-w-none">
+      <Image image={image} />
       <ModalVideo
         channel="youtube"
         isOpen={isOpen}
-        videoId="XmttZ-BnwaI"
+        videoId={videoId}
         onClose={() => setOpen(false)}
       />
 
@@ -21,7 +33,7 @@ const ModalWithVideo = () => {
       >
         <PlayButton />
       </button>
-    </>
+    </div>
   )
 }
 

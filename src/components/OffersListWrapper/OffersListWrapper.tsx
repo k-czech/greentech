@@ -6,5 +6,9 @@ interface WrapProps {
 }
 
 export const ListWrapper = ({ children, classname }: WrapProps) => (
-  <div className={`flex flex-wrap gap-10 mb-24 ${classname}`}>{children}</div>
+  <div
+    className={`flex flex-wrap gap-10 gap-y-14 mb-24 justify-center lg:justify-start ${classname}`}
+  >
+    {children}
+  </div>
 )

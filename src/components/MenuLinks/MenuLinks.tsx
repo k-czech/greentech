@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import '../../assets/styles/menuLinks/menu-links.scss'
 
 interface links {
@@ -7,24 +8,48 @@ interface links {
 }
 
 const MenuLinks = ({ className }: links) => {
+  const {
+    contentfulNavigation: { menuItem },
+  } = useStaticQuery(graphql`
+    query {
+      contentfulNavigation {
+        contentful_id
+        menuItem {
+          ... on ContentfulMenuItem {
+            linkTo {
+              ... on ContentfulContactPage {
+                url
+              }
+              ... on ContentfulPage {
+                url
+              }
+            }
+            title
+          }
+        }
+      }
+    }
+  `)
+  console.log(menuItem.map((item: any) => item))
   return (
     <>
       <ul className={className}>
-        <li>
-          <Link to="/about-us">O firmie</Link>
-        </li>
-        <li>
-          <Link to="/ourOffer">Oferta</Link>
-        </li>
-        <li>
-          <Link to="/realisations">Realizacje</Link>
-        </li>
-        <li>
-          <Link to="/blog">Blog</Link>
-        </li>
-        <li>
-          <Link to="/contact">Kontakt</Link>
-        </li>
+        {menuItem.map(
+          (
+            item: {
+              linkTo: { url: string }
+              title: string
+            },
+            index: number,
+          ) => {
+            if (!item.linkTo) return
+            return (
+              <li key={index}>
+                <Link to={`/${item.linkTo.url}`}>{item.title}</Link>
+              </li>
+            )
+          },
+        )}
       </ul>
     </>
   )
