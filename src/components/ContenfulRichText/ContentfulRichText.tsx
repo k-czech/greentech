@@ -77,21 +77,19 @@ const options = {
       )
     },
     [BLOCKS.EMBEDDED_ENTRY]: (node: any, children: any) => {
-      console.log(node.data.target.__typename)
-
       switch (node.data.target.__typename) {
         case 'ContentfulWelcomeSection':
           return <WelcomeSection {...node.data.target} />
         case 'ContentfulRichSection':
           return <ImageTextSection {...node.data.target} />
-        case 'ContentfulImageGrid':
-          return <ImageGrid {...node.data.target} />
         case 'ContentfulCounter':
           return <Counter {...node.data.target} />
         case 'ContentfulColumnSection':
           return <ColumnSection {...node.data.target} />
         case 'ContentfulOurStrengths':
           return <Features {...node.data.target} />
+        case 'ContentfulImageGrid':
+          return <ImageGrid {...node.data.target} />
         case 'ContentfulListaPostowBlogowych':
           return <ContentfulBlogList {...node.data.target} />
         case 'ContentfulListaZOfertami':

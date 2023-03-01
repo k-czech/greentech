@@ -27,6 +27,7 @@ interface PageProps {
 
 const Page = ({ data }: PageProps) => {
   const { contentfulPage } = data
+  console.log(data)
   const text = contentfulPage.pageDescription.pageDescription
   return (
     <div className="mt-32">
@@ -54,6 +55,7 @@ export const query = graphql`
           ...ColumnSectionFragment
           ...WelcomeSectionFragment
           ...ImageTextSectionFragment
+          ...ImageGridFragment
           ...ListaPostowFragment
           ...ListaOfertFragment
           ... on ContentfulAsset {
