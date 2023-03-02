@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '../Button/Button'
-import Title from '../Title/Title'
 import Wrapper from '../Wrapper/Wrapper'
 import { graphql } from 'gatsby'
 import { useInView } from 'react-intersection-observer'
@@ -68,7 +67,6 @@ export const query = graphql`
     datas {
       datas
     }
-    backgroundColor
   }
 `
 
