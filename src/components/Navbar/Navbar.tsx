@@ -9,7 +9,7 @@ import MenuLinks from '../MenuLinks/MenuLinks'
 // images
 import { StaticImage } from 'gatsby-plugin-image'
 import Basket from '../../assets/icons/shop-basket.svg'
-import Logo from '../../assets/icons/logo.svg'
+import Logo from '../Logo/Logo'
 
 interface menuMobileProps {
   closeMenuMobile: MouseEventHandler<HTMLButtonElement>
@@ -83,7 +83,7 @@ export const Navbar = () => {
     <nav className="mx-auto max-w-[1350px] flex items-center py-7 px-2 xl:px-0 z-30">
       <Wrapper className="flex mx-auto justify-between">
         <Link to="/" className="z-30">
-          <Logo />
+          <Logo location={pathname} />
         </Link>
         <div className="flex flex-wrap items-center justify-end w-6/12 z-50">
           <div

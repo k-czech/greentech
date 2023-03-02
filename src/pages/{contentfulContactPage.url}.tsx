@@ -12,8 +12,19 @@ interface QueryDataProps {
     contentfulContactPage: {
       pageTitle: string
       url: string
-      contact: {
-        contact: string
+      contactData: {
+        DaneKontaktowe: [
+          {
+            title: string
+            prefix: string
+            data: {
+              email: string
+              phone: string
+              prefix: string
+              people: []
+            }
+          },
+        ]
       }
       bcgImg: {
         gatsbyImageData: {
@@ -26,14 +37,15 @@ interface QueryDataProps {
 }
 
 const ContactPage = ({ data }: QueryDataProps) => {
-  const { pageTitle, url, contact, bcgImg } = data.contentfulContactPage
-  console.log(bcgImg)
+  const { contactData, bcgImg } = data.contentfulContactPage
+
+  console.log(contactData)
   return (
     <section className="flex flex-col p-0 mt-32 md:flex-row lg:mt-0">
       <BackgroundSection image={bcgImg.gatsbyImageData} alt={bcgImg.title}>
         <div
           className={`pt-20 lg:pb-8 lg:pl-24 lg:pr-16 ${
-            contact ? undefined : 'max-w-[660px] container m-auto'
+            contactData ? undefined : 'max-w-[660px] container m-auto'
           }`}
         >
           <div className="mb-7">
@@ -49,27 +61,25 @@ const ContactPage = ({ data }: QueryDataProps) => {
           <FormWrap />
         </div>
       </BackgroundSection>
-      {contact ? (
+      {contactData ? (
         <div className="flex flex-col grow pb-8 px-10 pt-20 md:pl-16 md:pr-20 bg-gray-color">
-          <div>
-            <p className="mb-10">Skontaktuj się bezpośrednio</p>
-            <BigText text="sklep@green-tech.com.pl" />
-            <BigText text="18 473 18 62" span="+48" />
-            <p className="mb-10">Instalacje fotowoltaiczne</p>
-            <div>
-              <p>Edyta</p>
-              <BigText text="797 189 015" span="+48" />
+          {contactData.DaneKontaktowe.map((item, index) => (
+            <div key={index}>
+              <p className="mb-10">{item.title}</p>
+              {item.data.email ? <BigText text={item.data.email} /> : null}
+              {item.data.phone ? (
+                <BigText text={item.data.phone} span={item.data.prefix} />
+              ) : null}
+              {item.data.people
+                ? item.data.people.map((person, index) => (
+                    <div key={index}>
+                      <p>{person[0]}</p>
+                      <BigText text={person[1]} span={item.data.prefix} />
+                    </div>
+                  ))
+                : null}
             </div>
-            <div>
-              <p>Angelika</p>
-              <BigText text="531 831 555" span="+48" />
-            </div>
-            <p className="mb-10">Pompy ciepła</p>
-            <div>
-              <p>Hubert</p>
-              <BigText text="531 831 555" span="+48" />
-            </div>
-          </div>
+          ))}
           <p className="mt-auto text-secondary-color text-xs font-light">
             *Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -87,12 +97,20 @@ export const query = graphql`
       pageTitle
       contentful_id
       url
-      contact {
-        contact
-      }
       bcgImg {
         gatsbyImageData
         title
+      }
+      contactData {
+        DaneKontaktowe {
+          title
+          data {
+            email
+            people
+            phone
+            prefix
+          }
+        }
       }
     }
   }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
-import DescriptionParagraph from '../DescriptionParagraph/DescriptionParagraph'
-import Title from '../Title/Title'
+
 import Wrapper from '../Wrapper/Wrapper'
 import Image from '../Image/Image'
 import { graphql } from 'gatsby'
@@ -25,19 +24,22 @@ const ImageTextSection = ({
   imageOnTheRight,
   showTitle,
 }: richSectionProps) => {
-  const DescArr = description.description
+  const DescArr = description.description.split('\n\n')
 
   return (
     <section>
-      <Wrapper className="container mx-auto flex flex-col md:flex-row md:items-center md:justify-between">
+      <Wrapper className="container mx-auto flex flex-col items-center md:flex-row md:justify-between">
         <div
           className={`md:w-2/5 ${
             imageOnTheRight ? 'md:order-first' : 'md:order-last'
           } mb-5 md:mb-0`}
         >
-          {showTitle ? <Title text={title} /> : null}
-
-          <DescriptionParagraph text={DescArr} className="mb-8" />
+          {showTitle ? <h3>{title}</h3> : null}
+          {DescArr.map((par, index) => (
+            <p key={index} className="mb-8">
+              {par}
+            </p>
+          ))}
         </div>
         <div
           className={`md:w-1/2 mb-5 md:mb-0 ${

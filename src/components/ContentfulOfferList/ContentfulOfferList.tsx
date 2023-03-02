@@ -6,9 +6,9 @@ import Offers from './Offers'
 
 const ContentfulOfferList = () => {
   return (
-    <Wrapper className="px-10 lg:px-0 lg:mt-0">
+    <section className="px-10 lg:px-0 lg:mt-0">
       <Offers />
-    </Wrapper>
+    </section>
   )
 }
 

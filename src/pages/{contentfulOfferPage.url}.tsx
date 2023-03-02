@@ -16,14 +16,11 @@ interface PageProps {
     contentfulOfferPage: {
       pageTitle: string
       url: string
-      shortDesc: string
-      offerHero: {
+      title: string
+      subTitle: string
+      offerHeroImage: {
         title: string
-        shortDesc: string
-        image: {
-          gatsbyImageData: IGatsbyImageData
-          title: string
-        }
+        gatsbyImageData: IGatsbyImageData
       }
       content: {
         raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
@@ -35,19 +32,22 @@ interface PageProps {
 
 const BlogPost = ({ data }: PageProps) => {
   const { contentfulOfferPage } = data
-  const { title, shortDesc, image } = contentfulOfferPage.offerHero
+  const { offerHeroImage } = contentfulOfferPage
 
   return (
     <>
       <div>
         <div className="flex flex-col sm:flex-row max-w-[1350px] mx-auto mt-32 lg:-mt-32 bg-gray-color ">
           <div className="order-last sm:order-first max-h-[560px] sm:max-h-none overflow-hidden">
-            <Image image={image} alt={image.title} />
+            <Image
+              image={offerHeroImage.gatsbyImageData}
+              alt={offerHeroImage.title}
+            />
           </div>
           <div className="flex items-center justify-center order-first sm:order-last grow p-10 sm:p-0 sm:pl-10">
             <div className="flex flex-col max-w-[560px]">
-              <Title text={title} className="lg:text-6xl" />
-              <DescriptionParagraph text={shortDesc} />
+              <h3 className="lg:text-6xl">{contentfulOfferPage.title}</h3>
+              <p>{contentfulOfferPage.subTitle}</p>
             </div>
           </div>
         </div>
@@ -68,25 +68,17 @@ export const query = graphql`
       contentful_id
       url
       shortDesc
-      offerHero {
+      title
+      subTitle
+      offerHeroImage {
         title
-        shortDesc
-        image {
-          gatsbyImageData
-          title
-        }
+        gatsbyImageData
       }
       content {
         raw
         references {
           ...ColumnSectionFragment
           ...ImageTextSectionFragment
-          ... on ContentfulAsset {
-            __typename
-            contentful_id
-            alt: description
-            gatsbyImageData
-          }
         }
       }
     }
