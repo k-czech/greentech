@@ -38,7 +38,7 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
           {arr.map((item, index) => (
             <div key={index} ref={ref}>
               <CountUp start={0} end={inView ? item.num : 0} duration={3}>
-                {({ countUpRef }) => (
+                {({ countUpRef }: any) => (
                   <span
                     className="text-white text-6xl font-extrabold pb-2 block"
                     ref={countUpRef}
