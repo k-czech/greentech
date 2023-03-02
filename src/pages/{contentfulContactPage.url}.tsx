@@ -66,15 +66,28 @@ const ContactPage = ({ data }: QueryDataProps) => {
           {contactData.DaneKontaktowe.map((item, index) => (
             <div key={index}>
               <p className="mb-10">{item.title}</p>
-              {item.data.email ? <BigText text={item.data.email} /> : null}
+              {item.data.email ? (
+                <BigText
+                  text={item.data.email}
+                  href={`mailto:${item.data.email}`}
+                />
+              ) : null}
               {item.data.phone ? (
-                <BigText text={item.data.phone} span={item.data.prefix} />
+                <BigText
+                  text={item.data.phone}
+                  span={item.data.prefix}
+                  href={`tel:${item.data.prefix}${item.data.email}`}
+                />
               ) : null}
               {item.data.people
                 ? item.data.people.map((person, index) => (
                     <div key={index}>
                       <p>{person[0]}</p>
-                      <BigText text={person[1]} span={item.data.prefix} />
+                      <BigText
+                        text={person[1]}
+                        span={item.data.prefix}
+                        href={`tel:${item.data.prefix}${item.data.email}`}
+                      />
                     </div>
                   ))
                 : null}
