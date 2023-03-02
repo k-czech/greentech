@@ -27,13 +27,13 @@ interface PageProps {
 
 const Page = ({ data }: PageProps) => {
   const { contentfulPage } = data
-  console.log(data)
+  console.log(contentfulPage)
   const text = contentfulPage.pageDescription.pageDescription
   return (
-    <div className="mt-32">
+    <div className="mt-32 lg:mt-0">
       <Wrapper className="max-w-[600px] text-center">
         <h1>{contentfulPage.pageTitle}</h1>
-        <DescriptionParagraph text={text} />
+        <p className="max-w-[760px] mx-auto">{text}</p>
       </Wrapper>
       <ContentfulRichTech richText={contentfulPage.content} />
     </div>

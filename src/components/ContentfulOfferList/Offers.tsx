@@ -37,7 +37,7 @@ const Offers = () => {
   `)
 
   return (
-    <ListWrapper classname="mt-16">
+    <ListWrapper classname="mt-16 gap-2">
       {nodes.map((node: nodeProps, index: number) => {
         const { pageTitle, thumbnail, url, shortDesc } = node
         return (
@@ -50,7 +50,7 @@ const Offers = () => {
                 <p className="text-secondary-color underline mb-2 text-xl font-semibold">
                   {pageTitle}
                 </p>
-                <p>{shortDesc}</p>
+                <p className="w-[230px]">{shortDesc}</p>
               </Link>
             </div>
           </div>

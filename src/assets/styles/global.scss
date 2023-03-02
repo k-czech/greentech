@@ -23,11 +23,25 @@ h5,
 h6 {
   font-weight: 800;
   color: $secondary-color;
-  @apply text-2xl mb-6 md:mb-11 lg:text-3xl;
+  @apply mb-6 md:mb-11;
   @apply antialiased;
 }
+
 h1 {
+  @apply text-4xl lg:text-5xl;
+}
+
+h3,
+h4 {
   @apply text-3xl lg:text-4xl;
+}
+
+h5 {
+  @apply text-2xl lg:text-3xl;
+}
+
+h6 {
+  @apply text-lg lg:text-xl;
 }
 
 p,
@@ -53,4 +67,14 @@ section {
 .container-1160 {
   max-width: 1160px;
   width: 100%;
+}
+
+.welcome-image {
+  &::after,
+  &::before {
+    position: absolute;
+    content: '';
+    clip-path: polygon(100% 0%, 100% 100%, 0 100%, 0 82%, 82% 82%, 82% 0);
+    @apply bg-gray-color;
+  }
 }

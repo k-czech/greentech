@@ -17,7 +17,7 @@ interface dataProps {
 
 const HeroHeading = ({ title }: { title: string }) => {
   return (
-    <h1 className="text-white font-bold text-4xl lg:text-5xl lg:mb-10">
+    <h1 className="text-white font-bold text-4xl lg:text-5xl lg:mb-10 md:max-w-[650px]">
       {title}
     </h1>
   )
@@ -36,7 +36,7 @@ export const Hero = ({ data }: dataProps) => {
       alt={data.image.title}
       className="max-w-[1350px] mx-auto min-h-[500px] lg:min-h-full"
     >
-      <div className="container place-self-end mx-auto mb-16 space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
+      <div className="container place-self-end mx-auto md:mb-16 space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
         <HeroHeading title={data.title} />
         <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
           <HeroParagraph text={data.subtitle} />

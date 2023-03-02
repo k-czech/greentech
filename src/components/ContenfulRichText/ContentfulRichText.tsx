@@ -102,6 +102,7 @@ const options = {
 }
 
 const ContentfulRichTech = ({ richText }: propTypes) => {
+  if (!richText) return <div></div>
   return <div>{renderRichText(richText, options)}</div>
 }
 

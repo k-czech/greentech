@@ -34,7 +34,7 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
   return (
     <section className={`bg-yellow-color pt-24 pb-16`} id="counter">
       <Wrapper className="mx-auto lg:space-y-16">
-        <Title text={title} className={`text-white`} />
+        <h3 className={`text-white`}>{title}</h3>
         <div className="flex flex-col md:flex-row md:justify-between md:items-start space-y-5 md:space-y-0">
           {arr.map((item, index) => (
             <div key={index} ref={ref}>

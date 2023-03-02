@@ -12,16 +12,26 @@ interface Props {
   }
 }
 
-const WelcomeSection = ({ title, titleOnTheRigth, description }: Props) => {
+const WelcomeSection = ({ title, description, titleOnTheRigth }: Props) => {
   const text = description.description
 
   return (
     <section className="bg-gray-color py-10 lg:py-24 lg:my-11 lg:mx-auto">
       <Wrapper className="mx-auto flex flex-col md:flex-row md:justify-between">
-        <div className="md:w-2/3 lg:w-2/5 md:mr-14">
-          <Title text={title} className="lg:mb-0" />
+        <div
+          className={`${
+            titleOnTheRigth
+              ? 'md:order-last  md:w-1/2'
+              : 'md:order-first md:mr-14 md:w-2/5 lg:w-2/3'
+          }`}
+        >
+          <h3 className="lg:mb-0">{title}</h3>
         </div>
-        <div className="md:w-1/3">
+        <div
+          className={`md:w-1/3 ${
+            titleOnTheRigth ? 'md:order-first md:w-1/2' : 'md:order-last'
+          }`}
+        >
           <DescriptionParagraph text={text} />
         </div>
       </Wrapper>
