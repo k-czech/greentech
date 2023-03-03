@@ -45,7 +45,12 @@ const MenuLinks = ({ className }: links) => {
             if (!item.linkTo) return
             return (
               <li key={index}>
-                <Link to={`/${item.linkTo.url}`}>{item.title}</Link>
+                <Link
+                  to={`/${item.linkTo.url}`}
+                  className="hover:font-semibold "
+                >
+                  {item.title}
+                </Link>
               </li>
             )
           },

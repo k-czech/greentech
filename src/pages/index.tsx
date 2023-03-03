@@ -1,17 +1,18 @@
 import React from 'react'
-import Seo from '../components/Seo'
-
 import { graphql, Link } from 'gatsby'
-import '../assets/styles/homepage/homepage.scss'
-import { Hero } from 'src/components/Hero/Hero'
-
-import Wrapper from 'src/components/Wrapper/Wrapper'
-
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 
+/// components
+import { Hero } from 'src/components/Hero/Hero'
+import Seo from '../components/Seo'
+import Wrapper from 'src/components/Wrapper/Wrapper'
 import ContentfulReferences from 'src/components/ContentfulReferences/ContentfulReferences'
 import Image from 'src/components/Image/Image'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
+
+///style
+import '../assets/styles/homepage/homepage.scss'
+import 'src/assets/styles/image-anim/image-anim.scss'
 
 interface MainPageProps {
   data: {
@@ -66,17 +67,17 @@ const Homepage = ({ data }: MainPageProps) => {
                   className="flex flex-row flex-wrap items-center"
                   key={index}
                 >
-                  <Image
-                    image={item.thubmnail.gatsbyImageData}
-                    alt={item.thubmnail.title}
-                    className="w-40 h-40 mr-8"
-                    classNameImg="h-full"
-                  />
-
+                  <div className="w-40 h-40 mr-8">
+                    <Image
+                      image={item.thubmnail.gatsbyImageData}
+                      alt={item.thubmnail.title}
+                      classNameImg="h-full scale-up"
+                    />
+                  </div>
                   <div className="flex flex-col grow shrink basis-52">
                     <Link
                       to={`/${item.url}`}
-                      className="text-secondary-color font-bold text-lg"
+                      className="text-secondary-color font-bold text-lg hover:underline"
                     >
                       {item.pageTitle}
                     </Link>
