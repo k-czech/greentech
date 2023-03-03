@@ -56,7 +56,7 @@ const ContentfulRealizationsList = () => {
   return (
     <MainWrapper>
       <TagsFilter onClick={setTag} />
-      <div className="relative grid flex flex-wrap justify-center gap-6 mark-left">
+      <div className="relative grid-images flex flex-wrap justify-center gap-6 mark-left">
         {filteredImages.map((item: nodeProps, index: number) => (
           <div key={index} className="grid__item relative">
             <Zoom>
