@@ -8,6 +8,7 @@ import ContentfulRichTech from 'src/components/ContenfulRichText/ContentfulRichT
 import ContentfulReferences from 'src/components/ContentfulReferences/ContentfulReferences'
 import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
 import Wrapper from 'src/components/Wrapper/Wrapper'
+import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 
 interface PageProps {
   data: {
@@ -30,13 +31,13 @@ const Page = ({ data }: PageProps) => {
   console.log(contentfulPage)
   const text = contentfulPage.pageDescription.pageDescription
   return (
-    <div className="mt-32 lg:mt-0">
-      <Wrapper className="max-w-[600px] text-center">
+    <MainWrapper className="mt-32 lg:mt-0">
+      <Wrapper className="px-6 lg:px-0 max-w-[600px] text-center">
         <h1>{contentfulPage.pageTitle}</h1>
         <p className="max-w-[760px] mx-auto">{text}</p>
       </Wrapper>
       <ContentfulRichTech richText={contentfulPage.content} />
-    </div>
+    </MainWrapper>
   )
 }
 
@@ -52,17 +53,20 @@ export const query = graphql`
       content {
         raw
         references {
-          ...ColumnSectionFragment
-          ...WelcomeSectionFragment
-          ...ImageTextSectionFragment
-          ...ImageGridFragment
-          ...ListaPostowFragment
-          ...ListaOfertFragment
-          ... on ContentfulAsset {
-            __typename
-            contentful_id
-            alt: description
-            gatsbyImageData
+          ... on Node {
+            ...ColumnSectionFragment
+            ...WelcomeSectionFragment
+            ...ImageTextSectionFragment
+            ...ImageGridFragment
+            ...ListaPostowFragment
+            ...ListaOfertFragment
+            ...ListaFragment
+            ... on ContentfulAsset {
+              __typename
+              contentful_id
+              alt: description
+              gatsbyImageData
+            }
           }
         }
       }

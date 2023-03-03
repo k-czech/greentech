@@ -32,11 +32,12 @@ const BlogPost = ({ data }: PageProps) => {
   console.log(data)
   return (
     <Wrapper className="mx-auto px-10 lg:px-0 ">
-      <div className="max-w-[760px] mx-auto mt-32 mb-16 lg:my-16">
+      <div className="max-w-[960px] mx-auto mt-32 mb-16 lg:my-16">
         <h1>{contentfulBlogPost.pageTitle}</h1>
         <Image
           image={contentfulBlogPost.image.gatsbyImageData}
           alt={contentfulBlogPost.image.title}
+          classNameImg="w-full"
         />
         <div className="mt-16 mb-16 ">
           <ContentfulRichTech richText={contentfulBlogPost.content} />

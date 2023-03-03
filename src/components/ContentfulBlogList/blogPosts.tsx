@@ -4,6 +4,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Image from '../Image/Image'
 import { ListWrapper } from '../OffersListWrapper/OffersListWrapper'
 import 'src/assets/styles/categoryList/category-list.scss'
+import Wrapper from '../Wrapper/Wrapper'
 
 interface nodeProps {
   category: {
@@ -64,7 +65,7 @@ const BlogPosts = () => {
   }
 
   return (
-    <div>
+    <Wrapper className="px-10 lg:px-0 lg:mt-0">
       <div className="cat-list">
         {cat.map((item: any, index: number) => (
           <button
@@ -99,7 +100,7 @@ const BlogPosts = () => {
           )
         })}
       </ListWrapper>
-    </div>
+    </Wrapper>
   )
 }
 

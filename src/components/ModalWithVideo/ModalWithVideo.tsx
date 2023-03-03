@@ -6,17 +6,16 @@ import 'src/assets/styles/modalVideo/modal-video.scss'
 import Image from '../Image/Image'
 
 interface videoProps {
-  data: {
-    videoId: string
-    image: {
-      gatsbyImageData: IGatsbyImageData
-    }
+  videoId: string
+  image: {
+    gatsbyImageData: IGatsbyImageData
   }
 }
 
-const ModalWithVideo = ({ data }: videoProps) => {
+const ModalWithVideo = ({ videoId, image }: videoProps) => {
   const [isOpen, setOpen] = useState(false)
-  const { videoId, image } = data
+
+  console.log(videoId)
   return (
     <div className="relative max-w-[400px] lg:max-w-none">
       <Image image={image} />

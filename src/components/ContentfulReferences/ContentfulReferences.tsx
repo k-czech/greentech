@@ -13,24 +13,26 @@ interface propTypes {
 const ContentfulReferences = ({ references }: propTypes) => {
   return (
     <>
-      {references.map((reference: any, index: any) => {
-        switch (reference.__typename) {
-          case 'ContentfulWelcomeSection':
-            return <WelcomeSection key={index} {...reference} />
-          case 'ContentfulRichSection':
-            return <ImageTextSection key={index} {...reference} />
-          case 'ContentfulImageGrid':
-            return <ImageGrid key={index} {...reference} />
-          case 'ContentfulCounter':
-            return <Counter key={index} {...reference} />
-          case 'ContentfulColumnSection':
-            return <ColumnSection key={index} {...reference} />
-          case 'ContentfulOurStrengths':
-            return <Features key={index} {...reference} />
-          default:
-            return <div></div>
-        }
-      })}
+      {references
+        ? references.map((reference: any, index: any) => {
+            switch (reference.__typename) {
+              case 'ContentfulWelcomeSection':
+                return <WelcomeSection key={index} {...reference} />
+              case 'ContentfulRichSection':
+                return <ImageTextSection key={index} {...reference} />
+              case 'ContentfulImageGrid':
+                return <ImageGrid key={index} {...reference} />
+              case 'ContentfulCounter':
+                return <Counter key={index} {...reference} />
+              case 'ContentfulColumnSection':
+                return <ColumnSection key={index} {...reference} />
+              case 'ContentfulOurStrengths':
+                return <Features key={index} {...reference} />
+              default:
+                return <div></div>
+            }
+          })
+        : null}
     </>
   )
 }

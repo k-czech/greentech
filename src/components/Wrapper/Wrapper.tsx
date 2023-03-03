@@ -6,7 +6,7 @@ interface WrapProps {
 }
 
 const Wrapper = ({ children, className }: WrapProps) => (
-  <div className={`container-1160 mx-auto ${className}`}>{children}</div>
+  <div className={`max-w-[1280px] mx-auto ${className}`}>{children}</div>
 )
 
 export default Wrapper

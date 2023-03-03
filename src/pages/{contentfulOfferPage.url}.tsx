@@ -8,8 +8,8 @@ import ContentfulRichTech from 'src/components/ContenfulRichText/ContentfulRichT
 import Wrapper from 'src/components/Wrapper/Wrapper'
 import Image from 'src/components/Image/Image'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
-import Title from 'src/components/Title/Title'
-import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
+
+import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 
 interface PageProps {
   data: {
@@ -37,7 +37,7 @@ const BlogPost = ({ data }: PageProps) => {
   return (
     <>
       <div>
-        <div className="flex flex-col sm:flex-row max-w-[1350px] mx-auto mt-32 lg:-mt-32 bg-gray-color ">
+        <div className="flex flex-col sm:flex-row max-w-[1440px] mx-auto mt-32 lg:-mt-32 bg-gray-color ">
           <div className="order-last sm:order-first max-h-[560px] sm:max-h-none overflow-hidden">
             <Image
               image={offerHeroImage.gatsbyImageData}
@@ -52,11 +52,13 @@ const BlogPost = ({ data }: PageProps) => {
           </div>
         </div>
       </div>
-      <Wrapper className="mx-auto">
-        <div className="mt-16">
-          <ContentfulRichTech richText={contentfulOfferPage.content} />
-        </div>
-      </Wrapper>
+      <MainWrapper>
+        <Wrapper className="mx-auto">
+          <div className="mt-16">
+            <ContentfulRichTech richText={contentfulOfferPage.content} />
+          </div>
+        </Wrapper>
+      </MainWrapper>
     </>
   )
 }
@@ -77,8 +79,10 @@ export const query = graphql`
       content {
         raw
         references {
-          ...ColumnSectionFragment
-          ...ImageTextSectionFragment
+          ... on Node {
+            ...ColumnSectionFragment
+            ...ImageTextSectionFragment
+          }
         }
       }
     }

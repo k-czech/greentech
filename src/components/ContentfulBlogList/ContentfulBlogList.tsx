@@ -1,14 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import BlogPosts from './blogPosts'
-import Wrapper from '../Wrapper/Wrapper'
 
 const ContentfulBlogList = () => {
-  return (
-    <Wrapper className="px-10 lg:px-0 lg:mt-0">
-      <BlogPosts />
-    </Wrapper>
-  )
+  return <BlogPosts />
 }
 
 export const query = graphql`

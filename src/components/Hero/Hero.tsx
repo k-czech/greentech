@@ -1,7 +1,12 @@
 import React from 'react'
 import BackgroundSection from '../BackgroundSection/BackgroundSection'
 import { Button } from '../Button/Button'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
+import {
+  getImage,
+  IGatsbyImageData,
+  withArtDirection,
+} from 'gatsby-plugin-image'
+import MainWrapper from '../MainWrapper/MainWrapper'
 
 interface dataProps {
   data: {
@@ -9,6 +14,10 @@ interface dataProps {
     button: string
     subtitle: string
     image: {
+      title: string
+      gatsbyImageData: IGatsbyImageData
+    }
+    imageMobile: {
       title: string
       gatsbyImageData: IGatsbyImageData
     }
@@ -28,25 +37,36 @@ const HeroParagraph = ({ text }: { text: string }) => (
 )
 
 export const Hero = ({ data }: dataProps) => {
-  console.log(data.title)
+  const { button, title, subtitle, image, imageMobile } = data
+
+  console.log(image)
+
+  const images = withArtDirection(getImage(image.gatsbyImageData), [
+    {
+      media: '(max-width: 600px)',
+      image: getImage(imageMobile.gatsbyImageData),
+    },
+  ])
 
   return (
-    <BackgroundSection
-      image={data.image.gatsbyImageData}
-      alt={data.image.title}
-      className="max-w-[1350px] mx-auto min-h-[500px] lg:min-h-full"
-    >
-      <div className="container place-self-end mx-auto md:mb-16 space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
-        <HeroHeading title={data.title} />
-        <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
-          <HeroParagraph text={data.subtitle} />
-          <Button
-            path={data.button}
-            text="Zapytaj o ofertę"
-            className="max-w-[260px] lg:max-w-none lg:mt-0 lg:ml-20"
-          />
+    <MainWrapper>
+      <BackgroundSection
+        image={images}
+        alt={data.image.title}
+        className="m-full mx-auto min-h-[500px] lg:min-h-full"
+      >
+        <div className="container place-self-end mx-auto md:mb-16 space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
+          <HeroHeading title={title} />
+          <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
+            <HeroParagraph text={subtitle} />
+            <Button
+              path={button}
+              text="Zapytaj o ofertę"
+              className="max-w-[260px] lg:max-w-none lg:mt-0 lg:ml-20"
+            />
+          </div>
         </div>
-      </div>
-    </BackgroundSection>
+      </BackgroundSection>
+    </MainWrapper>
   )
 }

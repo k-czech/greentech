@@ -13,6 +13,8 @@ import Features from '../Features/Features'
 import ContentfulBlogList from '../ContentfulBlogList/ContentfulBlogList'
 import ContentfulOfferList from '../ContentfulOfferList/ContentfulOfferList'
 import { StaticImage } from 'gatsby-plugin-image'
+import ModalWithVideo from '../ModalWithVideo/ModalWithVideo'
+import ContentfulRealizationsList from '../ContenfulRealizationsList/ContentfulRealizationsList'
 
 interface propTypes {
   richText: any
@@ -72,7 +74,7 @@ const options = {
         <Image
           image={node.data.target.gatsbyImageData}
           alt={node.data.target.alt}
-          className="mx-auto max-w-[1350px]"
+          classNameImg="w-full"
         />
       )
     },
@@ -94,6 +96,10 @@ const options = {
           return <ContentfulBlogList {...node.data.target} />
         case 'ContentfulListaZOfertami':
           return <ContentfulOfferList {...node.data.target} />
+        case 'ContentfulVideo':
+          return <ModalWithVideo {...node.data.target} />
+        case 'ContentfulListaOfertPostowRealizacji':
+          return <ContentfulRealizationsList {...node.data.target} />
         default:
           return <div></div>
       }

@@ -8,11 +8,14 @@ interface Props {
 }
 
 const ColumnSection = ({ column }: Props) => {
+  const numOfColumns = `w-1/${column.length}`
   return (
     <section>
-      <Wrapper className='className="container mx-auto flex flex-col lg:flex-row lg:gap-x-10 items-center space-y-5 lg:space-y-0 lg:space-x-10"'>
+      <Wrapper
+        className={`container flex flex-col lg:flex-row mx-auto gap-10 lg:gap-x-10 `}
+      >
         {column.map((columnData, index) => (
-          <Column key={index} data={columnData} />
+          <Column key={index} data={columnData} width={numOfColumns} />
         ))}
       </Wrapper>
     </section>
@@ -29,6 +32,26 @@ export const query = graphql`
       title
       content {
         raw
+        references {
+          ... on Node {
+            ... on ContentfulVideo {
+              __typename
+              contentful_id
+              title
+              videoId
+              image {
+                title
+                gatsbyImageData
+              }
+            }
+            ... on ContentfulAsset {
+              __typename
+              contentful_id
+              title
+              gatsbyImageData
+            }
+          }
+        }
       }
       video {
         title

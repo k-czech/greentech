@@ -15,7 +15,7 @@ const Image = ({ image, alt = '', className, classNameImg }: imgProps) => {
   const img = getImage(image)
   if (!img) return null
   return (
-    <div className={`${className}`}>
+    <div className={className}>
       <GatsbyImage image={img} alt={alt} className={`${classNameImg}`} />
     </div>
   )

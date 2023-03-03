@@ -24,6 +24,7 @@ module.exports = {
       options: {
         accessToken: `FidrQGnmMEexNrU8l7ik2VDMdul-y9irOdHXL7sKWB4`,
         spaceId: `137p9nrd7lwv`,
+        enableTags: true,
       },
     },
     'gatsby-plugin-image',

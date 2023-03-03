@@ -6,7 +6,7 @@ import Offers from './Offers'
 
 const ContentfulOfferList = () => {
   return (
-    <section className="px-10 lg:px-0 lg:mt-0">
+    <section>
       <Offers />
     </section>
   )

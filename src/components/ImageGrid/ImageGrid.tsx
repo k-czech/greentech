@@ -28,7 +28,7 @@ const ImageGrid = ({ images, title, additinalDesc }: Props) => {
       <Wrapper className="max-w-[560px] text-center">
         <ContentfulRichTech richText={additinalDesc} />
       </Wrapper>
-      <div className="relative welcome-image flex flex-wrap justify-center gap-6 before:w-16 before:h-16 before:-bottom-5 before:-right-5 lg:before:w-24 lg:before:h-24 lg:before:-bottom-8 lg:before:-right-8">
+      <div className="relative welcome-image flex flex-wrap justify-center gap-6 mark-left">
         {images.map((item: any, index: number) => (
           <div key={index} className="max-w-[544px] max-h-[288px] relative">
             <Zoom>

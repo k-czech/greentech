@@ -11,8 +11,12 @@ import { StaticImage } from 'gatsby-plugin-image'
 import Basket from '../../assets/icons/shop-basket.svg'
 import Logo from '../Logo/Logo'
 
+//styles
+import 'src/assets/styles/menuMobile/menu-mobile.scss'
+
 interface menuMobileProps {
   closeMenuMobile: MouseEventHandler<HTMLButtonElement>
+  isOpen: boolean
 }
 
 const usePrevious = <T,>(value: T): T | undefined => {
@@ -23,9 +27,12 @@ const usePrevious = <T,>(value: T): T | undefined => {
   return ref.current
 }
 
-const MenuMobile = ({ closeMenuMobile }: menuMobileProps) => {
+const MenuMobile = ({ closeMenuMobile, isOpen }: menuMobileProps) => {
   return (
-    <div className="absolute top-0 right-0 left-1/3 h-screen bg-white-color z-50 lg:hidden">
+    <div
+      className={`absolute top-0 right-0 left-1/4 h-screen bg-white-color z-50 lg:hidden
+      ${isOpen ? 'open' : 'hide'}`}
+    >
       <button onClick={closeMenuMobile} className="m-10">
         <StaticImage src="../../assets/icons/close-ico.png" alt="close-ico" />
       </button>
@@ -65,12 +72,16 @@ export const Navbar = () => {
 
   const openMenuMobile = () => {
     setOpen(true)
-    document.querySelector('body')!.style.overflow = 'hidden'
+    const body = document.querySelector('body')!
+    body.style.position = 'fixed'
+    body.classList.add('mask')
   }
 
   const closeMenuMobile = () => {
     setOpen(false)
-    document.querySelector('body')!.style.overflow = 'unset'
+    const body = document.querySelector('body')!
+    body.style.position = ''
+    body.classList.remove('mask')
   }
 
   React.useEffect(() => {
@@ -80,8 +91,8 @@ export const Navbar = () => {
   }, [location, prevLocation])
 
   return (
-    <nav className="mx-auto max-w-[1350px] flex items-center py-7 px-2 xl:px-0 z-30">
-      <Wrapper className="flex mx-auto justify-between">
+    <nav className="mx-auto max-w-[1440px] flex items-center py-7 px-2 xl:px-0 z-30">
+      <Wrapper className="flex w-full mx-auto justify-between">
         <Link to="/" className="z-30">
           <Logo location={pathname} />
         </Link>
@@ -96,7 +107,9 @@ export const Navbar = () => {
               <span className={`block w-5 h-0.5 ${hamburgerColor}`}></span>
             </div>
           </div>
-          {isOpen ? <MenuMobile closeMenuMobile={closeMenuMobile} /> : null}
+
+          <MenuMobile closeMenuMobile={closeMenuMobile} isOpen={isOpen} />
+
           <MenuLinks className="desktop" />
         </div>
       </Wrapper>

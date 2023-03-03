@@ -41,13 +41,14 @@ const ImageTextSection = ({
             </p>
           ))}
         </div>
-        <div
-          className={`md:w-1/2 mb-5 md:mb-0 ${
+        <Image
+          image={image}
+          alt=""
+          className="md:w-1/2"
+          classNameImg={`mb-5 md:mb-0 ${
             imageOnTheRight ? 'md:order-last' : 'md:order-first'
           }  relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8`}
-        >
-          <Image image={image} alt="" />
-        </div>
+        />
       </Wrapper>
     </section>
   )

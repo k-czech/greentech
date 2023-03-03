@@ -12,25 +12,20 @@ interface Props {
     __typename: string
     contentful_id: string
     title: string
-    video: {
-      videoId: string
-      image: {
-        gatsbyImageData: IGatsbyImageData
-      }
-    }
     content: {
       raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
+      references: []
     }
   }
+  width: string
 }
 
-const Column = ({ data }: Props) => {
-  const { title, video, content } = data
+const Column = ({ data, width }: Props) => {
+  const { content } = data
 
   return (
-    <div>
-      {content ? <ContentfulRichTech richText={content} /> : null}
-      {video ? <ModalWithVideo data={video} /> : null}
+    <div className={`w-full lg:${width}`}>
+      <ContentfulRichTech richText={content} />
     </div>
   )
 }
