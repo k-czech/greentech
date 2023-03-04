@@ -4,9 +4,9 @@ import {
   ContentfulRichTextGatsbyReference,
   RenderRichTextData,
 } from 'gatsby-source-contentful/rich-text'
+
+/// components
 import ContentfulRichTech from 'src/components/ContenfulRichText/ContentfulRichText'
-import ContentfulReferences from 'src/components/ContentfulReferences/ContentfulReferences'
-import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
 import Wrapper from 'src/components/Wrapper/Wrapper'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 

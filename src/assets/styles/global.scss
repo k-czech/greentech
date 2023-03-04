@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './theme.scss';
+@import '../styles/image-anim/image-anim.scss';
 
 *,
 *::before,
@@ -28,7 +29,8 @@ h6 {
   @apply antialiased;
 }
 
-h1 {
+h1,
+h2 {
   @apply text-4xl lg:text-5xl;
 }
 

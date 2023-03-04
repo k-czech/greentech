@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Image from '../Image/Image'
 import { ListWrapper } from '../OffersListWrapper/OffersListWrapper'
+
 import 'src/assets/styles/categoryList/category-list.scss'
 
 interface nodeProps {
@@ -43,7 +44,11 @@ const Offers = () => {
         return (
           <div key={index} className="max-w-[260px]">
             <Link to={`/${url}`}>
-              <Image image={thumbnail.gatsbyImageData} alt={thumbnail.title} />
+              <Image
+                image={thumbnail.gatsbyImageData}
+                alt={thumbnail.title}
+                classNameImg="scale-up"
+              />
             </Link>
             <div className="mt-6">
               <Link to={`/${url}`} className="mt-6">

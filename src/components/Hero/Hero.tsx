@@ -7,6 +7,7 @@ import {
   withArtDirection,
 } from 'gatsby-plugin-image'
 import MainWrapper from '../MainWrapper/MainWrapper'
+import { Parallax } from 'react-scroll-parallax'
 
 interface dataProps {
   data: {
@@ -39,8 +40,6 @@ const HeroParagraph = ({ text }: { text: string }) => (
 export const Hero = ({ data }: dataProps) => {
   const { button, title, subtitle, image, imageMobile } = data
 
-  console.log(image)
-
   const images = withArtDirection(getImage(image.gatsbyImageData), [
     {
       media: '(max-width: 600px)',
@@ -56,15 +55,17 @@ export const Hero = ({ data }: dataProps) => {
         className="m-full mx-auto min-h-[500px] lg:min-h-full"
       >
         <div className="container place-self-end mx-auto md:mb-16 space-y-4 lg:px-10 xl:mb-14 xl:pl-40">
-          <HeroHeading title={title} />
-          <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
-            <HeroParagraph text={subtitle} />
-            <Button
-              path={button}
-              text="Zapytaj o ofertę"
-              className="max-w-[260px] lg:max-w-none lg:mt-0 lg:ml-20"
-            />
-          </div>
+          <Parallax translateY={[-30, 15]}>
+            <HeroHeading title={title} />
+            <div className="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0">
+              <HeroParagraph text={subtitle} />
+              <Button
+                path={button}
+                text="Zapytaj o ofertę"
+                className="max-w-[260px] lg:max-w-none lg:mt-0 lg:ml-20"
+              />
+            </div>
+          </Parallax>
         </div>
       </BackgroundSection>
     </MainWrapper>

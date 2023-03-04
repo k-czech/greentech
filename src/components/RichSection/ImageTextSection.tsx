@@ -4,6 +4,7 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Wrapper from '../Wrapper/Wrapper'
 import Image from '../Image/Image'
 import { graphql } from 'gatsby'
+import { Parallax } from 'react-scroll-parallax'
 
 interface richSectionProps {
   title: string
@@ -34,21 +35,24 @@ const ImageTextSection = ({
             imageOnTheRight ? 'md:order-first' : 'md:order-last'
           } mb-5 md:mb-0`}
         >
-          {showTitle ? <h3>{title}</h3> : null}
-          {DescArr.map((par, index) => (
-            <p key={index} className="mb-8">
-              {par}
-            </p>
-          ))}
+          <Parallax translateY={[-10, 5]} speed={-5}>
+            {showTitle ? <h3>{title}</h3> : null}
+            {DescArr.map((par, index) => (
+              <p key={index} className="mb-8">
+                {par}
+              </p>
+            ))}
+          </Parallax>
         </div>
-        <Image
-          image={image}
-          alt=""
-          className="md:w-1/2"
-          classNameImg={`mb-5 md:mb-0 ${
+        <div
+          className={`mb-5 md:mb-0 ${
             imageOnTheRight ? 'md:order-last' : 'md:order-first'
           }  relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8`}
-        />
+        >
+          <Parallax translateY={[10, -5]} speed={5}>
+            <Image image={image} alt="" />
+          </Parallax>
+        </div>
       </Wrapper>
     </section>
   )

@@ -1,8 +1,6 @@
 import React from 'react'
-import DescriptionParagraph from '../DescriptionParagraph/DescriptionParagraph'
-import Title from '../Title/Title'
-import Wrapper from '../Wrapper/Wrapper'
 import { graphql } from 'gatsby'
+import Wrapper from '../Wrapper/Wrapper'
 
 interface Props {
   title: string
@@ -40,7 +38,7 @@ const WelcomeSection = ({ title, description, titleOnTheRigth }: Props) => {
               : 'md:w-1/3 md:order-last'
           }`}
         >
-          <DescriptionParagraph text={text} />
+          <p>{text}</p>
         </div>
       </Wrapper>
     </section>

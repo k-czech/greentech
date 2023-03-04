@@ -4,8 +4,6 @@ import {
   RenderRichTextData,
 } from 'gatsby-source-contentful/rich-text'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
-import ModalWithVideo from '../ModalWithVideo/ModalWithVideo'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface Props {
   data: {

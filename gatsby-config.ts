@@ -28,7 +28,15 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          quality: 90,
+          placeholder: `blurred`,
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
     //'gatsby-plugin-google-gtag',
@@ -111,5 +119,6 @@ module.exports = {
         allExtensions: true,
       },
     },
+    `gatsby-plugin-preload-fonts`,
   ],
 }

@@ -30,14 +30,14 @@ const usePrevious = <T,>(value: T): T | undefined => {
 const MenuMobile = ({ closeMenuMobile, isOpen }: menuMobileProps) => {
   return (
     <div
-      className={`absolute top-0 right-0 left-1/4 h-screen bg-white-color z-50 lg:hidden
+      className={`absolute top-0 right-0 left-1/4 opacity-0 translate-x-full h-screen bg-white-color z-50 lg:hidden
       ${isOpen ? 'open' : 'hide'}`}
     >
       <button onClick={closeMenuMobile} className="m-10">
         <StaticImage src="../../assets/icons/close-ico.png" alt="close-ico" />
       </button>
       <div className="flex flex-col">
-        <MenuLinks className="mobile" />
+        <MenuLinks className={`mobile`} />
         <div className="m-auto mt-10">
           <p>Sprawdź nas na</p>
           <a

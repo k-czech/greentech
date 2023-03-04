@@ -32,7 +32,7 @@ interface MainPageProps {
           gatsbyImageData: IGatsbyImageData
         }
       }
-      contentRefrences: any[]
+      contentRefrences: []
       blogPosts: [
         {
           pageTitle: string

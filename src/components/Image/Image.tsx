@@ -6,14 +6,14 @@ interface imgProps {
     gatsbyImageData: IGatsbyImageData
   }
   alt: string
-  className?: string
   classNameImg?: string
 }
 
-const Image = ({ image, alt = '', className, classNameImg }: imgProps) => {
+const Image = ({ image, alt = '', classNameImg }: imgProps) => {
   if (!image) return null
   const img = getImage(image)
   if (!img) return null
+
   return <GatsbyImage image={img} alt={alt} className={`${classNameImg}`} />
 }
 

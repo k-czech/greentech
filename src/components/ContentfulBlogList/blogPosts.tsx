@@ -87,6 +87,7 @@ const BlogPosts = () => {
                 <Image
                   image={thubmnail.gatsbyImageData}
                   alt={thubmnail.title}
+                  classNameImg="scale-up"
                 />
               </Link>
               <div className="mt-6">

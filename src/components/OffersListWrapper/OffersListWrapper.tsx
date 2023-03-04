@@ -1,5 +1,4 @@
 import React from 'react'
-import Wrapper from '../Wrapper/Wrapper'
 
 interface WrapProps {
   children: JSX.Element | JSX.Element[]
