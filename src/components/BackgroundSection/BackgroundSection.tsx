@@ -4,9 +4,7 @@ import React from 'react'
 interface WrapProps {
   children: JSX.Element | JSX.Element[]
   className?: string | undefined
-  image: {
-    gatsbyImageData: IGatsbyImageData
-  }
+  image: object
   alt: string
 }
 

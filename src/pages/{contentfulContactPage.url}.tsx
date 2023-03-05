@@ -7,12 +7,15 @@ import FormWrap from 'src/components/FormWrap/FormWrap'
 import { graphql } from 'gatsby'
 import BackgroundSection from 'src/components/BackgroundSection/BackgroundSection'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
+import Seo from 'src/components/Seo'
 
 interface QueryDataProps {
   data: {
     contentfulContactPage: {
       pageTitle: string
       url: string
+      metaTitle: string
+      metaDescription: string
       contactData: {
         DaneKontaktowe: [
           {
@@ -117,6 +120,8 @@ export const query = graphql`
       pageTitle
       contentful_id
       url
+      metaTitle
+      metaDescription
       bcgImg {
         gatsbyImageData
         title
@@ -137,3 +142,12 @@ export const query = graphql`
 `
 
 export default ContactPage
+
+export const Head = ({ data }: QueryDataProps) => {
+  const { metaTitle, pageTitle, metaDescription } = data.contentfulContactPage
+  const seoTitle = metaTitle ? metaTitle : pageTitle
+  const seoDesc = metaDescription
+    ? metaDescription
+    : 'Nasza firma to pierwszy krok do uniezależnienia się od firm energetycznych oraz posiadania własnej ekologicznej energii! Zamów instalację do swojego domu.'
+  return <Seo title={seoTitle} description={seoDesc} />
+}

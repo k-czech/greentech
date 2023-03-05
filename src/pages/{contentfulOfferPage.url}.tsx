@@ -10,6 +10,7 @@ import Image from 'src/components/Image/Image'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
+import Seo from 'src/components/Seo'
 
 interface PageProps {
   data: {
@@ -18,6 +19,8 @@ interface PageProps {
       url: string
       title: string
       subTitle: string
+      metaTitle: string
+      metaDescription: string
       offerHeroImage: {
         title: string
         gatsbyImageData: IGatsbyImageData
@@ -72,6 +75,8 @@ export const query = graphql`
       shortDesc
       title
       subTitle
+      metaTitle
+      metaDescription
       offerHeroImage {
         title
         gatsbyImageData
@@ -89,3 +94,12 @@ export const query = graphql`
   }
 `
 export default BlogPost
+
+export const Head = ({ data }: PageProps) => {
+  const { metaTitle, pageTitle, metaDescription } = data.contentfulOfferPage
+  const seoTitle = metaTitle ? metaTitle : pageTitle
+  const seoDesc = metaDescription
+    ? metaDescription
+    : 'Nasza firma to pierwszy krok do uniezależnienia się od firm energetycznych oraz posiadania własnej ekologicznej energii! Zamów instalację do swojego domu.'
+  return <Seo title={seoTitle} description={seoDesc} />
+}
