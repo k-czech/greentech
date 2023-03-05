@@ -11,7 +11,6 @@ import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 //styles
 import 'react-medium-image-zoom/dist/styles.css'
 import 'src/assets/styles/image-anim/image-anim.scss'
-import { Parallax } from 'react-scroll-parallax'
 
 interface Props {
   title: string

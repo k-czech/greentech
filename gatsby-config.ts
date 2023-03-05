@@ -32,7 +32,7 @@ module.exports = {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          quality: 90,
+          quality: 85,
           placeholder: `blurred`,
         },
       },
@@ -97,10 +97,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-web-font-loader`,
       options: {
-        fonts: [`plus jakarta sans\:300,400,600,700, 800`],
-        display: 'swap',
+        google: {
+          families: ['plus jakarta sans'],
+        },
       },
     },
     {
@@ -119,6 +120,5 @@ module.exports = {
         allExtensions: true,
       },
     },
-    `gatsby-plugin-preload-fonts`,
   ],
 }
