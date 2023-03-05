@@ -30,7 +30,7 @@ const MenuLinks = ({ className }: links) => {
       }
     }
   `)
-  console.log(menuItem.map((item: any) => item))
+  console.log(menuItem.map((item: object) => item))
   return (
     <>
       <ul className={className}>

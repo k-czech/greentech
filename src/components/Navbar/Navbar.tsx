@@ -30,8 +30,9 @@ const usePrevious = <T,>(value: T): T | undefined => {
 const MenuMobile = ({ closeMenuMobile, isOpen }: menuMobileProps) => {
   return (
     <div
-      className={`absolute top-0 right-0 left-1/4 opacity-0 translate-x-full h-screen bg-white-color z-50 lg:hidden
-      ${isOpen ? 'open' : 'hide'}`}
+      className={`hidden bg-white-color z-50 lg:hidden ${
+        isOpen ? 'menu-mobile open' : ''
+      }`}
     >
       <button onClick={closeMenuMobile} className="m-10">
         <StaticImage src="../../assets/icons/close-ico.png" alt="close-ico" />
@@ -72,14 +73,14 @@ export const Navbar = () => {
 
   const openMenuMobile = () => {
     setOpen(true)
-    const body = document.querySelector('body')!
+    const body: HTMLElement = document.querySelector('body')!
     body.style.position = 'fixed'
     body.classList.add('mask')
   }
 
   const closeMenuMobile = () => {
     setOpen(false)
-    const body = document.querySelector('body')!
+    const body: HTMLElement = document.querySelector('body')!
     body.style.position = ''
     body.classList.remove('mask')
   }

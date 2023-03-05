@@ -11,6 +11,7 @@ import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 //styles
 import 'react-medium-image-zoom/dist/styles.css'
 import 'src/assets/styles/image-anim/image-anim.scss'
+import { Parallax } from 'react-scroll-parallax'
 
 interface Props {
   title: string
@@ -26,8 +27,7 @@ interface Props {
   }
 }
 
-const ImageGrid = ({ images, title, additinalDesc }: Props) => {
-  console.log(additinalDesc)
+const ImageGrid = ({ images, additinalDesc }: Props) => {
   return (
     <section className="flex flex-wrap justify-center gap-6">
       <Wrapper className="max-w-[560px] text-center">

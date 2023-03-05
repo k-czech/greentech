@@ -7,15 +7,19 @@ import {
 import ContentfulRichTech from 'src/components/ContenfulRichText/ContentfulRichText'
 import Wrapper from 'src/components/Wrapper/Wrapper'
 import Image from 'src/components/Image/Image'
-import { IGatsbyImageData, StaticImage } from 'gatsby-plugin-image'
-import Title from 'src/components/Title/Title'
-import { ListWrapper } from 'src/components/OffersListWrapper/OffersListWrapper'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
+import ReadMore from 'src/components/ReadMore/ReadMore'
 
 interface PageProps {
   data: {
     contentfulBlogPost: {
       pageTitle: string
       url: string
+      blogPosts: {
+        pageTitle: string
+        url: string
+        contentful_id: string
+      }
       content: {
         raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
       }
@@ -46,50 +50,7 @@ const BlogPost = ({ data }: PageProps) => {
           Wróć
         </Link>
       </div>
-      <div>
-        <Title text="Przeczytaj również" />
-        <ListWrapper classname="justify-center md:justify-start">
-          <div className="max-w-[360px]">
-            <Link to="/blog">
-              <StaticImage src="../assets/images/blog/image.png" alt="" />
-            </Link>
-            <Link to="/blog" className="block mt-7">
-              <p className="text-secondary-color text-lg font-bold">
-                Optymalizator mocy paneli fotowoltaicznych – czy warto?
-              </p>
-              <p className="text-secondary-color/40 text-sm my-1.5">
-                Sierpień, 2022
-              </p>
-            </Link>
-          </div>
-          <div className="max-w-[360px]">
-            <Link to="/blog">
-              <StaticImage src="../assets/images/blog/image.png" alt="" />
-            </Link>
-            <Link to="/blogPost" className="block mt-7">
-              <p className="text-secondary-color text-lg font-bold">
-                Optymalizator mocy paneli fotowoltaicznych – czy warto?
-              </p>
-              <p className="text-secondary-color/40 text-sm my-1.5">
-                Sierpień, 2022
-              </p>
-            </Link>
-          </div>
-          <div className="max-w-[360px]">
-            <Link to="/blog">
-              <StaticImage src="../assets/images/blog/image.png" alt="" />
-            </Link>
-            <Link to="/blogPost" className="block mt-7">
-              <p className="text-secondary-color text-lg font-bold">
-                Optymalizator mocy paneli fotowoltaicznych – czy warto?
-              </p>
-              <p className="text-secondary-color/40 text-sm my-1.5">
-                Sierpień, 2022
-              </p>
-            </Link>
-          </div>
-        </ListWrapper>
-      </div>
+      <ReadMore data={contentfulBlogPost.blogPosts} />
     </Wrapper>
   )
 }
@@ -103,6 +64,11 @@ export const query = graphql`
       image {
         title
         gatsbyImageData
+      }
+      blogPosts {
+        ... on Node {
+          ...optionalBlogPosts
+        }
       }
       content {
         raw

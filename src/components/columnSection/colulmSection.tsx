@@ -12,15 +12,13 @@ const ColumnSection = ({ column }: Props) => {
   const numOfColumns = `w-1/${column.length}`
   return (
     <section>
-      <Parallax translateY={[-10, 5]} speed={-5}>
-        <Wrapper
-          className={`container flex flex-col lg:flex-row mx-auto gap-10 lg:gap-x-10 `}
-        >
-          {column.map((columnData, index) => (
-            <Column key={index} data={columnData} width={numOfColumns} />
-          ))}
-        </Wrapper>
-      </Parallax>
+      <Wrapper
+        className={`container flex flex-col lg:flex-row mx-auto gap-10 lg:gap-x-10 `}
+      >
+        {column.map((columnData, index) => (
+          <Column key={index} data={columnData} width={numOfColumns} />
+        ))}
+      </Wrapper>
     </section>
   )
 }

@@ -1,10 +1,8 @@
 import React from 'react'
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 interface imgProps {
-  image: {
-    gatsbyImageData: IGatsbyImageData
-  }
+  image: object
   alt: string
   classNameImg?: string
 }

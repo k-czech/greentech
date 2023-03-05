@@ -47,11 +47,7 @@ const ContentfulRealizationsList = () => {
 
   let filteredImages = edges
 
-  if (tag) {
-    filteredImages = edges.filter((item: any) =>
-      item.node.metadata.tags.some((t: { name: string }) => t.name === tag),
-    )
-  }
+  if (tag === 'wszystkie' || !tag) filteredImages = edges
 
   const showDesc = (e: MouseEvent) => {
     const target = e.currentTarget as HTMLElement

@@ -59,7 +59,7 @@ const options = {
       if (node.content[0].value === '') {
         return <br />
       } else {
-        return <DescriptionParagraph text={children} />
+        return <p>{children}</p>
       }
     },
     [BLOCKS.HR]: () => <hr className="mb-6" />,
