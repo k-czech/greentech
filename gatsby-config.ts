@@ -100,7 +100,7 @@ module.exports = {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         google: {
-          families: ['plus jakarta sans'],
+          families: ['Plus Jakarta Sans'],
         },
       },
     },
