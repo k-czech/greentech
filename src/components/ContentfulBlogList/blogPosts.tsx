@@ -21,7 +21,7 @@ interface nodeProps {
   }
 }
 
-const BlogPosts = () => {
+const BlogPosts = ({ pageContext }: any) => {
   const {
     allContentfulBlogPost: { nodes },
   } = useStaticQuery(graphql`
@@ -41,6 +41,7 @@ const BlogPosts = () => {
       }
     }
   `)
+
   const [selectedCategory, setSelectedCategory] = React.useState(null)
 
   const categories = React.useMemo(() => {

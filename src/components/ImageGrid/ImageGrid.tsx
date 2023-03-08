@@ -27,23 +27,32 @@ interface Props {
 }
 
 const ImageGrid = ({ images, additinalDesc }: Props) => {
+  console.log(images)
   return (
     <section className="flex flex-wrap justify-center gap-6">
       <Wrapper className="max-w-[560px] text-center">
         <ContentfulRichTech richText={additinalDesc} />
       </Wrapper>
-      <div className="relative flex flex-wrap justify-center gap-6 mark-left">
-        {images.map((item: any, index: number) => (
-          <div key={index} className="max-w-[544px] max-h-[288px] relative">
-            <Zoom>
-              <Image
-                image={item.gatsbyImageData}
-                alt={item.title}
-                classNameImg="scale-up"
-              />
-            </Zoom>
+      <div className="mark-left">
+        <div className="slider">
+          <div className="slider__inner">
+            {images.map((item: any, index: number) => (
+              <div key={index} className="slider__item">
+                <Zoom
+                  zoomImg={{
+                    srcSet: item.gatsbyImageData.images.sources.srcSet,
+                  }}
+                >
+                  <Image
+                    image={item.gatsbyImageData}
+                    alt={item.title}
+                    classNameImg="scale-up"
+                  />
+                </Zoom>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   )

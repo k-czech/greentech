@@ -7,28 +7,60 @@ interface tagsProps {
 }
 
 const TagsFilter = ({ onClick }: any) => {
-  const {
-    allContentfulTag: { nodes },
-  } = useStaticQuery(graphql`
+  // const {
+  //   allContentfulTag: { nodes },
+  // } = useStaticQuery(graphql`
+  //   query {
+  //     allContentfulTag(filter: { name: { regex: "/realizacje/" } }) {
+  //       nodes {
+  //         name
+  //       }
+  //     }
+  //   }
+  // `)
+
+  const data = useStaticQuery(graphql`
     query {
-      allContentfulTag(filter: { name: { regex: "/realizacje/" } }) {
+      allContentfulAsset(
+        filter: {
+          metadata: { tags: { elemMatch: { name: { regex: "/realizacje/" } } } }
+        }
+      ) {
+        totalCount
         nodes {
-          name
+          metadata {
+            tags {
+              name
+            }
+          }
         }
       }
     }
   `)
 
-  const tagsName = [
-    'wszystkie',
-    ...nodes.map((item: tagsProps) => item.name.split('-')[1]),
-  ]
+  const arr = data.allContentfulAsset.nodes.map((item: any) => {
+    return item.metadata.tags
+  })
 
-  console.log(tagsName)
+  const names = []
+  for (const subarr of arr) {
+    for (const item of subarr) {
+      names.push(item.name)
+    }
+  }
+
+  const unique = new Set(names)
+
+  console.log(unique)
+
+  // const tagsName = [
+  //   'wszystkie',
+  //   ...nodes.map((item: tagsProps) => item.name.split('-')[1]),
+  // ]
 
   return (
     <Wrapper className="max-w-[1160px] flex flex-wrap justify-center mt-8 mb-16">
-      {tagsName.map((item: string, index: number) => (
+      {/* {tagsName.map((item: string, index: number) => (
         <button
           key={index}
           onClick={() => onClick(item)}
@@ -36,7 +68,7 @@ const TagsFilter = ({ onClick }: any) => {
         >
           {item}
         </button>
-      ))}
+      ))} */}
     </Wrapper>
   )
 }

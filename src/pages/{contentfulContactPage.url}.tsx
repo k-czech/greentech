@@ -43,7 +43,6 @@ interface QueryDataProps {
 const ContactPage = ({ data }: QueryDataProps) => {
   const { contactData, bcgImg } = data.contentfulContactPage
 
-  console.log(contactData)
   return (
     <MainWrapper>
       <section className="flex flex-col p-0 mt-32 md:flex-row lg:mt-0">

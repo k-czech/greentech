@@ -2,7 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import BlogPosts from './blogPosts'
 
-const ContentfulBlogList = () => {
+const ContentfulBlogList = (pageContext: any) => {
+  console.log(pageContext)
   return <BlogPosts />
 }
 

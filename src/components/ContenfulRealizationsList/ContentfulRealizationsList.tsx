@@ -18,7 +18,7 @@ interface nodeProps {
   }
 }
 
-const ContentfulRealizationsList = () => {
+const ContentfulRealizationsList = ({ pageContext }: any) => {
   const {
     allContentfulAsset: { edges },
   } = useStaticQuery(graphql`
@@ -43,6 +43,8 @@ const ContentfulRealizationsList = () => {
       }
     }
   `)
+
+  console.log(pageContext)
   const [tag, setTag] = React.useState(null)
 
   let filteredImages = edges

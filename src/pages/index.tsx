@@ -46,12 +46,11 @@ interface MainPageProps {
       ]
     }
   }
+  pageContext: any
 }
 
 const Homepage = ({ data }: MainPageProps) => {
   const { heroBanner, contentRefrences, blogPosts } = data.contentfulMainPage
-
-  console.log(data)
 
   return (
     <>

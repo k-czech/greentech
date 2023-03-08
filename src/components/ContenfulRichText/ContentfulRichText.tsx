@@ -2,7 +2,6 @@ import React from 'react'
 
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
-import DescriptionParagraph from '../DescriptionParagraph/DescriptionParagraph'
 import Image from '../Image/Image'
 import WelcomeSection from '../welcomSection/welcomeSection'
 import ImageTextSection from '../RichSection/ImageTextSection'

@@ -33,11 +33,14 @@ interface PageProps {
       }
     }
   }
+  params: object
 }
 
-const Page = ({ data }: PageProps) => {
+const Page = ({ data, params }: PageProps) => {
   const { contentfulPage } = data
-  console.log(contentfulPage)
+
+  console.log(params)
+
   const text = contentfulPage.pageDescription.pageDescription
   return (
     <MainWrapper className="mt-32 lg:mt-0">

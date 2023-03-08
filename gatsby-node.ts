@@ -10,41 +10,24 @@ interface props {
 exports.createPages = async ({ graphql, actions }: props) => {
   const { createPage } = actions
 
-  // return all images
-  const resultImages = await graphql(`
-    query {
+  // return data
+  const result = await graphql(`
+    {
       allContentfulAsset(
         filter: {
           metadata: { tags: { elemMatch: { name: { regex: "/realizacje/" } } } }
         }
       ) {
         totalCount
+        nodes {
+          metadata {
+            tags {
+              name
+            }
+          }
+        }
       }
-    }
-  `)
-
-  const totalImages = resultImages.data.allContentfulAsset.totalCount
-  const imagesPerPage = 9
-  const numPages = Math.ceil(totalImages / imagesPerPage)
-
-  Array.from({ length: numPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/images` : `/images/${i + 1}`,
-      component: pathNode.resolve('./src/templates/imagesList.tsx'),
-      context: {
-        limit: imagesPerPage,
-        skip: i * imagesPerPage,
-        numPages,
-        currentPage: i + 1,
-      },
-    })
-  })
-
-  //// CREATE BLOG LIST
-
-  const resultPosts = await graphql(`
-    query {
-      allContentfulBlogPost(limit: 10, skip: 10) {
+      allContentfulBlogPost {
         totalCount
         edges {
           node {
@@ -53,23 +36,96 @@ exports.createPages = async ({ graphql, actions }: props) => {
           }
         }
       }
+      contentfulListsSettings {
+        contentful_id
+        blogUrl
+        imagesUrl
+      }
     }
   `)
 
-  const totalPosts = resultPosts.data.allContentfulBlogPost.totalCount
-  const postPerPage = 10
-  const numBlogPages = Math.ceil(totalPosts / postPerPage)
+  // Check for any errors
+  if (result.errors) {
+    throw new Error(result.errors)
+  }
 
-  Array.from({ length: numBlogPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/blogList` : `/blogList/${i + 1}`,
-      component: pathNode.resolve('./src/templates/blog-list-template.tsx'),
+  // Extract query results
+
+  // paths
+  const pathToBlog = result.data.contentfulListsSettings.blogUrl
+  const pathToImages = result.data.contentfulListsSettings.imagesUrl
+
+  // items amount
+  const totalCountImages = result.data.allContentfulAsset.totalCount
+  const totalCountPosts = result.data.allContentfulBlogPost.totalCount
+
+  // list of tags / categories
+  const listOfTags = result.data.allContentfulAsset.nodes.map((item: any) => {
+    return item.metadata.tags
+  })
+
+  // settings
+  const imagesPerPage = 9
+  const postPerPage = 2
+
+  // Load templates
+  const imagesListTemplate = pathNode.resolve(
+    './src/templates/image-list-template.tsx',
+  )
+  const blogListTemplate = pathNode.resolve(
+    './src/templates/blog-list-template.tsx',
+  )
+  const imagesCategoryTemplate = pathNode.resolve(
+    './src/templates/images-category-template.tsx',
+  )
+
+  //// CREATE IMAGE LIST
+  const imageListItems = Array.from({ length: totalCountImages })
+
+  paginate({
+    createPage,
+    items: imageListItems,
+    itemsPerPage: imagesPerPage,
+    pathPrefix: `/${pathToImages}`,
+    component: imagesListTemplate,
+  })
+
+  //// CREATE IMAGE LISTS PER TAGS
+  const allTags: string[] = []
+  for (const subarr of listOfTags) {
+    for (const item of subarr) {
+      allTags.push(item.name)
+    }
+  }
+  const uniqueTags = new Set(allTags)
+
+  uniqueTags.forEach((tag) => {
+    const friendlyUrl = tag.split('- ')[1]
+    const url = `/${pathToImages}/${friendlyUrl}`
+    const numOfImages = allTags.filter((name) => name === tag).length
+    const tagItem = Array.from({ length: numOfImages })
+
+    paginate({
+      createPage,
+      items: tagItem,
+      itemsPerPage: imagesPerPage,
+      pathPrefix: `${url}`,
+      component: imagesCategoryTemplate,
       context: {
-        limit: postPerPage,
-        skip: i * postPerPage,
-        numBlogPages,
-        currentPage: i + 1,
+        name: tag,
       },
     })
   })
+
+  //// CREATE BLOG LIST
+  const blogListItem = Array.from({ length: totalCountPosts })
+  paginate({
+    createPage,
+    items: blogListItem,
+    itemsPerPage: postPerPage,
+    pathPrefix: `/${pathToBlog}`,
+    component: blogListTemplate,
+  })
+
+  //// CREATE BLOG LIST PER CATEGORY
 }
