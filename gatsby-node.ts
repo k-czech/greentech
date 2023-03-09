@@ -1,6 +1,7 @@
 const pathNode = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require('gatsby-awesome-pagination')
+const slugify = require('slugify')
 
 interface props {
   graphql: any
@@ -35,6 +36,11 @@ exports.createPages = async ({ graphql, actions }: props) => {
             pageTitle
           }
         }
+        group(field: { test: SELECT }) {
+          totalCount
+          fieldValue
+        }
+        distinct(field: { test: SELECT })
       }
       contentfulListsSettings {
         contentful_id
@@ -63,9 +69,11 @@ exports.createPages = async ({ graphql, actions }: props) => {
   const listOfTags = result.data.allContentfulAsset.nodes.map((item: any) => {
     return item.metadata.tags
   })
+  const listOfAllCategories = result.data.allContentfulBlogPost.distinct
+  const listOfBlogCategories = result.data.allContentfulBlogPost.group
 
   // settings
-  const imagesPerPage = 9
+  const imagesPerPage = 6
   const postPerPage = 2
 
   // Load templates
@@ -78,19 +86,11 @@ exports.createPages = async ({ graphql, actions }: props) => {
   const imagesCategoryTemplate = pathNode.resolve(
     './src/templates/images-category-template.tsx',
   )
+  const blogListCategoryTemplate = pathNode.resolve(
+    './src/templates/blog-category-template.tsx',
+  )
 
   //// CREATE IMAGE LIST
-  const imageListItems = Array.from({ length: totalCountImages })
-
-  paginate({
-    createPage,
-    items: imageListItems,
-    itemsPerPage: imagesPerPage,
-    pathPrefix: `/${pathToImages}`,
-    component: imagesListTemplate,
-  })
-
-  //// CREATE IMAGE LISTS PER TAGS
   const allTags: string[] = []
   for (const subarr of listOfTags) {
     for (const item of subarr) {
@@ -99,9 +99,25 @@ exports.createPages = async ({ graphql, actions }: props) => {
   }
   const uniqueTags = new Set(allTags)
 
+  const imageListItems = Array.from({ length: totalCountImages })
+
+  paginate({
+    createPage,
+    items: imageListItems,
+    itemsPerPage: imagesPerPage,
+    pathPrefix: `/${pathToImages}`,
+    component: imagesListTemplate,
+    context: {
+      listOfAllTags: ['Wszystkie', ...uniqueTags],
+      url: pathToImages,
+    },
+  })
+
+  //// CREATE IMAGE LISTS PER TAGS
+
   uniqueTags.forEach((tag) => {
     const friendlyUrl = tag.split('- ')[1]
-    const url = `/${pathToImages}/${friendlyUrl}`
+    const url = `/${pathToImages}/${slugify(friendlyUrl)}`
     const numOfImages = allTags.filter((name) => name === tag).length
     const tagItem = Array.from({ length: numOfImages })
 
@@ -113,11 +129,13 @@ exports.createPages = async ({ graphql, actions }: props) => {
       component: imagesCategoryTemplate,
       context: {
         name: tag,
+        listOfAllTags: ['Wszystkie', ...uniqueTags],
+        url: pathToImages,
       },
     })
   })
 
-  //// CREATE BLOG LIST
+  // CREATE BLOG LIST
   const blogListItem = Array.from({ length: totalCountPosts })
   paginate({
     createPage,
@@ -125,7 +143,34 @@ exports.createPages = async ({ graphql, actions }: props) => {
     itemsPerPage: postPerPage,
     pathPrefix: `/${pathToBlog}`,
     component: blogListTemplate,
+    context: {
+      listOfCategories: ['Wszystkie', ...listOfAllCategories],
+      url: pathToBlog,
+    },
   })
 
   //// CREATE BLOG LIST PER CATEGORY
+
+  listOfBlogCategories.forEach(
+    (group: { fieldValue: string; totalCount: number }) => {
+      const categoryName = group.fieldValue
+      const totalCountOfPostsForCategory = group.totalCount
+      const friendlyURL = `/${pathToBlog}/${slugify(categoryName)}`
+
+      const arrayOfPosts = Array.from({ length: totalCountOfPostsForCategory })
+
+      paginate({
+        createPage,
+        items: arrayOfPosts,
+        itemsPerPage: postPerPage,
+        pathPrefix: `${friendlyURL}`,
+        component: blogListCategoryTemplate,
+        context: {
+          category: categoryName,
+          listOfCategories: ['Wszystkie', ...listOfAllCategories],
+          url: pathToBlog,
+        },
+      })
+    },
+  )
 }

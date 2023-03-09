@@ -1,36 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
-
-/// styles
-import 'src/assets/styles/realizations/realizations.scss'
-import Image from 'src/components/Image/Image'
-import Pagination from 'src/components/Pagination/Pagination'
-
-interface nodeProps {
-  node: {
-    description: string
-    gatsbyImageData: IGatsbyImageData
-    title: string
-  }
-}
+import ImageListView from 'src/components/views/ImageList'
 
 const imageListPage = ({ data, pageContext }: any) => {
-  const { allContentfulAsset } = data
-
-  const arr = allContentfulAsset.edges
-  console.log(arr)
-  console.log(pageContext)
+  const { allContentfulAsset: edges } = data
+  const { contentfulListsSettings } = data
 
   return (
-    <div>
-      {arr.map((item: any, index: number) => (
-        <div key={index}>
-          <Image image={item.node.gatsbyImageData} alt="image" />
-        </div>
-      ))}
-      <Pagination pageContext={pageContext} />
-    </div>
+    <>
+      <ImageListView
+        data={edges}
+        pageContext={pageContext}
+        info={contentfulListsSettings}
+      />
+    </>
   )
 }
 
@@ -54,6 +37,12 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    contentfulListsSettings {
+      imagesMetatitle
+      imagesTopDescription {
+        raw
       }
     }
   }

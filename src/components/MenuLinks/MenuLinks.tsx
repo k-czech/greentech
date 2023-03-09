@@ -23,6 +23,9 @@ const MenuLinks = ({ className }: links) => {
               ... on ContentfulPage {
                 url
               }
+              ... on ContentfulListy {
+                url
+              }
             }
             title
           }

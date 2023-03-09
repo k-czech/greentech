@@ -10,7 +10,7 @@ interface bigTextProps {
 const BigText = ({ text, span, className, href }: bigTextProps) => (
   <a
     href={href}
-    className={`text-3xl font-semibold mb-9 text-secondary-color block ${className}`}
+    className={`text-3xl font-semibold mb-3 text-secondary-color block ${className}`}
   >
     {span ? <span className="mr-1.5 text-2xl">{span}</span> : null}
     {text}

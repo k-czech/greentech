@@ -91,14 +91,10 @@ const options = {
           return <Features {...node.data.target} />
         case 'ContentfulImageGrid':
           return <ImageGrid {...node.data.target} />
-        case 'ContentfulListaPostowBlogowych':
-          return <ContentfulBlogList {...node.data.target} />
         case 'ContentfulListaZOfertami':
           return <ContentfulOfferList {...node.data.target} />
         case 'ContentfulVideo':
           return <ModalWithVideo {...node.data.target} />
-        case 'ContentfulListaOfertPostowRealizacji':
-          return <ContentfulRealizationsList {...node.data.target} />
         default:
           return <div></div>
       }

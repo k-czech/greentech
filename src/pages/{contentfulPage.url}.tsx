@@ -33,13 +33,10 @@ interface PageProps {
       }
     }
   }
-  params: object
 }
 
-const Page = ({ data, params }: PageProps) => {
+const Page = ({ data }: PageProps) => {
   const { contentfulPage } = data
-
-  console.log(params)
 
   const text = contentfulPage.pageDescription.pageDescription
   return (
@@ -80,9 +77,7 @@ export const query = graphql`
             ...WelcomeSectionFragment
             ...ImageTextSectionFragment
             ...ImageGridFragment
-            ...ListaPostowFragment
             ...ListaOfertFragment
-            ...ListaFragment
             ... on ContentfulAsset {
               __typename
               contentful_id

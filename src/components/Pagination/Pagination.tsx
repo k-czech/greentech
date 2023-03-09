@@ -6,27 +6,41 @@ const Pagination = ({ pageContext }: any) => {
     pageContext
 
   return (
-    <nav className="pagination" role="navigation">
-      <div>
-        {previousPagePath && (
-          <Link to={previousPagePath} rel="prev">
-            Previous
-          </Link>
-        )}
-      </div>
-      {numberOfPages > 1 && (
-        <div className="pagination-location">
-          Page {humanPageNumber} of {numberOfPages}
+    <div className="mt-10">
+      <nav
+        className="flex justify-center"
+        role="navigation"
+        aria-label="Page navigation"
+      >
+        <div className="flex items-center">
+          {previousPagePath && (
+            <Link
+              to={previousPagePath}
+              rel="prev"
+              aria-label="Previous"
+              className="relative block rounded mr-2 bg-transparent py-1.5 px-3 text-sm text-neutral-600 transition-all duration-300 text-secondary-color hover:bg-secondary-color hover:text-white"
+            >
+              <span aria-hidden="true">&laquo;</span>
+            </Link>
+          )}
+          {numberOfPages > 1 && (
+            <div className="text-secondary-color">
+              Strona {humanPageNumber} z {numberOfPages}
+            </div>
+          )}
+          {nextPagePath && (
+            <Link
+              to={nextPagePath}
+              rel="next"
+              aria-label="Next"
+              className="relative block rounded ml-2 bg-transparent py-1.5 px-3 text-sm text-neutral-600 transition-all duration-300  text-secondary-color hover:bg-secondary-color hover:text-white"
+            >
+              <span aria-hidden="true">&raquo;</span>
+            </Link>
+          )}
         </div>
-      )}
-      <div>
-        {nextPagePath && (
-          <Link to={nextPagePath} rel="next">
-            Next
-          </Link>
-        )}
-      </div>
-    </nav>
+      </nav>
+    </div>
   )
 }
 

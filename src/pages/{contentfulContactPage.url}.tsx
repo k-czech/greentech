@@ -72,8 +72,8 @@ const ContactPage = ({ data }: QueryDataProps) => {
         {contactData ? (
           <div className="flex flex-col grow pb-8 px-10 pt-20 md:pl-16 md:pr-20 bg-gray-color">
             {contactData.DaneKontaktowe.map((item, index) => (
-              <div key={index}>
-                <p className="mb-10">{item.title}</p>
+              <div key={index} className="mb-6">
+                <p className="mb-4">{item.title}</p>
                 {item.data.email ? (
                   <BigText
                     text={item.data.email}

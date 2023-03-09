@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import BlogListView from 'src/components/views/BlogList'
 
-const AllBlogListPage = ({ data, pageContext }: any) => {
+const BlogListPage = ({ data, pageContext }: any) => {
   const {
     allContentfulBlogPost: { nodes },
   } = data
@@ -21,12 +21,12 @@ const AllBlogListPage = ({ data, pageContext }: any) => {
 }
 
 export const query = graphql`
-  query ($skip: Int!, $limit: Int!) {
-    allContentfulBlogPost(limit: $limit, skip: $skip) {
-      group(field: { test: SELECT }) {
-        totalCount
-        fieldValue
-      }
+  query ($skip: Int!, $limit: Int!, $category: String!) {
+    allContentfulBlogPost(
+      filter: { test: { eq: $category } }
+      limit: $limit
+      skip: $skip
+    ) {
       nodes {
         gatsbyPath(filePath: "/{contentfulBlogPost.url}")
         pageTitle
@@ -48,4 +48,4 @@ export const query = graphql`
   }
 `
 
-export default AllBlogListPage
+export default BlogListPage

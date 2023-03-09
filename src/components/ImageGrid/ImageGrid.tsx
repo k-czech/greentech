@@ -33,11 +33,11 @@ const ImageGrid = ({ images, additinalDesc }: Props) => {
       <Wrapper className="max-w-[560px] text-center">
         <ContentfulRichTech richText={additinalDesc} />
       </Wrapper>
-      <div className="mark-left">
+      <div className="mark-left overflow-x-scroll snap-mandatory snap-x md:overflow-x-auto">
         <div className="slider">
-          <div className="slider__inner">
+          <div className="slider__inner flex md:flex-wrap md:justify-center md:gap-4">
             {images.map((item: any, index: number) => (
-              <div key={index} className="slider__item">
+              <div key={index} className="slider__item mr-4 md:mr-0">
                 <Zoom
                   zoomImg={{
                     srcSet: item.gatsbyImageData.images.sources.srcSet,
@@ -66,7 +66,7 @@ export const query = graphql`
     images {
       title
       description
-      gatsbyImageData
+      gatsbyImageData(layout: FIXED)
     }
     additinalDesc {
       raw
