@@ -1,7 +1,9 @@
 import React from 'react'
-
 import { INLINES, BLOCKS, MARKS } from '@contentful/rich-text-types'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
+import { StaticImage } from 'gatsby-plugin-image'
+
+// components
 import Image from '../Image/Image'
 import WelcomeSection from '../welcomSection/welcomeSection'
 import ImageTextSection from '../RichSection/ImageTextSection'
@@ -9,11 +11,8 @@ import ImageGrid from '../ImageGrid/ImageGrid'
 import Counter from '../Counter/Counter'
 import ColumnSection from '../columnSection/colulmSection'
 import Features from '../Features/Features'
-import ContentfulBlogList from '../ContentfulBlogList/ContentfulBlogList'
 import ContentfulOfferList from '../ContentfulOfferList/ContentfulOfferList'
-import { StaticImage } from 'gatsby-plugin-image'
 import ModalWithVideo from '../ModalWithVideo/ModalWithVideo'
-import ContentfulRealizationsList from '../ContenfulRealizationsList/ContentfulRealizationsList'
 
 interface propTypes {
   richText: any
@@ -21,7 +20,9 @@ interface propTypes {
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: (text: any) => <b className="font-bold">{text}</b>,
+    [MARKS.BOLD]: (text: React.ReactNode) => (
+      <b className="font-bold">{text}</b>
+    ),
     [MARKS.ITALIC]: (text: any) => <i className="font-italic">{text}</i>,
     [MARKS.UNDERLINE]: (text: any) => <u className="underline">{text}</u>,
   },

@@ -67,7 +67,6 @@
     "eslint-webpack-plugin": "^4.0.0",
     "gatsby-plugin-eslint": "^4.0.3",
     "gatsby-plugin-postcss": "^6.5.0",
-    "gatsby-plugin-prettier-eslint": "^1.0.6",
     "gatsby-plugin-root-import": "^2.0.9",
     "postcss": "^8.4.21",
     "prettier": "^2.8.3",

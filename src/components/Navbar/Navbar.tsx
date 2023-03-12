@@ -30,8 +30,8 @@ const usePrevious = <T,>(value: T): T | undefined => {
 const MenuMobile = ({ closeMenuMobile, isOpen }: menuMobileProps) => {
   return (
     <div
-      className={`hidden bg-white-color z-50 lg:hidden ${
-        isOpen ? 'menu-mobile open' : ''
+      className={`bg-white-color z-50 lg:hidden menu-mobile ${
+        isOpen ? 'open' : ''
       }`}
     >
       <button onClick={closeMenuMobile} className="m-10">
@@ -74,14 +74,14 @@ export const Navbar = () => {
   const openMenuMobile = () => {
     setOpen(true)
     const body: HTMLElement = document.querySelector('body')!
-    body.style.position = 'fixed'
+    body.style.overflowY = 'hidden'
     body.classList.add('mask')
   }
 
   const closeMenuMobile = () => {
     setOpen(false)
     const body: HTMLElement = document.querySelector('body')!
-    body.style.position = ''
+    body.style.overflowY = ''
     body.classList.remove('mask')
   }
 

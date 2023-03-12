@@ -1,6 +1,5 @@
 import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
-import LogoColor from '../../assets/icons/logo.svg'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Logo = ({ location }: { location: string }) => {
@@ -29,7 +28,11 @@ const Logo = ({ location }: { location: string }) => {
           />
         </span>
         <span className="md:hidden">
-          <LogoColor />
+          <StaticImage
+            src="../../assets/icons/logo.png"
+            alt="logo"
+            width={144}
+          />
         </span>
       </>
     )
@@ -47,7 +50,11 @@ const Logo = ({ location }: { location: string }) => {
             />
           </span>
           <span className="lg:hidden">
-            <LogoColor />
+            <StaticImage
+              src="../../assets/icons/logo.png"
+              alt="logo"
+              width={144}
+            />
           </span>
         </>
       ) : location === '/' ? (
@@ -60,27 +67,18 @@ const Logo = ({ location }: { location: string }) => {
             />
           </span>
           <span className="hidden md:block">
-            <LogoColor />
+            <StaticImage
+              src="../../assets/icons/logo.png"
+              alt="logo"
+              width={144}
+            />
           </span>
         </>
       ) : (
-        <LogoColor />
+        <StaticImage src="../../assets/icons/logo.png" alt="logo" width={144} />
       )}
     </>
   )
 }
 
 export default Logo
-
-// {/* <>
-// <span className="md:hidden">
-//   <StaticImage
-//     src="../../assets/icons/logo_white.png"
-//     alt="logo"
-//     width={144}
-//   />
-// </span>
-// <span className="hidden md:block">
-//   <LogoColor />
-// </span>
-// </> */}

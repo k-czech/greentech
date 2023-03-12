@@ -1,8 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+
+// components
 import Column from '../Column/Column'
 import Wrapper from '../Wrapper/Wrapper'
-import { Parallax } from 'react-scroll-parallax'
 
 interface Props {
   column: []

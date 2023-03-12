@@ -15,7 +15,12 @@ const BackgroundSection = ({ children, className, image, alt }: WrapProps) => {
 
   return (
     <div className={`grid ${className}`}>
-      <GatsbyImage image={img} alt={alt} style={{ gridArea: '1/1' }} />
+      <GatsbyImage
+        image={img}
+        alt={alt}
+        style={{ gridArea: '1/1' }}
+        loading="eager"
+      />
       <div className="grid relative p-10 lg:p-0" style={{ gridArea: '1/1' }}>
         {children}
       </div>

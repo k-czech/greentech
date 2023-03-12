@@ -70,7 +70,6 @@ exports.createPages = async ({ graphql, actions }: props) => {
     return item.metadata.tags
   })
   const listOfAllCategories = result.data.allContentfulBlogPost.distinct
-  const listOfBlogCategories = result.data.allContentfulBlogPost.group
 
   // settings
   const imagesPerPage = 6
@@ -90,7 +89,7 @@ exports.createPages = async ({ graphql, actions }: props) => {
     './src/templates/blog-category-template.tsx',
   )
 
-  //// CREATE IMAGE LIST
+  //// CREATE IMAGE LIST PER TAGS
   const allTags: string[] = []
   for (const subarr of listOfTags) {
     for (const item of subarr) {
@@ -98,22 +97,6 @@ exports.createPages = async ({ graphql, actions }: props) => {
     }
   }
   const uniqueTags = new Set(allTags)
-
-  const imageListItems = Array.from({ length: totalCountImages })
-
-  paginate({
-    createPage,
-    items: imageListItems,
-    itemsPerPage: imagesPerPage,
-    pathPrefix: `/${pathToImages}`,
-    component: imagesListTemplate,
-    context: {
-      listOfAllTags: ['Wszystkie', ...uniqueTags],
-      url: pathToImages,
-    },
-  })
-
-  //// CREATE IMAGE LISTS PER TAGS
 
   uniqueTags.forEach((tag) => {
     const friendlyUrl = tag.split('- ')[1]
@@ -135,6 +118,20 @@ exports.createPages = async ({ graphql, actions }: props) => {
     })
   })
 
+  //// CREATE IMAGE LIST WITH ALL
+  const imageListItems = Array.from({ length: totalCountImages })
+  paginate({
+    createPage,
+    items: imageListItems,
+    itemsPerPage: imagesPerPage,
+    pathPrefix: `/${pathToImages}`,
+    component: imagesListTemplate,
+    context: {
+      listOfAllTags: ['Wszystkie', ...uniqueTags],
+      url: pathToImages,
+    },
+  })
+
   // CREATE BLOG LIST
   const blogListItem = Array.from({ length: totalCountPosts })
   paginate({
@@ -150,7 +147,7 @@ exports.createPages = async ({ graphql, actions }: props) => {
   })
 
   //// CREATE BLOG LIST PER CATEGORY
-
+  const listOfBlogCategories = result.data.allContentfulBlogPost.group
   listOfBlogCategories.forEach(
     (group: { fieldValue: string; totalCount: number }) => {
       const categoryName = group.fieldValue
