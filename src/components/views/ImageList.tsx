@@ -10,9 +10,6 @@ import Zoom from 'react-medium-image-zoom'
 import Filters from '../Filters/Filters'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 
-/// styles
-import 'src/assets/styles/realizations/realizations.scss'
-
 interface nodeProps {
   node: {
     description: string

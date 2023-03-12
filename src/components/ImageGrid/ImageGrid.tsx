@@ -41,6 +41,7 @@ const ImageGrid = ({ images, additinalDesc }: Props) => {
                 <Zoom
                   zoomImg={{
                     srcSet: item.gatsbyImageData.images.sources.srcSet,
+                    src: item.gatsbyImageData.images.sources.srcSet,
                   }}
                 >
                   <Image

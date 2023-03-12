@@ -11,7 +11,6 @@ import Image from 'src/components/Image/Image'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 
 ///style
-import '../assets/styles/homepage/homepage.scss'
 import 'src/assets/styles/image-anim/image-anim.scss'
 
 interface MainPageProps {

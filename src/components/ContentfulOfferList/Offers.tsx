@@ -6,9 +6,6 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Image from '../Image/Image'
 import { ListWrapper } from '../OffersListWrapper/OffersListWrapper'
 
-// styles
-import 'src/assets/styles/categoryList/category-list.scss'
-
 interface nodeProps {
   url: string
   pageTitle: string
