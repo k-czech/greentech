@@ -1,20 +1,21 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import BlogListView from 'src/components/views/BlogList'
+import Seo from 'src/components/Seo'
 
 const AllBlogListPage = ({ data, pageContext }: any) => {
   const {
     allContentfulBlogPost: { nodes },
   } = data
 
-  const { contentfulListsSettings } = data
+  const { contentfulListy } = data
 
   return (
     <>
       <BlogListView
         data={nodes}
         pageContext={pageContext}
-        info={contentfulListsSettings}
+        info={contentfulListy}
       />
     </>
   )
@@ -39,9 +40,11 @@ export const query = graphql`
         }
       }
     }
-    contentfulListsSettings {
-      blogMetatitle
-      blogTopDescription {
+    contentfulListy(contentful_id: { eq: "7yjMi5HekJWv3cr5e6Qt7s" }) {
+      pageTitle
+      metaTitle
+      metaDescription
+      topDescription {
         raw
       }
     }
@@ -49,3 +52,13 @@ export const query = graphql`
 `
 
 export default AllBlogListPage
+export const Head = ({ data }: any) => {
+  const { contentfulListy } = data
+
+  return (
+    <Seo
+      title={contentfulListy.metaTitle}
+      description={contentfulListy.metaDescription}
+    />
+  )
+}

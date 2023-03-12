@@ -42,10 +42,13 @@ exports.createPages = async ({ graphql, actions }: props) => {
         }
         distinct(field: { test: SELECT })
       }
-      contentfulListsSettings {
-        contentful_id
-        blogUrl
-        imagesUrl
+      blog: contentfulListy(contentful_id: { eq: "7yjMi5HekJWv3cr5e6Qt7s" }) {
+        url
+        itemsPerPage
+      }
+      images: contentfulListy(contentful_id: { eq: "4tVxP1FSeMcbMN9WMkpD6a" }) {
+        url
+        itemsPerPage
       }
     }
   `)
@@ -58,8 +61,8 @@ exports.createPages = async ({ graphql, actions }: props) => {
   // Extract query results
 
   // paths
-  const pathToBlog = result.data.contentfulListsSettings.blogUrl
-  const pathToImages = result.data.contentfulListsSettings.imagesUrl
+  const pathToBlog = result.data.blog.url
+  const pathToImages = result.data.images.url
 
   // items amount
   const totalCountImages = result.data.allContentfulAsset.totalCount
@@ -72,8 +75,8 @@ exports.createPages = async ({ graphql, actions }: props) => {
   const listOfAllCategories = result.data.allContentfulBlogPost.distinct
 
   // settings
-  const imagesPerPage = 6
-  const postPerPage = 2
+  const imagesPerPage = result.data.images.itemsPerPage
+  const postPerPage = result.data.blog.itemsPerPage
 
   // Load templates
   const imagesListTemplate = pathNode.resolve(

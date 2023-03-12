@@ -1,10 +1,10 @@
 import React from 'react'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
-import DescriptionParagraph from 'src/components/DescriptionParagraph/DescriptionParagraph'
-import Title from 'src/components/Title/Title'
+import { graphql } from 'gatsby'
+
+// components
 import BigText from 'src/components/BigText/BigText'
 import FormWrap from 'src/components/FormWrap/FormWrap'
-import { graphql } from 'gatsby'
 import BackgroundSection from 'src/components/BackgroundSection/BackgroundSection'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 import Seo from 'src/components/Seo'
@@ -57,14 +57,14 @@ const ContactPage = ({ data }: QueryDataProps) => {
             }`}
           >
             <div className="mb-7">
-              <Title
-                text="Porozmawiajmy o Twoich oczekiwaniach"
-                className="text-white-color"
-              />
-              <DescriptionParagraph
-                className="text-white-color"
-                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt ornare massa eget egestas purus viverra accumsan."
-              />
+              <h3 className="text-white-color">
+                Porozmawiajmy o Twoich oczekiwaniach
+              </h3>
+              <p className="text-white-color">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Tincidunt ornare massa eget egestas purus viverra accumsan.
+              </p>
             </div>
             <FormWrap />
           </div>

@@ -1,7 +1,7 @@
 import React from 'react'
-import Wrapper from '../Wrapper/Wrapper'
-
 import { graphql } from 'gatsby'
+
+// components
 import Offers from './Offers'
 
 const ContentfulOfferList = () => {

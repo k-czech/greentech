@@ -119,6 +119,7 @@ export const Navbar = () => {
         target="_blank"
         className="hidden w-12 h-12 bg-blue-color hover:bg-base-color transition-all ml-3.5 lg:flex items-center justify-center xl:ml-0"
         rel="noreferrer"
+        aria-label="Link do sklepu"
       >
         <Basket />
       </a>

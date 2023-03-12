@@ -71,12 +71,18 @@ export const Footer = () => {
 
               <ul className="list-none mb-0">
                 {addresData.map((item: string, index: number) => (
-                  <li key={index} className="text-secondary-color text-sm">
+                  <li
+                    key={index}
+                    className="text-secondary-color text-base md:text-sm-4 md:my-2"
+                  >
                     {item}
                   </li>
                 ))}
                 {companyData.map((item: string, index: number) => (
-                  <li key={index} className="text-gray-600 text-sm">
+                  <li
+                    key={index}
+                    className="text-gray-600 text-base md:text-sm-4 md:my-2"
+                  >
                     {item}
                   </li>
                 ))}

@@ -69,7 +69,6 @@ const options = {
       </blockquote>
     ),
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      console.log(node.data)
       return (
         <Image
           image={node.data.target.gatsbyImageData}

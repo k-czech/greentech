@@ -1,4 +1,4 @@
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
 
 interface WrapProps {

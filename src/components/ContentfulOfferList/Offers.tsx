@@ -1,9 +1,12 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+
+// components
 import Image from '../Image/Image'
 import { ListWrapper } from '../OffersListWrapper/OffersListWrapper'
 
+// styles
 import 'src/assets/styles/categoryList/category-list.scss'
 
 interface nodeProps {

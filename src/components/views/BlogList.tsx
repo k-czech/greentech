@@ -7,7 +7,6 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Pagination from 'src/components/Pagination/Pagination'
 import Filters from '../Filters/Filters'
 import MainWrapper from '../MainWrapper/MainWrapper'
-import Seo from '../Seo'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 
 interface nodeProps {
@@ -27,12 +26,12 @@ interface nodeProps {
 
 const BlogListView = ({ data, pageContext, info }: any) => {
   const { listOfCategories, url } = pageContext
-  const { blogTopDescription } = info
+  const { topDescription } = info
 
   return (
     <MainWrapper className="mt-32 lg:mt-0">
       <Wrapper className="px-6 lg:px-0 max-w-[600px] text-center">
-        <ContentfulRichTech richText={blogTopDescription} />
+        <ContentfulRichTech richText={topDescription} />
         <Filters data={listOfCategories} url={url} />
       </Wrapper>
       <Wrapper className="mt-14 px-10 lg:px-0 ">
@@ -66,12 +65,3 @@ const BlogListView = ({ data, pageContext, info }: any) => {
 }
 
 export default BlogListView
-
-export const Head = ({ info }: any) => {
-  return (
-    <Seo
-      title={info.blogMetatitle}
-      description="Nasza firma to pierwszy krok do uniezależnienia się od firm energetycznych oraz posiadania własnej ekologicznej energii! Zamów instalację do swojego domu."
-    />
-  )
-}
