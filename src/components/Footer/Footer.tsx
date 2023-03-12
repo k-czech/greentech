@@ -3,6 +3,14 @@ import React from 'react'
 import Wrapper from '../Wrapper/Wrapper'
 import { useStaticQuery, graphql } from 'gatsby'
 
+const FooterLink = ({ to, title }: { to: string; title: string }) => (
+  <li className="my-4 md:my-2 hover:underline">
+    <Link to={to} className="text-gray-600 text-base md:text-sm">
+      {title}
+    </Link>
+  </li>
+)
+
 export const Footer = () => {
   const { contentfulFooter } = useStaticQuery(graphql`
     query {
@@ -68,7 +76,7 @@ export const Footer = () => {
                   </li>
                 ))}
                 {companyData.map((item: string, index: number) => (
-                  <li key={index} className="text-gray-400 text-sm">
+                  <li key={index} className="text-gray-600 text-sm">
                     {item}
                   </li>
                 ))}
@@ -83,14 +91,11 @@ export const Footer = () => {
               <ul className="list-none mb-0">
                 {linksCol1.references.map(
                   (link: { url: string; pageTitle: string }, index: number) => (
-                    <li key={index} className="hover:underline">
-                      <Link
-                        to={`/${link.url}`}
-                        className="text-gray-400 text-sm"
-                      >
-                        {link.pageTitle}
-                      </Link>
-                    </li>
+                    <FooterLink
+                      key={index}
+                      to={`/${link.url}`}
+                      title={link.pageTitle}
+                    />
                   ),
                 )}
               </ul>
@@ -104,14 +109,11 @@ export const Footer = () => {
               <ul className="list-none mb-0">
                 {linksCol2.references.map(
                   (link: { url: string; pageTitle: string }, index: number) => (
-                    <li key={index} className="hover:underline">
-                      <Link
-                        to={`/${link.url}`}
-                        className="text-gray-400 text-sm"
-                      >
-                        {link.pageTitle}
-                      </Link>
-                    </li>
+                    <FooterLink
+                      key={index}
+                      to={`/${link.url}`}
+                      title={link.pageTitle}
+                    />
                   ),
                 )}
               </ul>
@@ -123,20 +125,17 @@ export const Footer = () => {
               <ul className="list-none mb-0">
                 {linksCol3.references.map(
                   (link: { url: string; pageTitle: string }, index: number) => (
-                    <li key={index} className="hover:underline">
-                      <Link
-                        to={`/${link.url}`}
-                        className="text-gray-400 text-sm"
-                      >
-                        {link.pageTitle}
-                      </Link>
-                    </li>
+                    <FooterLink
+                      key={index}
+                      to={`/${link.url}`}
+                      title={link.pageTitle}
+                    />
                   ),
                 )}
-                <li>
+                <li className="hover:underline">
                   <Link
                     to="https://sklep.green-tech.com.pl/"
-                    className="text-gray-400 text-sm"
+                    className="text-gray-600 text-base md:text-sm"
                   >
                     Nasz sklep
                   </Link>
@@ -150,7 +149,10 @@ export const Footer = () => {
 
               <ul className="list-none mb-0">
                 {contactData.map((item: string, index: number) => (
-                  <li key={index} className="text-gray-400 text-sm">
+                  <li
+                    key={index}
+                    className="text-gray-600 text-base md:text-sm"
+                  >
                     <a href={item}>{item}</a>
                   </li>
                 ))}

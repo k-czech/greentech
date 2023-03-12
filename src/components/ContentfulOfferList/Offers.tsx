@@ -29,7 +29,7 @@ const Offers = () => {
           url
           shortDesc
           thumbnail {
-            gatsbyImageData
+            gatsbyImageData(width: 260, height: 372)
             title
           }
         }

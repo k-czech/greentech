@@ -49,7 +49,7 @@ const BlogPost = ({ data }: PageProps) => {
         <div className="mt-16 mb-16 ">
           <ContentfulRichTech richText={contentfulBlogPost.content} />
         </div>
-        <Link to="/blog" className="text-base-color mt-10">
+        <Link to="/blog" className="text-[#188658] font-semibold mt-10">
           Wróć
         </Link>
       </div>

@@ -70,7 +70,7 @@ const ContactPage = ({ data }: QueryDataProps) => {
           </div>
         </BackgroundSection>
         {contactData ? (
-          <div className="flex flex-col grow pb-8 px-10 pt-20 md:pl-16 md:pr-20 bg-gray-color">
+          <div className="min-w-[675px] flex flex-col grow pb-8 px-10 pt-20 md:pl-16 md:pr-20 bg-gray-color">
             {contactData.DaneKontaktowe.map((item, index) => (
               <div key={index} className="mb-6">
                 <p className="mb-4">{item.title}</p>

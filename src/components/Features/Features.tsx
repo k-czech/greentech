@@ -32,7 +32,7 @@ const Features = ({
   fourthDesc,
 }: props) => {
   return (
-    <section className="bg-base-color space-y-10 lg:space-y-16 pt-24 pb-16">
+    <section className="bg-[#188658] space-y-10 lg:space-y-16 pt-24 pb-16">
       <Wrapper className="container mx-auto flex flex-col">
         <Parallax translateY={[0, -10]}>
           <div className="flex flex-col mb-16 lg:flex-row lg:justify-between lg:mb-36 ">

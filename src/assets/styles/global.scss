@@ -4,7 +4,8 @@
 @import './theme.scss';
 @import '../styles/image-anim/image-anim.scss';
 
-html {
+html,
+* {
   font-display: swap;
   font-family: $font-family;
 }
