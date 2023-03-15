@@ -44,6 +44,8 @@ export const Footer = () => {
             pageTitle
           }
         }
+        facebook
+        instagram
       }
     }
   `)
@@ -56,6 +58,8 @@ export const Footer = () => {
     linksCol1,
     linksCol2,
     linksCol3,
+    facebook,
+    instagram,
   } = contentfulFooter
   const addresData = addressBlock.addressBlock.split('\n')
   const companyData = companyInfo.companyInfo.split('\n')
@@ -67,7 +71,7 @@ export const Footer = () => {
         <div className="container mx-auto my-12">
           <div className="grid lg:grid-cols-5 md:grid-cols-2 items-baseline space-y-5">
             <div className="footer__columns">
-              <h5 className="mb-2.5 text-base text-extrabold">{companyName}</h5>
+              <p className="mb-2.5 text-base text-extrabold">{companyName}</p>
 
               <ul className="list-none mb-0">
                 {addresData.map((item: string, index: number) => (
@@ -90,9 +94,9 @@ export const Footer = () => {
             </div>
 
             <div className="footer__columns">
-              <h5 className="uppercase mb-2.5 text-base text-extrabold">
+              <p className="uppercase mb-2.5 text-base text-extrabold">
                 Na skróty
-              </h5>
+              </p>
 
               <ul className="list-none mb-0">
                 {linksCol1.references.map(
@@ -108,9 +112,9 @@ export const Footer = () => {
             </div>
 
             <div className="footer__columns">
-              <h5 className="uppercase mb-2.5 text-base text-extrabold">
+              <p className="uppercase mb-2.5 text-base text-extrabold">
                 Oferta
-              </h5>
+              </p>
 
               <ul className="list-none mb-0">
                 {linksCol2.references.map(
@@ -126,7 +130,7 @@ export const Footer = () => {
             </div>
 
             <div className="footer__columns">
-              <h5 className="uppercase mb-2.5 text-white">.</h5>
+              <p className="uppercase mb-2.5 text-white">.</p>
 
               <ul className="list-none mb-0">
                 {linksCol3.references.map(
@@ -149,9 +153,9 @@ export const Footer = () => {
               </ul>
             </div>
             <div className="footer__columns">
-              <h5 className="uppercase mb-2.5 text-base text-extrabold">
+              <p className="uppercase mb-2.5 text-base text-extrabold">
                 Kontakt
-              </h5>
+              </p>
 
               <ul className="list-none mb-0">
                 {contactData.map((item: string, index: number) => (
@@ -169,7 +173,7 @@ export const Footer = () => {
           <div className="footer__social mt-24">
             <a
               target="_blank"
-              href="https://tailwind-elements.com/"
+              href={`${facebook}`}
               className="mr-6 text-base font-extrabold"
               rel="noreferrer"
             >
@@ -177,7 +181,7 @@ export const Footer = () => {
             </a>
             <a
               target="_blank"
-              href="https://tailwind-elements.com/"
+              href={`${instagram}`}
               className="text-base font-extrabold"
               rel="noreferrer"
             >

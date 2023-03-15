@@ -1,9 +1,28 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import BlogListView from 'src/components/views/BlogList'
 import Seo from 'src/components/Seo'
 
-const BlogListPage = ({ data, pageContext }: any) => {
+interface DataProps {
+  allContentfulBlogPost: {
+    nodes: []
+  }
+  contentfulListy: {
+    metaTitle: string
+    metaDescription: string
+    topDescription: string
+  }
+}
+
+interface PageContextProps {
+  listOfCategories: []
+  url: string
+}
+
+const BlogListPage = ({
+  data,
+  pageContext,
+}: PageProps<DataProps, PageContextProps>) => {
   const {
     allContentfulBlogPost: { nodes },
   } = data
@@ -35,7 +54,7 @@ export const query = graphql`
           category
         }
         thubmnail {
-          gatsbyImageData
+          gatsbyImageData(width: 560, height: 316)
           title
         }
       }
@@ -52,7 +71,7 @@ export const query = graphql`
 `
 
 export default BlogListPage
-export const Head = ({ data }: any) => {
+export const Head = ({ data }: PageProps<DataProps>) => {
   const { contentfulListy } = data
 
   return (

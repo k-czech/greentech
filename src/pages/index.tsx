@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, PageProps } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 /// components
@@ -14,41 +14,38 @@ import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 import 'src/assets/styles/image-anim/image-anim.scss'
 
 interface MainPageProps {
-  data: {
-    contentfulMainPage: {
-      pageTitle: string
-      slug: string
-      heroBanner: {
+  contentfulMainPage: {
+    pageTitle: string
+    slug: string
+    heroBanner: {
+      title: string
+      subtitle: string
+      button: string
+      image: {
         title: string
-        subtitle: string
-        button: string
-        image: {
-          title: string
-          gatsbyImageData: IGatsbyImageData
-        }
-        imageMobile: {
-          title: string
-          gatsbyImageData: IGatsbyImageData
-        }
+        gatsbyImageData: IGatsbyImageData
       }
-      contentRefrences: []
-      blogPosts: [
-        {
-          pageTitle: string
-          shortDesc: string
-          url: string
-          thubmnail: {
-            title: string
-            gatsbyImageData: IGatsbyImageData
-          }
-        },
-      ]
+      imageMobile: {
+        title: string
+        gatsbyImageData: IGatsbyImageData
+      }
     }
+    contentRefrences: []
+    blogPosts: [
+      {
+        pageTitle: string
+        shortDesc: string
+        url: string
+        thubmnail: {
+          title: string
+          gatsbyImageData: IGatsbyImageData
+        }
+      },
+    ]
   }
-  pageContext: any
 }
 
-const Homepage = ({ data }: MainPageProps) => {
+const Homepage = ({ data }: PageProps<MainPageProps>) => {
   const { heroBanner, contentRefrences, blogPosts } = data.contentfulMainPage
 
   return (

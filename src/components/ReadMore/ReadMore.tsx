@@ -64,7 +64,7 @@ export const query = graphql`
     pageTitle
     thubmnail {
       title
-      gatsbyImageData
+      gatsbyImageData(width: 360, height: 160)
     }
   }
 `

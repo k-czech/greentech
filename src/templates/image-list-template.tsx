@@ -1,9 +1,28 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import ImageListView from 'src/components/views/ImageList'
 import Seo from 'src/components/Seo'
 
-const imageListPage = ({ data, pageContext }: any) => {
+interface DataProps {
+  allContentfulAsset: {
+    edges: []
+  }
+  contentfulListy: {
+    metaTitle: string
+    metaDescription: string
+    topDescription: string
+  }
+}
+
+interface PageContextProps {
+  listOfAllTags: []
+  url: string
+}
+
+const imageListPage = ({
+  data,
+  pageContext,
+}: PageProps<DataProps, PageContextProps>) => {
   const { allContentfulAsset: edges } = data
   const { contentfulListy } = data
 
@@ -53,7 +72,7 @@ export const query = graphql`
 
 export default imageListPage
 
-export const Head = ({ data }: any) => {
+export const Head = ({ data }: PageProps<DataProps>) => {
   const { contentfulListy } = data
 
   return (

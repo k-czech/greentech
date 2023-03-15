@@ -1,5 +1,4 @@
 import React from 'react'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 /// components
 import Image from 'src/components/Image/Image'
@@ -9,16 +8,29 @@ import Wrapper from '../Wrapper/Wrapper'
 import Zoom from 'react-medium-image-zoom'
 import Filters from '../Filters/Filters'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
-interface nodeProps {
-  node: {
-    description: string
-    gatsbyImageData: IGatsbyImageData
-    title: string
+interface DataProps {
+  data: {
+    edges: []
+  }
+  pageContext: {
+    listOfAllTags: []
+    url: string
+  }
+  info: {
+    topDescription: string
   }
 }
 
-const ImageListView = ({ data, pageContext, info }: any) => {
+interface EdgesProps {
+  node: {
+    gatsbyImageData: IGatsbyImageData
+    description: string
+  }
+}
+
+const ImageListView = ({ data, pageContext, info }: DataProps) => {
   const { listOfAllTags, url } = pageContext
   const { topDescription } = info
 
@@ -44,7 +56,7 @@ const ImageListView = ({ data, pageContext, info }: any) => {
         <Filters data={tagsToShow} url={url} />
       </Wrapper>
       <div className="mt-14 flex flex-wrap gap-4 justify-center mark-left">
-        {data.edges.map((item: any, index: number) => (
+        {data.edges.map((item: EdgesProps, index: number) => (
           <div
             key={index}
             className="relative"

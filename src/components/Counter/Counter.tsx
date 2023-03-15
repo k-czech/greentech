@@ -42,7 +42,7 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
                   </span>
                 ) : (
                   <CountUp start={0} end={inView ? +item.num : 0} duration={3}>
-                    {({ countUpRef }: any) => (
+                    {({ countUpRef }) => (
                       <span
                         className="text-white text-6xl font-extrabold pb-2 block"
                         ref={countUpRef}

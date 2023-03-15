@@ -18,7 +18,7 @@ const ModalWithVideo = ({ videoId, image }: videoProps) => {
   console.log(videoId)
   return (
     <div className="relative max-w-[400px] lg:max-w-none">
-      <Image image={image} />
+      <Image image={image} alt="video thumbnail" />
       <ModalVideo
         channel="youtube"
         isOpen={isOpen}

@@ -11,9 +11,7 @@ interface nodeProps {
   pageTitle: string
   shortDesc: string
   thumbnail: {
-    gatsbyImageData: {
-      images: IGatsbyImageData
-    }
+    gatsbyImageData: IGatsbyImageData
     title: string
   }
 }
@@ -51,7 +49,7 @@ const Offers = () => {
               />
             </Link>
             <div className="mt-6">
-              <Link to={`/${url}`} className="mt-6">
+              <Link to={`/${url}`}>
                 <p className="text-secondary-color underline mb-2 text-xl font-semibold">
                   {pageTitle}
                 </p>

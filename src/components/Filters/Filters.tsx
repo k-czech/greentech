@@ -2,7 +2,12 @@ import { Link } from 'gatsby'
 import React from 'react'
 import slugify from 'slugify'
 
-const Filters = ({ data, url }: any) => {
+interface DataProps {
+  data: []
+  url: string
+}
+
+const Filters = ({ data, url }: DataProps) => {
   return (
     <div className="flex flex-wrap justify-center gap-4 mt-10">
       {data.map((item: string, index: number) => {

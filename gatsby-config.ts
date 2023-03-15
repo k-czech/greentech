@@ -81,6 +81,7 @@ module.exports = {
             {
               family: `Plus Jakarta Sans`,
               axes: 'wght@400;500;600;700;800',
+              subsets: ['latin-ext'],
             },
           ],
         },

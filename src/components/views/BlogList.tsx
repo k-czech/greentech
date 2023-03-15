@@ -9,7 +9,18 @@ import Filters from '../Filters/Filters'
 import MainWrapper from '../MainWrapper/MainWrapper'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 
-interface nodeProps {
+interface DataProps {
+  data: []
+  pageContext: {
+    listOfCategories: []
+    url: string
+  }
+  info: {
+    topDescription: string
+  }
+}
+
+interface NodeProps {
   category: {
     category: string
   }
@@ -24,7 +35,7 @@ interface nodeProps {
   }
 }
 
-const BlogListView = ({ data, pageContext, info }: any) => {
+const BlogListView = ({ data, pageContext, info }: DataProps) => {
   const { listOfCategories, url } = pageContext
   const { topDescription } = info
 
@@ -36,7 +47,7 @@ const BlogListView = ({ data, pageContext, info }: any) => {
       </Wrapper>
       <Wrapper className="mt-14 px-10 lg:px-0 ">
         <ListWrapper>
-          {data.map((node: nodeProps, index: number) => {
+          {data.map((node: NodeProps, index: number) => {
             const { pageTitle, gatsbyPath, thubmnail } = node
             return (
               <div key={index} className="max-w-[560px]">

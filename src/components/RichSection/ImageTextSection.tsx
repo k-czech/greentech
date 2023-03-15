@@ -53,7 +53,7 @@ const ImageTextSection = ({
           }  relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8`}
         >
           <Parallax speed={10} translateY={[0, -10]}>
-            <Image image={image} alt="image" />
+            <Image image={image} alt="image" classNameImg="max-h-[500px]" />
           </Parallax>
         </div>
       </Wrapper>
@@ -70,7 +70,7 @@ export const query = graphql`
       description
     }
     image {
-      gatsbyImageData
+      gatsbyImageData(width: 560)
     }
     imageOnTheRight
     showTitle

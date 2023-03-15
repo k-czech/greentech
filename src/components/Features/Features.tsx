@@ -2,7 +2,6 @@ import React from 'react'
 import Wrapper from '../Wrapper/Wrapper'
 import { graphql } from 'gatsby'
 import { Parallax } from 'react-scroll-parallax'
-import { text } from 'stream/consumers'
 
 interface props {
   title: string
