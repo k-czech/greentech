@@ -34,36 +34,37 @@ const BlogListView = ({ data, pageContext, info }: ViewProps) => {
 
   return (
     <MainWrapper className="mt-32 lg:mt-0">
-      <Wrapper className="px-6 lg:px-0 max-w-[600px] text-center">
+      <div className="px-6 lg:px-0 max-w-[600px] mx-auto text-center">
         <ContentfulRichTech richText={topDescription} />
         <Filters data={listOfCategories} url={url} />
-      </Wrapper>
-      <Wrapper className="mt-14 px-10 lg:px-0 ">
-        <ListWrapper>
-          {nodes.map((node: NodeProps, index: number) => {
-            const { pageTitle, gatsbyPath, thubmnail } = node
-            return (
-              <div key={index} className="max-w-[560px]">
+      </div>
+      <ListWrapper classname={`mt-14`}>
+        {nodes.map((node: NodeProps, index: number) => {
+          const { pageTitle, gatsbyPath, thubmnail } = node
+          return (
+            <div
+              key={index}
+              className="max-w-[560px] grow shrink basis-[500px]"
+            >
+              <Link to={gatsbyPath}>
+                <Image
+                  image={thubmnail.gatsbyImageData}
+                  alt={thubmnail.title}
+                  classNameImg="scale-up"
+                />
+              </Link>
+              <div className="mt-6">
                 <Link to={gatsbyPath}>
-                  <Image
-                    image={thubmnail.gatsbyImageData}
-                    alt={thubmnail.title}
-                    classNameImg="scale-up"
-                  />
+                  <p className="text-secondary-color underline mb-2 text-xl font-semibold">
+                    {pageTitle}
+                  </p>
                 </Link>
-                <div className="mt-6">
-                  <Link to={gatsbyPath}>
-                    <p className="text-secondary-color underline mb-2 text-xl font-semibold">
-                      {pageTitle}
-                    </p>
-                  </Link>
-                </div>
               </div>
-            )
-          })}
-        </ListWrapper>
-        <Pagination pageContext={pageContext} />
-      </Wrapper>
+            </div>
+          )
+        })}
+      </ListWrapper>
+      <Pagination pageContext={pageContext} />
     </MainWrapper>
   )
 }

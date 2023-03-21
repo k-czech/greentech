@@ -47,7 +47,7 @@ const SeoPage = ({ data }: PageProps) => {
   )
 
   return (
-    <Wrapper className="mx-auto px-10 lg:px-0 ">
+    <Wrapper className="mx-auto px-6 md:px-12 xl:px-0 px-10 lg:px-0 ">
       <div className="max-w-[960px] mx-auto mt-32 mb-16 lg:my-16">
         <h1>{contentfulSeoPages.pageTitle}</h1>
         <Image
