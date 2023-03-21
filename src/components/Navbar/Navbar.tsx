@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 import { useLocation } from '@reach/router'
 import { Link } from 'gatsby'
 
@@ -7,17 +7,9 @@ import Wrapper from '../Wrapper/Wrapper'
 import MenuLinks from '../MenuLinks/MenuLinks'
 
 // images
-import { StaticImage } from 'gatsby-plugin-image'
-import Basket from '../../assets/icons/shop-basket.svg'
 import Logo from '../Logo/Logo'
-
-//styles
-import 'src/assets/styles/menuMobile/menu-mobile.scss'
-
-interface menuMobileProps {
-  closeMenuMobile: MouseEventHandler<HTMLButtonElement>
-  isOpen: boolean
-}
+import MenuMobile from '../MenuMobile/MenuMobile'
+import { StaticImage } from 'gatsby-plugin-image'
 
 const usePrevious = <T,>(value: T): T | undefined => {
   const ref = React.useRef<T>()
@@ -25,42 +17,6 @@ const usePrevious = <T,>(value: T): T | undefined => {
     ref.current = value
   })
   return ref.current
-}
-
-const MenuMobile = ({ closeMenuMobile, isOpen }: menuMobileProps) => {
-  return (
-    <div
-      className={`bg-white-color z-50 lg:hidden menu-mobile ${
-        isOpen ? 'open' : ''
-      }`}
-    >
-      <button onClick={closeMenuMobile} className="m-10">
-        <StaticImage src="../../assets/icons/close-ico.png" alt="close-ico" />
-      </button>
-      <div className="flex flex-col">
-        <MenuLinks className={`mobile`} />
-        <div className="m-auto mt-10">
-          <p>Sprawdź nas na</p>
-          <a
-            target="_blank"
-            href="https://tailwind-elements.com/"
-            className="mr-6 text-base font-extrabold"
-            rel="noreferrer"
-          >
-            facebook
-          </a>
-          <a
-            target="_blank"
-            href="https://tailwind-elements.com/"
-            className="text-base font-extrabold"
-            rel="noreferrer"
-          >
-            instagram
-          </a>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 export const Navbar = () => {
@@ -121,7 +77,7 @@ export const Navbar = () => {
         rel="noreferrer"
         aria-label="Link do sklepu"
       >
-        <Basket />
+        <StaticImage src="../../assets/icons/shop-basket.svg" alt="ico" />
       </a>
     </nav>
   )

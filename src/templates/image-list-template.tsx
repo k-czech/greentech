@@ -2,34 +2,22 @@ import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import ImageListView from 'src/components/views/ImageList'
 import Seo from 'src/components/Seo'
-
-interface DataProps {
-  allContentfulAsset: {
-    edges: []
-  }
-  contentfulListy: {
-    metaTitle: string
-    metaDescription: string
-    topDescription: string
-  }
-}
-
-interface PageContextProps {
-  listOfAllTags: []
-  url: string
-}
+import {
+  PageContextProps,
+  TemplateProps,
+} from 'src/interfaces/CustomPagesProps'
 
 const imageListPage = ({
   data,
   pageContext,
-}: PageProps<DataProps, PageContextProps>) => {
-  const { allContentfulAsset: edges } = data
+}: PageProps<TemplateProps, PageContextProps>) => {
+  const { allContentfulAsset } = data
   const { contentfulListy } = data
 
   return (
     <>
       <ImageListView
-        data={edges}
+        data={allContentfulAsset}
         pageContext={pageContext}
         info={contentfulListy}
       />
@@ -46,15 +34,13 @@ export const query = graphql`
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          title
-          description
-          gatsbyImageData
-          metadata {
-            tags {
-              name
-            }
+      nodes {
+        title
+        description
+        gatsbyImageData
+        metadata {
+          tags {
+            name
           }
         }
       }
@@ -72,7 +58,7 @@ export const query = graphql`
 
 export default imageListPage
 
-export const Head = ({ data }: PageProps<DataProps>) => {
+export const Head = ({ data }: PageProps<TemplateProps>) => {
   const { contentfulListy } = data
 
   return (

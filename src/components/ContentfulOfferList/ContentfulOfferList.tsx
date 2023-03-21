@@ -16,7 +16,7 @@ interface NodeProps {
   shortDesc: string
 }
 
-const ContentfulOfferList = () => {
+const ContentfulOfferList = (props: any) => {
   const {
     allContentfulOfferPage: { nodes },
   } = useStaticQuery(graphql`

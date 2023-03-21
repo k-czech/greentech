@@ -1,6 +1,10 @@
 import React, { lazy, Suspense } from 'react'
 import { graphql } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+import {
+  ContentfulRichTextGatsbyReference,
+  RenderRichTextData,
+} from 'gatsby-source-contentful/rich-text'
 
 // components
 import Image from '../Image/Image'
@@ -22,9 +26,7 @@ interface Props {
       gatsbyImageData: IGatsbyImageData
     },
   ]
-  additinalDesc: {
-    raw: []
-  }
+  additinalDesc: RenderRichTextData<ContentfulRichTextGatsbyReference>
 }
 
 interface NodeProps {
@@ -42,17 +44,14 @@ const ImageGrid = ({ images, additinalDesc }: Props) => {
         <div className="slider">
           <div className="slider__inner flex md:flex-wrap md:justify-center md:gap-4">
             {images.map((item: NodeProps, index: number) => (
-              <div
-                key={index}
-                className="slider__item mr-4 md:mr-0"
-                aria-label="slider-item"
-              >
+              <div key={index} className="slider__item mr-4 md:mr-0">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Zoom a11yNameButtonUnzoom="unzomm" a11yNameButtonZoom="zoom">
                     <Image
                       image={item.gatsbyImageData}
                       alt={item.title}
                       classNameImg="scale-up"
+                      aria-label="slider-item"
                     />
                   </Zoom>
                 </Suspense>

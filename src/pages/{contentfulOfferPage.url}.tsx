@@ -25,10 +25,7 @@ interface PageProps {
         title: string
         gatsbyImageData: IGatsbyImageData
       }
-      content: {
-        raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
-        references: []
-      }
+      content: RenderRichTextData<ContentfulRichTextGatsbyReference>
     }
   }
 }
@@ -55,8 +52,8 @@ const BlogPost = ({ data }: PageProps) => {
           </div>
         </div>
       </div>
-      <MainWrapper>
-        <Wrapper className="mx-auto">
+      <MainWrapper className="px-6 md:px-12 xl:px-0">
+        <Wrapper>
           <div className="mt-16">
             <ContentfulRichTech richText={contentfulOfferPage.content} />
           </div>

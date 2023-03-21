@@ -10,10 +10,7 @@ interface Props {
     __typename: string
     contentful_id: string
     title: string
-    content: {
-      raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
-      references: []
-    }
+    content: RenderRichTextData<ContentfulRichTextGatsbyReference>
   }
   width: string
 }

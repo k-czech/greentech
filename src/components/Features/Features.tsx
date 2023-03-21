@@ -3,7 +3,7 @@ import Wrapper from '../Wrapper/Wrapper'
 import { graphql } from 'gatsby'
 import { Parallax } from 'react-scroll-parallax'
 
-interface props {
+interface FeatureProps {
   title: string
   description: {
     description: string
@@ -29,10 +29,17 @@ const Features = ({
   thirdDesc,
   fourth,
   fourthDesc,
-}: props) => {
+}: FeatureProps) => {
+  const features = [
+    [first, firstDesc],
+    [second, secondDesc],
+    [third, thirdDesc],
+    [fourth, fourthDesc],
+  ]
+
   return (
-    <section className="bg-[#188658] space-y-10 lg:space-y-16 pt-24 pb-16">
-      <Wrapper className="container mx-auto flex flex-col">
+    <section className="bg-[#188658] space-y-10 lg:space-y-16 pt-24 pb-16 px-6 md:px-12 xl:px-0 -mx-6 md:-mx-12 xl:mx-auto">
+      <Wrapper className="flex flex-col">
         <Parallax translateY={[0, -10]}>
           <div className="flex flex-col mb-16 lg:flex-row lg:justify-between lg:mb-36 ">
             <div className="lg:w-2/5">
@@ -46,30 +53,14 @@ const Features = ({
         <Parallax translateY={[0, 10]} speed={10}>
           <div className="stands container mx-auto">
             <ul className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-              <li className="text-white">
-                <span className="font-bold text-lg">{first}</span>
-                <p className="text-lg text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
-                  {firstDesc}
-                </p>
-              </li>
-              <li className="text-white ">
-                <span className="font-bold text-lg">{second}</span>
-                <p className="text-lg text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
-                  {secondDesc}
-                </p>
-              </li>
-              <li className="text-white">
-                <span className="font-bold text-lg">{third}</span>
-                <p className="text-lg text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
-                  {thirdDesc}
-                </p>
-              </li>
-              <li className="text-white">
-                <span className="font-boldtext-lg ">{fourth}</span>
-                <p className="text-lg text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
-                  {fourthDesc}
-                </p>
-              </li>
+              {features.map((feature, index) => (
+                <li key={index} className="text-white">
+                  <span className="font-bold text-lg">{feature[0]}</span>
+                  <p className="text-lg text-white font-light pt-3 mt-3 before:absolute before:top-0 before:h-0.5 before:bg-white/40 before:w-full relative">
+                    {feature[1]}
+                  </p>
+                </li>
+              ))}
             </ul>
           </div>
         </Parallax>

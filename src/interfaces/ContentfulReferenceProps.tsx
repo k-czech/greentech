@@ -76,31 +76,3 @@ export interface ContentfulReferencesProps
     ColumnSectionReference,
     FeaturesReference,
     ModalWithVideoReferece {}
-
-export interface ContentfulReferencesRichTextProps {
-  data: {
-    target: ContentfulReferencesProps
-  }
-}
-
-export interface RichTextImage {
-  data: {
-    target: {
-      gatsbyImageData: IGatsbyImageData
-      title: string
-    }
-  }
-}
-
-export interface RichTextBlockQuote {
-  content: [
-    {
-      value: string
-      content: [
-        {
-          value: string
-        },
-      ]
-    },
-  ]
-}

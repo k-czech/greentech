@@ -14,7 +14,7 @@ const WelcomeSection = ({ title, description, titleOnTheRigth }: Props) => {
   const text = description.description
 
   return (
-    <section className="bg-gray-color py-10 lg:py-24 lg:my-11 lg:mx-auto">
+    <section className="bg-gray-color py-10 lg:py-24 lg:my-11 px-6 md:px-12 xl:px-0 -mx-6 md:-mx-12 xl:mx-auto">
       <Wrapper
         className={`mx-auto flex flex-col md:flex-row md:justify-between ${
           titleOnTheRigth ? 'gap-x-16' : 'gap-0'

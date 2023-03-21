@@ -20,9 +20,7 @@ interface PageProps {
       pageTitle: string
       metaTitle: string
       url: string
-      content: {
-        raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
-      }
+      content: RenderRichTextData<ContentfulRichTextGatsbyReference>
       heroImage: {
         title: string
         gatsbyImageData: IGatsbyImageData

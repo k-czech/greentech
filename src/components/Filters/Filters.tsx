@@ -3,7 +3,7 @@ import React from 'react'
 import slugify from 'slugify'
 
 interface DataProps {
-  data: []
+  data: string[]
   url: string
 }
 

@@ -71,7 +71,7 @@ export const Footer = () => {
         <div className="container mx-auto my-12">
           <div className="grid lg:grid-cols-5 md:grid-cols-2 items-baseline space-y-5">
             <div className="footer__columns">
-              <p className="mb-2.5 text-base text-extrabold">{companyName}</p>
+              <p className="mb-2.5 text-base font-extrabold">{companyName}</p>
 
               <ul className="list-none mb-0">
                 {addresData.map((item: string, index: number) => (
@@ -94,7 +94,7 @@ export const Footer = () => {
             </div>
 
             <div className="footer__columns">
-              <p className="uppercase mb-2.5 text-base text-extrabold">
+              <p className="uppercase mb-2.5 text-base font-extrabold">
                 Na skróty
               </p>
 
@@ -112,7 +112,7 @@ export const Footer = () => {
             </div>
 
             <div className="footer__columns">
-              <p className="uppercase mb-2.5 text-base text-extrabold">
+              <p className="uppercase mb-2.5 text-base font-extrabold">
                 Oferta
               </p>
 
@@ -153,7 +153,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div className="footer__columns">
-              <p className="uppercase mb-2.5 text-base text-extrabold">
+              <p className="uppercase mb-2.5 text-base font-extrabold">
                 Kontakt
               </p>
 

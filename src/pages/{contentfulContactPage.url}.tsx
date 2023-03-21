@@ -44,7 +44,7 @@ const ContactPage = ({ data }: QueryDataProps) => {
   const { contactData, bcgImg } = data.contentfulContactPage
 
   return (
-    <MainWrapper>
+    <MainWrapper className="px-0">
       <section className="flex flex-col p-0 mt-32 md:flex-row lg:mt-0">
         <BackgroundSection
           image={bcgImg.gatsbyImageData}
@@ -70,7 +70,7 @@ const ContactPage = ({ data }: QueryDataProps) => {
           </div>
         </BackgroundSection>
         {contactData ? (
-          <div className="min-w-[675px] flex flex-col grow pb-8 px-10 pt-20 md:pl-16 md:pr-20 bg-gray-color">
+          <div className="flex flex-col grow pb-8 px-10 pt-20 md:px-16 bg-gray-color">
             {contactData.DaneKontaktowe.map((item, index) => (
               <div key={index} className="mb-6">
                 <p className="mb-4">{item.title}</p>

@@ -9,7 +9,6 @@ interface WrapProps {
 }
 
 const BackgroundSection = ({ children, className, image, alt }: WrapProps) => {
-  if (!image) return null
   const img = getImage(image)
   if (!img) return null
 

@@ -9,30 +9,17 @@ import Zoom from 'react-medium-image-zoom'
 import Filters from '../Filters/Filters'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { ViewProps } from 'src/interfaces/CustomPagesProps'
 
-interface DataProps {
-  data: {
-    edges: []
-  }
-  pageContext: {
-    listOfAllTags: []
-    url: string
-  }
-  info: {
-    topDescription: string
-  }
+interface NodeProps {
+  gatsbyImageData: IGatsbyImageData
+  description: string
 }
 
-interface EdgesProps {
-  node: {
-    gatsbyImageData: IGatsbyImageData
-    description: string
-  }
-}
-
-const ImageListView = ({ data, pageContext, info }: DataProps) => {
+const ImageListView = ({ data, pageContext, info }: ViewProps) => {
   const { listOfAllTags, url } = pageContext
   const { topDescription } = info
+  const { nodes } = data
 
   const tagsToShow = listOfAllTags.map((item: string) =>
     item === 'Wszystkie' ? item : item.split('- ')[1],
@@ -56,7 +43,7 @@ const ImageListView = ({ data, pageContext, info }: DataProps) => {
         <Filters data={tagsToShow} url={url} />
       </Wrapper>
       <div className="mt-14 flex flex-wrap gap-4 justify-center mark-left">
-        {data.edges.map((item: EdgesProps, index: number) => (
+        {nodes.map((item: NodeProps, index: number) => (
           <div
             key={index}
             className="relative"
@@ -65,7 +52,7 @@ const ImageListView = ({ data, pageContext, info }: DataProps) => {
           >
             <Zoom>
               <Image
-                image={item.node.gatsbyImageData}
+                image={item.gatsbyImageData}
                 alt="image"
                 classNameImg="w-full scale-up brightness-mask"
               />
@@ -75,7 +62,7 @@ const ImageListView = ({ data, pageContext, info }: DataProps) => {
               className="absolute left-3 bottom-3 text-white-color font-light z-10"
               style={{ opacity: 0 }}
             >
-              {item.node.description}
+              {item.description}
             </div>
           </div>
         ))}

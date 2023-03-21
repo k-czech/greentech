@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
+
+/// Components
 import Wrapper from 'src/components/Wrapper/Wrapper'
 import { ListWrapper } from 'src/components/OffersListWrapper/OffersListWrapper'
 import Image from 'src/components/Image/Image'
@@ -9,16 +11,8 @@ import Filters from '../Filters/Filters'
 import MainWrapper from '../MainWrapper/MainWrapper'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 
-interface DataProps {
-  data: []
-  pageContext: {
-    listOfCategories: []
-    url: string
-  }
-  info: {
-    topDescription: string
-  }
-}
+// Props
+import { ViewProps } from 'src/interfaces/CustomPagesProps'
 
 interface NodeProps {
   category: {
@@ -28,16 +22,15 @@ interface NodeProps {
   gatsbyPath: string
   pageTitle: string
   thubmnail: {
-    gatsbyImageData: {
-      images: IGatsbyImageData
-    }
+    gatsbyImageData: IGatsbyImageData
     title: string
   }
 }
 
-const BlogListView = ({ data, pageContext, info }: DataProps) => {
+const BlogListView = ({ data, pageContext, info }: ViewProps) => {
   const { listOfCategories, url } = pageContext
   const { topDescription } = info
+  const { nodes } = data
 
   return (
     <MainWrapper className="mt-32 lg:mt-0">
@@ -47,7 +40,7 @@ const BlogListView = ({ data, pageContext, info }: DataProps) => {
       </Wrapper>
       <Wrapper className="mt-14 px-10 lg:px-0 ">
         <ListWrapper>
-          {data.map((node: NodeProps, index: number) => {
+          {nodes.map((node: NodeProps, index: number) => {
             const { pageTitle, gatsbyPath, thubmnail } = node
             return (
               <div key={index} className="max-w-[560px]">

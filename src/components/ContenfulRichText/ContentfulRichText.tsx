@@ -17,11 +17,6 @@ import ColumnSection from '../columnSection/colulmSection'
 import Features from '../Features/Features'
 import ContentfulOfferList from '../ContentfulOfferList/ContentfulOfferList'
 import ModalWithVideo from '../ModalWithVideo/ModalWithVideo'
-import {
-  ContentfulReferencesRichTextProps,
-  RichTextImage,
-  RichTextBlockQuote,
-} from 'src/interfaces/ContentfulReferenceProps'
 
 interface propTypes {
   richText: RenderRichTextData<ContentfulRichTextGatsbyReference>
@@ -29,15 +24,18 @@ interface propTypes {
 
 const options = {
   renderMark: {
-    [MARKS.BOLD]: (text: any) => <b className="font-bold">{text}</b>,
-    [MARKS.ITALIC]: (text: any) => <i className="font-italic">{text}</i>,
-    [MARKS.UNDERLINE]: (text: any) => <u className="underline">{text}</u>,
+    [MARKS.BOLD]: (text: React.ReactNode) => (
+      <b className="font-bold">{text}</b>
+    ),
+    [MARKS.ITALIC]: (text: React.ReactNode) => (
+      <i className="font-italic">{text}</i>
+    ),
+    [MARKS.UNDERLINE]: (text: React.ReactNode) => (
+      <u className="underline">{text}</u>
+    ),
   },
   renderNode: {
-    [INLINES.HYPERLINK]: (
-      node: { data: { url: string } },
-      children: React.ReactNode,
-    ) => (
+    [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => (
       <a
         href={node.data.url}
         target="_blank"
@@ -47,27 +45,31 @@ const options = {
         {children}
       </a>
     ),
-    [BLOCKS.HEADING_1]: (node: any, children: JSX.Element) => (
+    [BLOCKS.HEADING_1]: (node: object, children: React.ReactNode) => (
       <h1>{children}</h1>
     ),
-    [BLOCKS.HEADING_2]: (node: any, children: JSX.Element) => {
+    [BLOCKS.HEADING_2]: (node: object, children: React.ReactNode) => {
       return <h2>{children}</h2>
     },
-    [BLOCKS.HEADING_3]: (node: any, children: JSX.Element) => (
+    [BLOCKS.HEADING_3]: (node: object, children: React.ReactNode) => (
       <h3>{children}</h3>
     ),
-    [BLOCKS.HEADING_4]: (node: any, children: JSX.Element) => (
+    [BLOCKS.HEADING_4]: (node: object, children: React.ReactNode) => (
       <h4>{children}</h4>
     ),
-    [BLOCKS.HEADING_5]: (node: any, children: JSX.Element) => (
+    [BLOCKS.HEADING_5]: (node: object, children: React.ReactNode) => (
       <h5>{children}</h5>
     ),
-    [BLOCKS.HEADING_6]: (node: any, children: JSX.Element) => (
+    [BLOCKS.HEADING_6]: (node: object, children: React.ReactNode) => (
       <h6>{children}</h6>
     ),
-    [BLOCKS.OL_LIST]: (node: any, children: JSX.Element) => <ol>{children}</ol>,
-    [BLOCKS.UL_LIST]: (node: any, children: JSX.Element) => <ul>{children}</ul>,
-    [BLOCKS.LIST_ITEM]: (node: any, children: JSX.Element) => (
+    [BLOCKS.OL_LIST]: (node: object, children: React.ReactNode) => (
+      <ol>{children}</ol>
+    ),
+    [BLOCKS.UL_LIST]: (node: object, children: React.ReactNode) => (
+      <ul>{children}</ul>
+    ),
+    [BLOCKS.LIST_ITEM]: (node: object, children: React.ReactNode) => (
       <li className="flex mb-2">
         <span className="shrink-0 mr-4">
           <StaticImage src="../../assets/icons/arrow-r.png" alt="ico" />
@@ -75,7 +77,7 @@ const options = {
         {children}
       </li>
     ),
-    [BLOCKS.PARAGRAPH]: (node: RichTextBlockQuote, children: string) => {
+    [BLOCKS.PARAGRAPH]: (node: any, children: React.ReactNode) => {
       if (node.content[0].value === '') {
         return <br />
       } else {
@@ -83,12 +85,12 @@ const options = {
       }
     },
     [BLOCKS.HR]: () => <hr className="mb-6" />,
-    [BLOCKS.QUOTE]: (children: RichTextBlockQuote) => (
+    [BLOCKS.QUOTE]: (children: any) => (
       <blockquote>
         <>{`"${children.content[0].content[0].value}"`}</>
       </blockquote>
     ),
-    [BLOCKS.EMBEDDED_ASSET]: (node: RichTextImage) => {
+    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
       return (
         <Image
           image={node.data.target.gatsbyImageData}
@@ -97,7 +99,7 @@ const options = {
         />
       )
     },
-    [BLOCKS.EMBEDDED_ENTRY]: (node: ContentfulReferencesRichTextProps) => {
+    [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
       switch (node.data.target.__typename) {
         case 'ContentfulWelcomeSection':
           return <WelcomeSection {...node.data.target} />

@@ -2,10 +2,24 @@ import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
+const LogoImage = ({ color }: { color: string }) => {
+  if (color === 'white') {
+    return (
+      <StaticImage
+        src="../../assets/icons/logo_white.png"
+        alt="logo"
+        width={144}
+      />
+    )
+  } else {
+    return (
+      <StaticImage src="../../assets/icons/logo.png" alt="logo" width={144} />
+    )
+  }
+}
+
 const Logo = ({ location }: { location: string }) => {
-  const {
-    allContentfulOfferPage: { nodes },
-  } = useStaticQuery(graphql`
+  const { allContentfulOfferPage } = useStaticQuery(graphql`
     query {
       allContentfulOfferPage {
         nodes {
@@ -15,70 +29,38 @@ const Logo = ({ location }: { location: string }) => {
     }
   `)
 
-  const offerPagesUrls = nodes.map((item: { url: string }) => item.url)
+  const offerPagesUrls = allContentfulOfferPage.nodes.map(
+    (item: { url: string }) => item.url,
+  )
 
-  if (offerPagesUrls.includes(location.slice(1).slice(0, -1))) {
-    return (
-      <>
-        <span className="hidden md:block">
-          <StaticImage
-            src="../../assets/icons/logo_white.png"
-            alt="logo"
-            width={144}
-          />
-        </span>
-        <span className="md:hidden">
-          <StaticImage
-            src="../../assets/icons/logo.png"
-            alt="logo"
-            width={144}
-          />
-        </span>
-      </>
-    )
-  }
-  return (
-    <>
-      {location !== '/' &&
-      offerPagesUrls.includes(location.slice(1).slice(0, -1)) ? (
-        <>
-          <span className="hidden md:block">
-            <StaticImage
-              src="../../assets/icons/logo_white.png"
-              alt="logo"
-              width={144}
-            />
-          </span>
-          <span className="lg:hidden">
-            <StaticImage
-              src="../../assets/icons/logo.png"
-              alt="logo"
-              width={144}
-            />
-          </span>
-        </>
-      ) : location === '/' ? (
+  switch (location) {
+    case '/':
+      return (
         <>
           <span className="md:hidden">
-            <StaticImage
-              src="../../assets/icons/logo_white.png"
-              alt="logo"
-              width={144}
-            />
+            <LogoImage color="white" />
           </span>
           <span className="hidden md:block">
-            <StaticImage
-              src="../../assets/icons/logo.png"
-              alt="logo"
-              width={144}
-            />
+            <LogoImage color="color" />
           </span>
         </>
-      ) : (
-        <StaticImage src="../../assets/icons/logo.png" alt="logo" width={144} />
-      )}
-    </>
-  )
+      )
+    default:
+      if (offerPagesUrls.includes(location.slice(1).slice(0, -1))) {
+        return (
+          <>
+            <span className="hidden md:block">
+              <LogoImage color="white" />
+            </span>
+            <span className="md:hidden">
+              <LogoImage color="color" />
+            </span>
+          </>
+        )
+      } else {
+        return <LogoImage color="color" />
+      }
+  }
 }
 
 export default Logo

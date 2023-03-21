@@ -1,7 +1,6 @@
 import React from 'react'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 
-import Wrapper from '../Wrapper/Wrapper'
 import Image from '../Image/Image'
 import { graphql } from 'gatsby'
 import { Parallax, useParallax } from 'react-scroll-parallax'
@@ -34,7 +33,7 @@ const ImageTextSection = ({
 
   return (
     <section>
-      <Wrapper className="container mx-auto flex flex-col items-center md:flex-row md:justify-between">
+      <div className="mx-auto flex flex-col items-center md:flex-row md:justify-between">
         <div
           className={`md:w-1/2 ${
             imageOnTheRight ? 'md:order-first md:mr-5' : 'md:order-last'
@@ -53,10 +52,14 @@ const ImageTextSection = ({
           }  relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8`}
         >
           <Parallax speed={10} translateY={[0, -10]}>
-            <Image image={image} alt="image" classNameImg="max-h-[500px]" />
+            <Image
+              image={image.gatsbyImageData}
+              alt="image"
+              classNameImg="max-h-[500px]"
+            />
           </Parallax>
         </div>
-      </Wrapper>
+      </div>
     </section>
   )
 }

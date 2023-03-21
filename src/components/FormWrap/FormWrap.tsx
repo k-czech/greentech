@@ -80,6 +80,7 @@ const FormWrap = () => {
           id="email"
           {...register('email', {
             pattern: regexEmail,
+            required: true,
           })}
         />
         <label htmlFor="email">E-mail</label>

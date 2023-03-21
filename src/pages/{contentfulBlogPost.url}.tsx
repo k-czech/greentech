@@ -18,14 +18,17 @@ interface PageProps {
       url: string
       metaTitle: string
       metaDescription: string
-      blogPosts: {
-        pageTitle: string
-        url: string
-        contentful_id: string
-      }
-      content: {
-        raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
-      }
+      blogPosts: [
+        {
+          pageTitle: string
+          url: string
+          thubmnail: {
+            gatsbyImageData: IGatsbyImageData
+            title: string
+          }
+        },
+      ]
+      content: RenderRichTextData<ContentfulRichTextGatsbyReference>
       image: {
         title: string
         gatsbyImageData: IGatsbyImageData
@@ -36,9 +39,9 @@ interface PageProps {
 
 const BlogPost = ({ data }: PageProps) => {
   const { contentfulBlogPost } = data
-  console.log(data)
+
   return (
-    <Wrapper className="mx-auto px-10 lg:px-0 ">
+    <Wrapper className="mx-auto px-6 md:px-12 xl:px-0 px-10 lg:px-0 ">
       <div className="max-w-[960px] mx-auto mt-32 mb-16 lg:my-16">
         <h1>{contentfulBlogPost.pageTitle}</h1>
         <Image

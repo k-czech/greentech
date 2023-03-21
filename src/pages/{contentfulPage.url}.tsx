@@ -11,6 +11,7 @@ import Wrapper from 'src/components/Wrapper/Wrapper'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 import Seo from 'src/components/Seo'
 import ReadMore from 'src/components/ReadMore/ReadMore'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface PageProps {
   data: {
@@ -19,18 +20,21 @@ interface PageProps {
       url: string
       metaTitle: string
       metaDescription: string
-      blogPosts: {
-        pageTitle: string
-        url: string
-        contentful_id: string
-      }
+      blogPosts: [
+        {
+          pageTitle: string
+          url: string
+          contentful_id: string
+          thubmnail: {
+            gatsbyImageData: IGatsbyImageData
+            title: string
+          }
+        },
+      ]
       pageDescription: {
         pageDescription: string
       }
-      content: {
-        raw: RenderRichTextData<ContentfulRichTextGatsbyReference>
-        references: []
-      }
+      content: RenderRichTextData<ContentfulRichTextGatsbyReference>
     }
   }
 }

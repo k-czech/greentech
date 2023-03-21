@@ -48,7 +48,7 @@ export const Hero = ({ data }: dataProps) => {
   ])
 
   return (
-    <MainWrapper>
+    <div className="max-w-[1440px] mx-auto">
       <BackgroundSection
         image={images}
         alt={data.image.title}
@@ -68,6 +68,6 @@ export const Hero = ({ data }: dataProps) => {
           </Parallax>
         </div>
       </BackgroundSection>
-    </MainWrapper>
+    </div>
   )
 }

@@ -29,7 +29,10 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
   })
 
   return (
-    <section className={`bg-yellow-color pt-24 pb-16`} id="counter">
+    <section
+      className={`bg-yellow-color pt-24 pb-16 px-6 md:px-12 xl:px-0 -mx-6 md:-mx-12 xl:mx-auto`}
+      id="counter"
+    >
       <Wrapper className="mx-auto lg:space-y-16">
         <h3 className={`text-white`}>{title}</h3>
         <div className="flex flex-col md:flex-row md:justify-between md:items-start space-y-5 md:space-y-0">
