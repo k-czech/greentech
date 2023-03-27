@@ -8,11 +8,13 @@ import Wrapper from '../Wrapper/Wrapper'
 import Zoom from 'react-medium-image-zoom'
 import Filters from '../Filters/Filters'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { ViewProps } from 'src/interfaces/CustomPagesProps'
+import 'react-medium-image-zoom/dist/styles.css'
 
 interface NodeProps {
-  gatsbyImageData: IGatsbyImageData
+  smallImage: IGatsbyImageData
+  bigImage: IGatsbyImageData
   description: string
 }
 
@@ -36,6 +38,14 @@ const ImageListView = ({ data, pageContext, info }: ViewProps) => {
     desc.style.opacity = '0'
   }
 
+  const zoomImageData = (image: IGatsbyImageData) => {
+    const imageData = getImage(image)
+    const src = imageData?.images.fallback?.src
+    const { sizes, srcSet } = imageData?.images?.sources?.[0] ?? {}
+
+    return { src, sizes, srcSet }
+  }
+
   return (
     <MainWrapper className="mt-32 lg:mt-0">
       <Wrapper className="px-6 lg:px-0 max-w-[600px] text-center">
@@ -50,11 +60,11 @@ const ImageListView = ({ data, pageContext, info }: ViewProps) => {
             onMouseEnter={showDesc}
             onMouseLeave={hideDesc}
           >
-            <Zoom>
+            <Zoom zoomImg={{ alt: 'sdsd', ...zoomImageData(item.bigImage) }}>
               <Image
-                image={item.gatsbyImageData}
+                image={item.smallImage}
                 alt="image"
-                classNameImg="w-full scale-up brightness-mask"
+                classNameImg=" max-w-[525px] h-[288px] scale-up brightness-mask"
               />
             </Zoom>
             <div

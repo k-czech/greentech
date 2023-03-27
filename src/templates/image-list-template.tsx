@@ -37,7 +37,8 @@ export const query = graphql`
       nodes {
         title
         description
-        gatsbyImageData
+        smallImage: gatsbyImageData(height: 288, quality: 80)
+        bigImage: gatsbyImageData(quality: 90)
         metadata {
           tags {
             name

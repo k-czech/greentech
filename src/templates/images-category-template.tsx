@@ -14,6 +14,8 @@ const imageListPage = ({
   const { allContentfulAsset: edges } = data
   const { contentfulListy } = data
 
+  console.log(edges)
+
   return (
     <>
       <ImageListView
@@ -35,7 +37,8 @@ export const query = graphql`
       nodes {
         title
         description
-        gatsbyImageData
+        smallImage: gatsbyImageData(height: 288, quality: 80)
+        bigImage: gatsbyImageData(quality: 90)
         metadata {
           tags {
             name

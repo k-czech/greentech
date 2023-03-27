@@ -4,6 +4,7 @@ import Wrapper from '../Wrapper/Wrapper'
 import { graphql } from 'gatsby'
 import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
+import { StaticImage } from 'gatsby-plugin-image'
 
 interface Props {
   title: string
@@ -22,11 +23,20 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
 
   const arr = datas.datas.split('-').map((item) => {
     const subarr = item.split(';')
+    let symbol = null
+    let numToCount = subarr[0]
+    if (!+subarr[0][0]) {
+      symbol = subarr[0][0]
+      numToCount = subarr[0].slice(1)
+    }
     return {
-      num: subarr[0],
+      symbol: symbol,
+      num: numToCount,
       text: subarr[1],
     }
   })
+
+  console.log(arr)
 
   return (
     <section
@@ -41,17 +51,35 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
               <div key={index} ref={ref}>
                 {!+item.num ? (
                   <span className="text-white text-6xl font-extrabold pb-2 block">
-                    {item.num}
+                    {index === arr.length - 1 ? (
+                      <StaticImage
+                        src="../../assets/icons/circle4.png"
+                        alt=""
+                      />
+                    ) : (
+                      item.num
+                    )}
                   </span>
                 ) : (
-                  <CountUp start={0} end={inView ? +item.num : 0} duration={3}>
-                    {({ countUpRef }) => (
-                      <span
-                        className="text-white text-6xl font-extrabold pb-2 block"
-                        ref={countUpRef}
-                      />
-                    )}
-                  </CountUp>
+                  <div className="flex gap-2 pb-2 block">
+                    {item.symbol ? (
+                      <span className="text-white text-6xl font-extrabold">
+                        {item.symbol}
+                      </span>
+                    ) : null}
+                    <CountUp
+                      start={0}
+                      end={inView ? +item.num : 0}
+                      duration={3}
+                    >
+                      {({ countUpRef }) => (
+                        <span
+                          className="text-white text-6xl font-extrabold pb-2 block"
+                          ref={countUpRef}
+                        />
+                      )}
+                    </CountUp>
+                  </div>
                 )}
                 <p className={`text-white text-base font-light max-w-[200px]`}>
                   {item.text}

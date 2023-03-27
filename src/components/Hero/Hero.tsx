@@ -6,7 +6,6 @@ import {
   IGatsbyImageData,
   withArtDirection,
 } from 'gatsby-plugin-image'
-import MainWrapper from '../MainWrapper/MainWrapper'
 import { Parallax } from 'react-scroll-parallax'
 
 interface dataProps {

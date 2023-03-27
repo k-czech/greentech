@@ -46,11 +46,11 @@ const ImageGrid = ({ images, additinalDesc }: Props) => {
             {images.map((item: NodeProps, index: number) => (
               <div key={index} className="slider__item mr-4 md:mr-0">
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Zoom a11yNameButtonUnzoom="unzomm" a11yNameButtonZoom="zoom">
+                  <Zoom>
                     <Image
                       image={item.gatsbyImageData}
                       alt={item.title}
-                      classNameImg="scale-up"
+                      classNameImg="w-full max-w-[525px] max-h-[288px] scale-up"
                       aria-label="slider-item"
                     />
                   </Zoom>
@@ -72,7 +72,7 @@ export const query = graphql`
     images {
       title
       description
-      gatsbyImageData(layout: FIXED)
+      gatsbyImageData(quality: 90)
     }
     additinalDesc {
       raw
