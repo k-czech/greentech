@@ -27,7 +27,11 @@ const AllBlogListPage = ({
 
 export const query = graphql`
   query ($skip: Int!, $limit: Int!) {
-    allContentfulBlogPost(limit: $limit, skip: $skip) {
+    allContentfulBlogPost(
+      sort: { createdAt: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       group(field: { test: SELECT }) {
         totalCount
         fieldValue

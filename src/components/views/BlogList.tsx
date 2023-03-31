@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 /// Components
-import Wrapper from 'src/components/Wrapper/Wrapper'
 import { ListWrapper } from 'src/components/OffersListWrapper/OffersListWrapper'
 import Image from 'src/components/Image/Image'
 import { IGatsbyImageData } from 'gatsby-plugin-image'

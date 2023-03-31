@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import { graphql } from 'gatsby'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import {
   ContentfulRichTextGatsbyReference,
   RenderRichTextData,
@@ -26,6 +26,11 @@ interface Props {
       gatsbyImageData: IGatsbyImageData
     },
   ]
+  bigImages: [
+    {
+      gatsbyImageData: IGatsbyImageData
+    },
+  ]
   additinalDesc: RenderRichTextData<ContentfulRichTextGatsbyReference>
 }
 
@@ -34,7 +39,15 @@ interface NodeProps {
   title: string
 }
 
-const ImageGrid = ({ images, additinalDesc }: Props) => {
+const ImageGrid = ({ images, additinalDesc, bigImages }: Props) => {
+  const zoomImageData = (image: IGatsbyImageData) => {
+    const imageData = getImage(image)
+    const src = imageData?.images.fallback?.src
+    const { sizes, srcSet } = imageData?.images?.sources?.[0] ?? {}
+
+    return { src, sizes, srcSet }
+  }
+
   return (
     <section className="flex flex-wrap justify-center gap-6">
       <Wrapper className="max-w-[560px] text-center">
@@ -46,11 +59,16 @@ const ImageGrid = ({ images, additinalDesc }: Props) => {
             {images.map((item: NodeProps, index: number) => (
               <div key={index} className="slider__item mr-4 md:mr-0">
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Zoom>
+                  <Zoom
+                    zoomImg={{
+                      alt: item.title,
+                      ...zoomImageData(bigImages[index].gatsbyImageData),
+                    }}
+                  >
                     <Image
                       image={item.gatsbyImageData}
                       alt={item.title}
-                      classNameImg="w-full max-w-[525px] max-h-[288px] scale-up"
+                      classNameImg="w-full max-w-[525px] scale-up"
                       aria-label="slider-item"
                     />
                   </Zoom>
@@ -72,7 +90,10 @@ export const query = graphql`
     images {
       title
       description
-      gatsbyImageData(quality: 90)
+      gatsbyImageData(height: 288, quality: 80)
+    }
+    bigImages: images {
+      gatsbyImageData(layout: FIXED, quality: 90)
     }
     additinalDesc {
       raw

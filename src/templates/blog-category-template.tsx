@@ -29,6 +29,7 @@ export const query = graphql`
   query ($skip: Int!, $limit: Int!, $category: String!) {
     allContentfulBlogPost(
       filter: { test: { eq: $category } }
+      sort: { createdAt: DESC }
       limit: $limit
       skip: $skip
     ) {

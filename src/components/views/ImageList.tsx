@@ -60,7 +60,7 @@ const ImageListView = ({ data, pageContext, info }: ViewProps) => {
             onMouseEnter={showDesc}
             onMouseLeave={hideDesc}
           >
-            <Zoom zoomImg={{ alt: 'sdsd', ...zoomImageData(item.bigImage) }}>
+            <Zoom zoomImg={{ alt: 'item', ...zoomImageData(item.bigImage) }}>
               <Image
                 image={item.smallImage}
                 alt="image"

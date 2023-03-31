@@ -31,6 +31,7 @@ export const query = graphql`
   query ($skip: Int!, $limit: Int!, $name: String!) {
     allContentfulAsset(
       filter: { metadata: { tags: { elemMatch: { name: { eq: $name } } } } }
+      sort: { createdAt: DESC }
       limit: $limit
       skip: $skip
     ) {
@@ -38,7 +39,7 @@ export const query = graphql`
         title
         description
         smallImage: gatsbyImageData(height: 288, quality: 80)
-        bigImage: gatsbyImageData(quality: 90)
+        bigImage: gatsbyImageData(layout: FULL_WIDTH, quality: 90)
         metadata {
           tags {
             name

@@ -31,6 +31,7 @@ export const query = graphql`
       filter: {
         metadata: { tags: { elemMatch: { name: { regex: "/realizacje/" } } } }
       }
+      sort: { createdAt: DESC }
       limit: $limit
       skip: $skip
     ) {
@@ -38,7 +39,7 @@ export const query = graphql`
         title
         description
         smallImage: gatsbyImageData(height: 288, quality: 80)
-        bigImage: gatsbyImageData(quality: 90)
+        bigImage: gatsbyImageData(layout: FIXED, quality: 90)
         metadata {
           tags {
             name

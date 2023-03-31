@@ -36,8 +36,6 @@ const Counter = ({ title, datas, link, linkText }: Props) => {
     }
   })
 
-  console.log(arr)
-
   return (
     <section
       className={`bg-yellow-color pt-24 pb-16 px-6 md:px-12 xl:px-0 -mx-6 md:-mx-12 xl:mx-auto`}
