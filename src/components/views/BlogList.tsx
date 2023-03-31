@@ -31,6 +31,8 @@ const BlogListView = ({ data, pageContext, info }: ViewProps) => {
   const { topDescription } = info
   const { nodes } = data
 
+  console.log(nodes)
+
   return (
     <MainWrapper className="mt-32 lg:mt-0">
       <div className="px-6 lg:px-0 max-w-[600px] mx-auto text-center">

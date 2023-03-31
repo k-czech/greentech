@@ -36,9 +36,6 @@ export const query = graphql`
       nodes {
         gatsbyPath(filePath: "/{contentfulBlogPost.url}")
         pageTitle
-        category {
-          category
-        }
         thubmnail {
           gatsbyImageData(width: 560, height: 316)
           title
