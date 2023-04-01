@@ -68,7 +68,7 @@ const ImageGrid = ({ images, additinalDesc, bigImages }: Props) => {
                     <Image
                       image={item.gatsbyImageData}
                       alt={item.title}
-                      classNameImg="w-full max-w-[525px] scale-up"
+                      classNameImg="max-w-[525px] w-[70vw] h-[288px] md:w-full md:h-auto scale-up"
                       aria-label="slider-item"
                     />
                   </Zoom>
