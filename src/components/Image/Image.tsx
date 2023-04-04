@@ -8,6 +8,7 @@ interface imgProps {
 }
 
 const Image = ({ image, alt = '', classNameImg }: imgProps) => {
+  if (!image) return null
   const img = getImage(image)
   if (!img) return null
 

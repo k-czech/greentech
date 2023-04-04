@@ -51,13 +51,15 @@ const ImageTextSection = ({
             imageOnTheRight ? 'md:order-last' : 'md:order-first'
           }  relative welcome-image after:w-16 after:h-16 after:-bottom-5 after:-right-5 lg:after:w-24 lg:after:h-24 lg:after:-bottom-8 lg:after:-right-8`}
         >
-          <Parallax speed={10} translateY={[0, -10]}>
-            <Image
-              image={image.gatsbyImageData}
-              alt="image"
-              classNameImg="max-h-[500px]"
-            />
-          </Parallax>
+          {image ? (
+            <Parallax speed={10} translateY={[0, -10]}>
+              <Image
+                image={image.gatsbyImageData}
+                alt="image"
+                classNameImg="max-h-[500px]"
+              />
+            </Parallax>
+          ) : null}
         </div>
       </div>
     </section>
