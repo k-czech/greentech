@@ -2,6 +2,8 @@ name: Build and Deploy Gatsby Site
 
 # Run the workflow when a Contentful webhook is triggered
 on:
+  push:
+    branches: final
   repository_dispatch:
     types: [contentful.deploy]
 
@@ -16,14 +18,14 @@ jobs:
         run: yarn install
 
       - name: Build Gatsby site
-        run: yarn build
+        run: gatsby build
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          server: ${{ process.env.FTP_SERVER }}
-          username: ${{ process.env.FTP_USERNAME }}
-          password: ${{ process.env.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './public'
           remote-dir: '/public_html'
           protocol: 'ftp'
