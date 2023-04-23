@@ -18,10 +18,10 @@ jobs:
         run: yarn install
 
       - name: Build Gatsby site
-        run: gatsby build
+        run: yarn build
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
