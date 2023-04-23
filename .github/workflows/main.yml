@@ -29,4 +29,3 @@ jobs:
           local-dir: './public/'
           server-dir: '/public_html/'
           protocol: 'ftp'
-          port: '21'
