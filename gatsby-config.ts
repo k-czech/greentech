@@ -20,6 +20,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-htaccess',
+      options: {
+        RewriteBase: '/',
+        redirect: [`RewriteRule . /index.html [L]`],
+      },
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: {
         accessToken: `FidrQGnmMEexNrU8l7ik2VDMdul-y9irOdHXL7sKWB4`,
