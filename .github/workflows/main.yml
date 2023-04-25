@@ -10,17 +10,15 @@ on:
 jobs:
   web-deploy:
     runs-on: ubuntu-latest
+    env:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      SPACE_ID: ${{ secrets.SPACE_ID }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Install dependencies
         run: yarn install
-
-      - name: Set environment variables
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          SPACE_ID: ${{ secrets.SPACE_ID }}
 
       - name: Build Gatsby site
         run: yarn build
