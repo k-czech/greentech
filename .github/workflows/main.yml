@@ -1,4 +1,4 @@
-name: Build and Deploy Gatsby Site
+name: Deploy
 
 # Run the workflow when a Contentful webhook is triggered
 on:
