@@ -2,10 +2,10 @@ name: Build and Deploy Gatsby Site
 
 # Run the workflow when a Contentful webhook is triggered
 on:
-  push:
-    branches: final
   repository_dispatch:
     types: [contentful.deploy]
+  push:
+    branches: final
 
 jobs:
   web-deploy:

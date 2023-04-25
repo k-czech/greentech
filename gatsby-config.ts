@@ -22,15 +22,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-htaccess',
       options: {
-        RewriteBase: '/',
-        redirect: [`RewriteRule . /index.html [L]`],
+        https: true,
       },
     },
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        accessToken: `FidrQGnmMEexNrU8l7ik2VDMdul-y9irOdHXL7sKWB4`,
-        spaceId: `137p9nrd7lwv`,
+        accessToken: process.env.ACCESS_TOKEN,
+        spaceId: process.env.SPACE_ID,
         enableTags: true,
       },
     },
