@@ -4,8 +4,6 @@ name: Deploy
 on:
   repository_dispatch:
     types: [contentful.deploy]
-  push:
-    branches: final
 
 jobs:
   web-deploy:
