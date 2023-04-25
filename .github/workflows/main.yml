@@ -17,6 +17,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Set environment variables
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          SPACE_ID: ${{ secrets.SPACE_ID }}
+
       - name: Build Gatsby site
         run: yarn build
 
