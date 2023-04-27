@@ -24,65 +24,6 @@ module.exports = {
       options: {
         https: true,
         host: 'green-tech.com.pl',
-        redirect: [
-          'RewriteRule ^not-existing-url/?$ /existing-url [R=301,L,NE]',
-          {
-            from: '/pionowe-instalacje-pv',
-            to: '/pionowe-instalacje-fotowoltaiczne/',
-          },
-          {
-            from: 'green-tech.com.pl/b/jak-sprawdzic-panel-fotowoltaiczny--usterki-i-uszkodzenia-paneli-fotowoltaicznych',
-            to: 'green-tech.com.pl/jak-sprawdzic-panel-fotowoltaiczny-usterki-i-uszkodzenia-paneli/',
-          },
-          {
-            from: 'green-tech.com.pl/o-firmie',
-            to: 'green-tech.com.pl/o-nas/',
-          },
-          {
-            from: 'green-tech.com.pl/b/projektowanie-instalacji-fotowoltaicznej--jak-zrobic-to-poprawnie',
-            to: 'green-tech.com.pl/projektowanie-instalacji-fotowoltaicznej-jak-zrobic-to-poprawnie/',
-          },
-          {
-            from: 'green-tech.com.pl/o-firmie/ile-trwa-montaz-instalacji-fotowoltaicznej',
-            to: 'green-tech.com.pl/o-nas/',
-          },
-          {
-            from: 'green-tech.com.pl/b/optymalizator-mocy-paneli-fotowoltaicznych--czy-warto',
-            to: 'green-tech.com.pl/optymalizator-mocy-paneli-fotowoltaicznych-czy-warto/',
-          },
-          {
-            from: 'green-tech.com.pl/fotowoltaika/fotowoltaika-klientow-indywidualnych',
-            to: 'green-tech.com.pl/fotowoltaika/',
-          },
-          {
-            from: 'green-tech.com.pl/b/czym-jest-dom-zeroenergetyczny',
-            to: 'green-tech.com.pl/czym-jest-dom-zeroenergetyczny/',
-          },
-          {
-            from: 'green-tech.com.pl/b/montaz-paneli-fotowoltaicznych---rozne-konstrukcje-i-rozwiazania',
-            to: 'green-tech.com.pl/montaz-paneli-fotowoltaicznych-rozne-konstrukcje-i-rozwiazania/',
-          },
-          {
-            from: 'green-tech.com.pl/rekuperacja',
-            to: 'green-tech.com.pl/oferty/',
-          },
-          {
-            from: 'green-tech.com.pl/fotowoltaika/fotowoltaika-dla-rolnictwa',
-            to: 'green-tech.com.pl/fotowoltaika/',
-          },
-          {
-            from: 'green-tech.com.pl/realizacje',
-            to: 'green-tech.com.pl/nasze-realizacje/',
-          },
-          {
-            from: 'green-tech.com.pl/o-firmie/poznaj-nasze-metody-pracy',
-            to: 'green-tech.com.pl/o-nas/',
-          },
-          {
-            from: 'green-tech.com.pl/o-firmie/jak-dzialaja-panele-fotowoltaiczne',
-            to: 'green-tech.com.pl/o-nas/',
-          },
-        ],
       },
     },
     {
@@ -90,12 +31,6 @@ module.exports = {
       options: {
         prefix: '<IfModule mod_rewrite.c>\nRewriteEngine On',
         suffix: '</IfModule>',
-        redirect: [
-          {
-            from: '/pionowe-instalacje-pv',
-            to: '/pionowe-instalacje-fotowoltaiczne/',
-          },
-        ],
       },
     },
     {

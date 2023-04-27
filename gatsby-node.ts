@@ -1,7 +1,11 @@
+import { array, object } from 'prop-types'
+import { json } from 'stream/consumers'
+
 const pathNode = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const { paginate } = require('gatsby-awesome-pagination')
 const slugify = require('slugify')
+const redirects = require('./redirects.json')
 
 interface props {
   graphql: any
@@ -9,7 +13,7 @@ interface props {
 }
 
 exports.createPages = async ({ graphql, actions }: props) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   // return data
   const result = await graphql(`
@@ -173,4 +177,12 @@ exports.createPages = async ({ graphql, actions }: props) => {
   //     })
   //   },
   // )
+
+  //// 301 Redirects
+  redirects.forEach((redirect: { fromPath: string; toPath: string }) =>
+    createRedirect({
+      fromPath: redirect.fromPath,
+      toPath: redirect.toPath,
+    }),
+  )
 }
