@@ -90,6 +90,12 @@ module.exports = {
       options: {
         prefix: '<IfModule mod_rewrite.c>\nRewriteEngine On',
         suffix: '</IfModule>',
+        redirect: [
+          {
+            from: '/pionowe-instalacje-pv',
+            to: '/pionowe-instalacje-fotowoltaiczne/',
+          },
+        ],
       },
     },
     {
