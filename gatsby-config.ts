@@ -27,8 +27,8 @@ module.exports = {
         redirect: [
           'RewriteRule ^not-existing-url/?$ /existing-url [R=301,L,NE]',
           {
-            from: 'green-tech.com.pl/pionowe-instalacje-pv',
-            to: 'green-tech.com.pl/pionowe-instalacje-fotowoltaiczne/',
+            from: '/pionowe-instalacje-pv',
+            to: '/pionowe-instalacje-fotowoltaiczne/',
           },
           {
             from: 'green-tech.com.pl/b/jak-sprawdzic-panel-fotowoltaiczny--usterki-i-uszkodzenia-paneli-fotowoltaicznych',
