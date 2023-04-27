@@ -88,9 +88,9 @@ exports.createPages = async ({ graphql, actions }: props) => {
   const imagesCategoryTemplate = pathNode.resolve(
     './src/templates/images-category-template.tsx',
   )
-  const blogListCategoryTemplate = pathNode.resolve(
-    './src/templates/blog-category-template.tsx',
-  )
+  // const blogListCategoryTemplate = pathNode.resolve(
+  //   './src/templates/blog-category-template.tsx',
+  // )
 
   //// CREATE IMAGE LIST PER TAGS
   const allTags: string[] = []
@@ -150,27 +150,27 @@ exports.createPages = async ({ graphql, actions }: props) => {
   })
 
   //// CREATE BLOG LIST PER CATEGORY
-  const listOfBlogCategories = result.data.allContentfulBlogPost.group
-  listOfBlogCategories.forEach(
-    (group: { fieldValue: string; totalCount: number }) => {
-      const categoryName = group.fieldValue
-      const totalCountOfPostsForCategory = group.totalCount
-      const friendlyURL = `/${pathToBlog}/${slugify(categoryName)}`
+  // const listOfBlogCategories = result.data.allContentfulBlogPost.group
+  // listOfBlogCategories.forEach(
+  //   (group: { fieldValue: string; totalCount: number }) => {
+  //     const categoryName = group.fieldValue
+  //     const totalCountOfPostsForCategory = group.totalCount
+  //     const friendlyURL = `/${pathToBlog}/${slugify(categoryName)}`
 
-      const arrayOfPosts = Array.from({ length: totalCountOfPostsForCategory })
+  //     const arrayOfPosts = Array.from({ length: totalCountOfPostsForCategory })
 
-      paginate({
-        createPage,
-        items: arrayOfPosts,
-        itemsPerPage: postPerPage,
-        pathPrefix: `${friendlyURL}`,
-        component: blogListCategoryTemplate,
-        context: {
-          category: categoryName,
-          listOfCategories: ['Wszystkie', ...listOfAllCategories],
-          url: pathToBlog,
-        },
-      })
-    },
-  )
+  //     paginate({
+  //       createPage,
+  //       items: arrayOfPosts,
+  //       itemsPerPage: postPerPage,
+  //       pathPrefix: `${friendlyURL}`,
+  //       component: blogListCategoryTemplate,
+  //       context: {
+  //         category: categoryName,
+  //         listOfCategories: ['Wszystkie', ...listOfAllCategories],
+  //         url: pathToBlog,
+  //       },
+  //     })
+  //   },
+  // )
 }

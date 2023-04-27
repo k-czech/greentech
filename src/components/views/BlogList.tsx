@@ -6,7 +6,7 @@ import { ListWrapper } from 'src/components/OffersListWrapper/OffersListWrapper'
 import Image from 'src/components/Image/Image'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import Pagination from 'src/components/Pagination/Pagination'
-import Filters from '../Filters/Filters'
+//import Filters from '../Filters/Filters'
 import MainWrapper from '../MainWrapper/MainWrapper'
 import ContentfulRichTech from '../ContenfulRichText/ContentfulRichText'
 
@@ -27,17 +27,14 @@ interface NodeProps {
 }
 
 const BlogListView = ({ data, pageContext, info }: ViewProps) => {
-  const { listOfCategories, url } = pageContext
+  //const { listOfCategories, url } = pageContext
   const { topDescription } = info
   const { nodes } = data
-
-  console.log(nodes)
 
   return (
     <MainWrapper className="mt-32 lg:mt-0">
       <div className="px-6 lg:px-0 max-w-[600px] mx-auto text-center">
         <ContentfulRichTech richText={topDescription} />
-        <Filters data={listOfCategories} url={url} />
       </div>
       <ListWrapper classname={`mt-14`}>
         {nodes.map((node: NodeProps, index: number) => {

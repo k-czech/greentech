@@ -23,6 +23,66 @@ module.exports = {
       resolve: 'gatsby-plugin-htaccess',
       options: {
         https: true,
+        host: 'green-tech.com.pl',
+        redirect: [
+          'RewriteRule ^not-existing-url/?$ /existing-url [R=301,L,NE]',
+          {
+            from: 'https://green-tech.com.pl/pionowe-instalacje-pv',
+            to: 'https://green-tech.com.pl/pionowe-instalacje-fotowoltaiczne/',
+          },
+          {
+            from: 'https://green-tech.com.pl/b/jak-sprawdzic-panel-fotowoltaiczny--usterki-i-uszkodzenia-paneli-fotowoltaicznych',
+            to: 'https://green-tech.com.pl/jak-sprawdzic-panel-fotowoltaiczny-usterki-i-uszkodzenia-paneli/',
+          },
+          {
+            from: 'https://green-tech.com.pl/o-firmie',
+            to: 'https://green-tech.com.pl/o-nas/',
+          },
+          {
+            from: 'https://green-tech.com.pl/b/projektowanie-instalacji-fotowoltaicznej--jak-zrobic-to-poprawnie',
+            to: 'https://green-tech.com.pl/projektowanie-instalacji-fotowoltaicznej-jak-zrobic-to-poprawnie/',
+          },
+          {
+            from: 'https://green-tech.com.pl/o-firmie/ile-trwa-montaz-instalacji-fotowoltaicznej',
+            to: 'https://green-tech.com.pl/o-nas/',
+          },
+          {
+            from: 'https://green-tech.com.pl/b/optymalizator-mocy-paneli-fotowoltaicznych--czy-warto',
+            to: 'https://green-tech.com.pl/optymalizator-mocy-paneli-fotowoltaicznych-czy-warto/',
+          },
+          {
+            from: 'https://green-tech.com.pl/fotowoltaika/fotowoltaika-klientow-indywidualnych',
+            to: 'https://green-tech.com.pl/fotowoltaika/',
+          },
+          {
+            from: 'https://green-tech.com.pl/b/czym-jest-dom-zeroenergetyczny',
+            to: 'https://green-tech.com.pl/czym-jest-dom-zeroenergetyczny/',
+          },
+          {
+            from: 'https://green-tech.com.pl/b/montaz-paneli-fotowoltaicznych---rozne-konstrukcje-i-rozwiazania',
+            to: 'https://green-tech.com.pl/montaz-paneli-fotowoltaicznych-rozne-konstrukcje-i-rozwiazania/',
+          },
+          {
+            from: 'https://green-tech.com.pl/rekuperacja',
+            to: 'https://green-tech.com.pl/oferty/',
+          },
+          {
+            from: 'https://green-tech.com.pl/fotowoltaika/fotowoltaika-dla-rolnictwa',
+            to: 'https://green-tech.com.pl/fotowoltaika/',
+          },
+          {
+            from: 'https://green-tech.com.pl/realizacje',
+            to: 'https://green-tech.com.pl/nasze-realizacje/',
+          },
+          {
+            from: 'https://green-tech.com.pl/o-firmie/poznaj-nasze-metody-pracy',
+            to: 'https://green-tech.com.pl/o-nas/',
+          },
+          {
+            from: 'https://green-tech.com.pl/o-firmie/jak-dzialaja-panele-fotowoltaiczne',
+            to: 'https://green-tech.com.pl/o-nas/',
+          },
+        ],
       },
     },
     {

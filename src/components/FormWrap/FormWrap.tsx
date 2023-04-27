@@ -23,10 +23,10 @@ const FormWrap = () => {
     const formData = { ...data }
     await emailjs
       .send(
-        'service_2t2wypm',
-        'template_tryovbl',
+        'service_46cqekp',
+        'template_i36so29',
         formData,
-        'Y6QAP3EoAbOiPYDZE',
+        'Lu3YBYWFBZPEA-Qly',
       )
       .then(
         (result) => {
