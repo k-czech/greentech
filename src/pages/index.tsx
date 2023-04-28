@@ -15,6 +15,8 @@ import 'src/assets/styles/image-anim/image-anim.scss'
 
 interface MainPageProps {
   contentfulMainPage: {
+    metaTitle: string
+    metaDescription: string
     pageTitle: string
     slug: string
     heroBanner: {
@@ -47,6 +49,8 @@ interface MainPageProps {
 
 const Homepage = ({ data }: PageProps<MainPageProps>) => {
   const { heroBanner, contentRefrences, blogPosts } = data.contentfulMainPage
+
+  console.log(data)
 
   return (
     <>
@@ -93,6 +97,8 @@ const Homepage = ({ data }: PageProps<MainPageProps>) => {
 export const query = graphql`
   query {
     contentfulMainPage {
+      metaTitle
+      metaDescription
       heroBanner {
         title
         subtitle
@@ -132,9 +138,8 @@ export const query = graphql`
 
 export default Homepage
 
-export const Head = () => (
-  <Seo
-    title="Instalacje fotowoltaiczne, czysta energia odnawialna, niezależność energetyczna - Małopolska – GreenTech"
-    description="Nasza firma to pierwszy krok do uniezależnienia się od firm energetycznych oraz posiadania własnej ekologicznej energii! Zamów instalację do swojego domu."
-  />
-)
+export const Head = ({ data }: PageProps<MainPageProps>) => {
+  const { metaTitle, metaDescription } = data.contentfulMainPage
+
+  return <Seo title={metaTitle} description={metaDescription} />
+}
