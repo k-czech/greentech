@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import {
   ContentfulRichTextGatsbyReference,
   RenderRichTextData,
@@ -7,8 +7,7 @@ import {
 import ContentfulRichTech from 'src/components/ContenfulRichText/ContentfulRichText'
 import Wrapper from 'src/components/Wrapper/Wrapper'
 import Image from 'src/components/Image/Image'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
-
+import { IGatsbyImageData, StaticImage } from 'gatsby-plugin-image'
 import MainWrapper from 'src/components/MainWrapper/MainWrapper'
 import Seo from 'src/components/Seo'
 
@@ -26,6 +25,13 @@ interface PageProps {
         gatsbyImageData: IGatsbyImageData
       }
       content: RenderRichTextData<ContentfulRichTextGatsbyReference>
+      seopages: [
+        {
+          pageTitle: string
+          url: string
+          district: string[]
+        },
+      ]
     }
   }
 }
@@ -34,6 +40,37 @@ const BlogPost = ({ data }: PageProps) => {
   const { contentfulOfferPage } = data
   const { offerHeroImage } = contentfulOfferPage
 
+  const getDistricts = (uniqueDistricts: string[]) => {
+    const objWithDistricts = Object.create({})
+
+    for (const district of uniqueDistricts) {
+      objWithDistricts[district] = []
+    }
+
+    contentfulOfferPage.seopages.map((item) => {
+      objWithDistricts[item.district[0]].push({
+        city: item.district[1],
+        url: item.url,
+      })
+    })
+
+    return objWithDistricts
+  }
+
+  const uniqueDistricts = contentfulOfferPage.seopages
+    ? [...new Set(contentfulOfferPage.seopages.map((item) => item.district[0]))]
+    : []
+
+  const districtsWithCities = contentfulOfferPage.seopages
+    ? getDistricts(uniqueDistricts)
+    : null
+
+  const toggleAccordion = (e: React.MouseEvent<HTMLElement>) => {
+    const id = e.currentTarget.id
+    const list = document.querySelector(`#list-${id}`)
+    e.currentTarget.classList.toggle('rotate-img')
+    list?.classList.toggle('open')
+  }
   return (
     <>
       <div>
@@ -56,6 +93,41 @@ const BlogPost = ({ data }: PageProps) => {
         <Wrapper>
           <div className="mt-16">
             <ContentfulRichTech richText={contentfulOfferPage.content} />
+            {contentfulOfferPage.seopages ? (
+              <div className="our-offer-wrapper mt-16">
+                <h3>Zobacz naszą ofertę</h3>
+                {uniqueDistricts.map((district, index) => (
+                  <div key={index} className="mb-8">
+                    <div
+                      id={`${index}`}
+                      className="flex justify-between max-w-[500px] cursor-pointer mb-4"
+                      onClick={toggleAccordion}
+                    >
+                      <h4 className="m-0 text-lg">{district}</h4>
+                      <StaticImage
+                        src="../assets/icons/arrow-r.png"
+                        alt="arrow ico"
+                      />
+                    </div>
+                    <ul
+                      id={`list-${index}`}
+                      className="hidden scale-0 transition-transform"
+                    >
+                      {districtsWithCities[district].map(
+                        (
+                          place: { city: string; url: string },
+                          index: number,
+                        ) => (
+                          <li key={index} className="mb-2">
+                            <Link to={'/' + place.url}>{place.city}</Link>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </Wrapper>
       </MainWrapper>
@@ -86,6 +158,11 @@ export const query = graphql`
             ...ImageTextSectionFragment
           }
         }
+      }
+      seopages {
+        pageTitle
+        url
+        district
       }
     }
   }

@@ -18,8 +18,6 @@ interface Props {
 const Column = ({ data, width }: Props) => {
   const { content } = data
 
-  console.log(content)
-
   return (
     <div className={`w-full lg:${width}`}>
       <ContentfulRichTech richText={content} />

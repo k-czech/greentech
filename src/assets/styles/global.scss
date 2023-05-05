@@ -96,3 +96,14 @@ section {
     left: -18px;
   }
 }
+
+.open {
+  display: block;
+  transform: scaleY(1);
+}
+
+.rotate-img {
+  .gatsby-image-wrapper {
+    transform: rotate(90deg);
+  }
+}

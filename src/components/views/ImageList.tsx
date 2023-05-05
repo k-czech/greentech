@@ -32,6 +32,7 @@ const ImageListView = ({ data, pageContext, info }: ViewProps) => {
     const desc: HTMLElement = target.querySelector('#desc-div')!
     desc.style.opacity = '1'
   }
+
   const hideDesc = (e: React.MouseEvent) => {
     const target = e.currentTarget as HTMLElement
     const desc: HTMLElement = target.querySelector('#desc-div')!
