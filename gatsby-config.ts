@@ -20,17 +20,40 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-htaccess',
+      options: {
+        https: true,
+        host: 'green-tech.com.pl',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-htaccess-redirects`,
+      options: {
+        prefix: '<IfModule mod_rewrite.c>\nRewriteEngine On',
+        suffix: '</IfModule>',
+      },
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: {
-        accessToken: process.env.CONTENTFUL_CONTENT_DELIVERY_ACCESS_TOKEN,
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.ACCESS_TOKEN,
+        spaceId: process.env.SPACE_ID,
+        enableTags: true,
       },
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          quality: 80,
+          placeholder: `dominantColor`,
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
-    'gatsby-plugin-google-gtag',
+    //'gatsby-plugin-google-gtag',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-postcss',
     {
@@ -46,29 +69,6 @@ module.exports = {
         path: './src/assets/images/',
       },
       __key: 'images',
-    },
-    {
-      resolve: 'gatsby-plugin-prettier-eslint',
-      options: {
-        prettier: {
-          patterns: [
-            // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
-            '**/*.{css,scss,less}',
-            '**/*.{json,json5}',
-            '**/*.{graphql}',
-            '**/*.{md,mdx}',
-            '**/*.{html}',
-            '**/*.{yaml,yml}',
-          ],
-        },
-        eslint: {
-          patterns: '**/*.{ts,tsx}',
-          customOptions: {
-            fix: true,
-            cache: true,
-          },
-        },
-      },
     },
     {
       resolve: 'gatsby-plugin-eslint',
@@ -88,10 +88,19 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [`plus jakarta sans\:300,400,600,700, 800`],
-        display: 'swap',
+        fonts: {
+          google2: [
+            {
+              family: `Plus Jakarta Sans`,
+              axes: 'wght@400;500;600;700;800',
+              subsets: ['latin-ext'],
+            },
+          ],
+        },
+        usePreload: true,
+        usePreconnect: true,
       },
     },
     {

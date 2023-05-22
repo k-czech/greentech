@@ -9,7 +9,7 @@ interface MainTemplateProps {
 
 const MainTemplate = ({ children }: MainTemplateProps) => (
   <>
-    <header>
+    <header className="absolute top-0 w-full lg:relative lg:top-auto px-5 lg:px-0">
       <Navbar />
     </header>
     <main>

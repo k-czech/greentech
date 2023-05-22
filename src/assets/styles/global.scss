@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 @import './theme.scss';
+@import '../styles/image-anim/image-anim.scss';
+
+html {
+  font-family: $font-family;
+}
 
 *,
 *::before,
@@ -13,6 +18,7 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 h1,
@@ -21,32 +27,83 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-family;
   font-weight: 800;
   color: $secondary-color;
-  @apply text-4xl;
+  @apply mb-6 md:mb-11;
+  @apply antialiased;
+}
+
+h1,
+h2 {
+  @apply text-4xl lg:text-5xl;
+}
+
+h3,
+h4 {
+  @apply text-3xl lg:text-4xl;
+}
+
+h5 {
+  @apply text-2xl lg:text-3xl;
+}
+
+h6 {
+  @apply text-lg lg:text-xl;
 }
 
 p,
-li,
-a {
-  font-family: $font-family;
-  padding: 0.5rem 0;
+li {
+  @apply text-base;
+  font-weight: 300;
+  color: $secondary-color;
 }
 
 a {
+  font-weight: 400;
+  padding: 0.5rem 0;
   text-decoration: none;
   color: $secondary-color;
 }
 
-@layer base {
-  li {
-    @apply text-sm
-      p-2;
-  }
+section {
+  margin: auto;
+  @apply my-10 lg:my-24;
+}
 
-  h5 {
-    @apply font-extrabold
-      text-base;
+.mask {
+  &::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    z-index: 9;
+    opacity: 0.4;
+  }
+}
+
+.mark-left {
+  & > div:first-child::before {
+    position: absolute;
+    content: '';
+    clip-path: polygon(100% 0, 0 0, 0 100%, 15% 100%, 15% 15%, 100% 15%);
+    @apply bg-blue-color;
+    width: 50px;
+    height: 50px;
+    top: -18px;
+    left: -18px;
+  }
+}
+
+.open {
+  display: block;
+  transform: scaleY(1);
+}
+
+.rotate-img {
+  .gatsby-image-wrapper {
+    transform: rotate(90deg);
   }
 }
