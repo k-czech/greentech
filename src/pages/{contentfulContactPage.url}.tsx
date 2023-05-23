@@ -60,11 +60,11 @@ const ContactPage = ({ data }: QueryDataProps) => {
               <h3 className="text-white-color">
                 Porozmawiajmy o Twoich oczekiwaniach
               </h3>
-              <p className="text-white-color">
+              {/* <p className="text-white-color">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Tincidunt ornare massa eget egestas purus viverra accumsan.
-              </p>
+              </p> */}
             </div>
             <FormWrap />
           </div>
@@ -101,11 +101,11 @@ const ContactPage = ({ data }: QueryDataProps) => {
                   : null}
               </div>
             ))}
-            <p className="mt-auto text-secondary-color text-xs font-light">
+            {/* <p className="mt-auto text-secondary-color text-xs font-light">
               *Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
               Tincidunt ornare massa eget egestas purus viverra accumsan.
-            </p>
+            </p> */}
           </div>
         ) : null}
       </section>
