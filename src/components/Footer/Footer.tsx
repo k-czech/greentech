@@ -163,7 +163,7 @@ export const Footer = () => {
                     key={index}
                     className="text-gray-600 text-base md:text-sm my-4 md:my-2"
                   >
-                    <a href={`${index === 0 ? 'mailto:${item} : tel:${item}'}`}>{item}</a>
+                    <a href={`${index === 0 ? `mailto:${item}` : `tel:${item}`}`}>{item}</a>
                   </li>
                 ))}
               </ul>
