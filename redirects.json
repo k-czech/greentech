@@ -116,7 +116,7 @@
     "toPath": "/kontakt/"
   },
   {
-    "fromPath": "/sklep",
+    "fromPath": "https://green-tech.com.pl/sklep",
     "toPath": "https://sklep.green-tech.com.pl/"
   }
 ]
