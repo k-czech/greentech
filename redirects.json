@@ -40,7 +40,7 @@
     "toPath": "/oferty/"
   },
   {
-    "fromPath": "/fotowoltaika/fotowoltaika-dla-rolnictwa ",
+    "fromPath": "/fotowoltaika/fotowoltaika-dla-rolnictwa",
     "toPath": "/fotowoltaika/"
   },
   {
@@ -54,5 +54,69 @@
   {
     "fromPath": "/o-firmie/jak-dzialaja-panele-fotowoltaiczne",
     "toPath": "/o-nas/"
+  },
+  {
+    "fromPath": "/biuro@green-tech.com.pl",
+    "toPath": "/"
+  },
+  {
+    "fromPath": "/+48%2018%20473%2018%2062",
+    "toPath": "/"
+  },
+  {
+    "fromPath": "/b/instalacja-instalacja-fotowoltaiczna-w-5-krokach",
+    "toPath": "/instalacja-fotowoltaiczna-w-5-krokach/"
+  },
+  {
+    "fromPath": "/raty",
+    "toPath": "/"
+  },
+  {
+    "fromPath": "/b/montaz-paneli-fotowoltaicznych---rozne-konstrukcje-i-rozwiazania",
+    "toPath": "/montaz-paneli-fotowoltaicznych-rozne-konstrukcje-i-rozwiazania/"
+  },
+  {
+    "fromPath": "/b/dofinansowanie-do-fotowoltaiki-jak-obnizyc-jej-koszt",
+    "toPath": "/dofinansowanie-do-fotowoltaiki-jak-obnizyc-jej-koszt/"
+  },
+  {
+    "fromPath": "/b/panele-fotowoltaiczne-jaki-to-koszt",
+    "toPath": "/panele-fotowoltaiczne-jaki-to-koszt/"
+  },
+  {
+    "fromPath": "/b/jakie-sa-plusy-korzystania-z-odnawialnych-zrodel-energii",
+    "toPath": "/jakie-sa-plusy-korzystania-z-odnawialnych-zrodel-energii/"
+  },
+  {
+    "fromPath": "/b/ile-energii-produkuje-panel-fotowoltaiczny/",
+    "toPath": "/ile-energii-produkuje-panel-fotowoltaiczny/"
+  },
+  {
+    "fromPath": "/b/projektowanie-instalacji-fotowoltaicznej-jak-zrobic-to-poprawnie/",
+    "toPath": "/projektowanie-instalacji-fotowoltaicznej-jak-zrobic-to-poprawnie/"
+  },
+  {
+    "fromPath": "/b/czym-jest-dom-zeroenergetyczny/",
+    "toPath": "/czym-jest-dom-zeroenergetyczny/"
+  },
+  {
+    "fromPath": "/b/jak-sprawdzic-panel-fotowoltaiczny-usterki-i-uszkodzenia-paneli/",
+    "toPath": "/jak-sprawdzic-panel-fotowoltaiczny-usterki-i-uszkodzenia-paneli/"
+  },
+  {
+    "fromPath": "/b/optymalizator-mocy-paneli-fotowoltaicznych-czy-warto/",
+    "toPath": "/optymalizator-mocy-paneli-fotowoltaicznych-czy-warto/"
+  },
+  {
+    "fromPath": "/b/moduly-hybrydowe-czym-sa-i-jak-dzialaja/",
+    "toPath": "/moduly-hybrydowe-czym-sa-i-jak-dzialaja/"
+  },
+  {
+    "fromPath": "/zapytaj-o-oferte",
+    "toPath": "/kontakt/"
+  },
+  {
+    "fromPath": "/sklep",
+    "toPath": "https://sklep.green-tech.com.pl/"
   }
 ]
