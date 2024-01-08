@@ -19,6 +19,7 @@ interface PageProps {
     contentfulSeoPages: {
       pageTitle: string
       metaTitle: string
+      metaDescription: string
       url: string
       content: RenderRichTextData<ContentfulRichTextGatsbyReference>
       heroImage: {
@@ -68,6 +69,7 @@ export const query = graphql`
     contentfulSeoPages(id: { eq: $id }) {
       pageTitle
       metaTitle
+      metaDescription
       contentful_id
       url
       content {
@@ -88,12 +90,12 @@ export const query = graphql`
 export default SeoPage
 
 export const Head = ({ data }: PageProps) => {
-  const { metaTitle, pageTitle } = data.contentfulSeoPages
+  const { metaTitle, pageTitle, metaDescription } = data.contentfulSeoPages
   const seoTitle = metaTitle ? metaTitle : pageTitle
   return (
     <Seo
       title={seoTitle}
-      description="Nasza firma to pierwszy krok do uniezależnienia się od firm energetycznych oraz posiadania własnej ekologicznej energii! Zamów instalację do swojego domu."
+      description= {metaDescription ? metaDescription : "Nasza firma to pierwszy krok do uniezależnienia się od firm energetycznych oraz posiadania własnej ekologicznej energii! Zamów instalację do swojego domu."}
     />
   )
 }

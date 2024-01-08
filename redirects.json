@@ -116,7 +116,11 @@
     "toPath": "/kontakt/"
   },
   {
-    "fromPath": "https://green-tech.com.pl/sklep",
+    "fromPath": "/sklep",
     "toPath": "https://sklep.green-tech.com.pl/"
+  },
+  {
+    "fromPath": "/+48%2018%20473%2018%2062",
+    "toPath": "/"
   }
 ]
