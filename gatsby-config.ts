@@ -39,7 +39,7 @@ RewriteRule ^$ /? [R=301,L]
         prefix: '<IfModule mod_rewrite.c>\nRewriteEngine On',
         suffix: '</IfModule>',
         isPermanent: true,
-        pattern: 'RewriteRule ^from-path/?$ /to-path/ [R=301,L]'
+        pattern: 'RewriteRule ^%1/?$ %2 [R=%3,L]'
       },
     },
     {
