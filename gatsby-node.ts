@@ -179,13 +179,12 @@ exports.createPages = async ({ graphql, actions }: props) => {
   // )
 
   //// 301 Redirects
-  redirects.forEach((redirect: { fromPath: string; toPath: string; statusCode?: number }) =>
+  redirects.forEach((redirect: { fromPath: string; toPath: string; }) =>
     createRedirect({
       fromPath: redirect.fromPath,
       toPath: redirect.toPath,
-      statusCode: redirect.statusCode,
     }, {
-  fromPath: `/sklep/*`,
+  fromPath: `/sklep`,
   toPath: `https://sklep.green-tech.com.pl/`,
   statusCode: 200,
 })
