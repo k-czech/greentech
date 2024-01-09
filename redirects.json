@@ -110,9 +110,5 @@
   {
     "fromPath": "/zapytaj-o-oferte",
     "toPath": "/kontakt/"
-  },
-  {
-    "fromPath": "/+48%2018%20473%2018%2062",
-    "toPath": "/"
   }
 ]
