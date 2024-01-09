@@ -24,6 +24,13 @@ module.exports = {
       options: {
         https: true,
         host: 'green-tech.com.pl',
+        custom: `
+            <IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{QUERY_STRING} ^page\=$
+RewriteRule ^$ /? [R=301,L]
+</IfModule>
+        `,
       },
     },
     {
@@ -31,6 +38,7 @@ module.exports = {
       options: {
         prefix: '<IfModule mod_rewrite.c>\nRewriteEngine On',
         suffix: '</IfModule>',
+        isPermanent: true,
       },
     },
     {
