@@ -188,6 +188,6 @@ exports.createPages = async ({ graphql, actions }: props) => {
   fromPath: `/sklep/*`,
   toPath: `https://sklep.green-tech.com.pl/`,
   statusCode: 200,
-}),
+})
   )
 }
