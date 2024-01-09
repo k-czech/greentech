@@ -179,10 +179,11 @@ exports.createPages = async ({ graphql, actions }: props) => {
   // )
 
   //// 301 Redirects
-  redirects.forEach((redirect: { fromPath: string; toPath: string }) =>
+  redirects.forEach((redirect: { fromPath: string; toPath: string; statusCode?: number }) =>
     createRedirect({
       fromPath: redirect.fromPath,
       toPath: redirect.toPath,
+      statusCode: redirect.statusCode,
     }),
   )
 }
