@@ -60,10 +60,6 @@
     "toPath": "/"
   },
   {
-    "fromPath": "/+48%2018%20473%2018%2062",
-    "toPath": "/"
-  },
-  {
     "fromPath": "/b/instalacja-instalacja-fotowoltaiczna-w-5-krokach",
     "toPath": "/instalacja-fotowoltaiczna-w-5-krokach/"
   },
@@ -114,11 +110,6 @@
   {
     "fromPath": "/zapytaj-o-oferte",
     "toPath": "/kontakt/"
-  },
-  {
-    "fromPath": "/sklep",
-    "toPath": "https://sklep.green-tech.com.pl/",
-    "statusCode": 200
   },
   {
     "fromPath": "/+48%2018%20473%2018%2062",
