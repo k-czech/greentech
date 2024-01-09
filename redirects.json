@@ -117,7 +117,8 @@
   },
   {
     "fromPath": "/sklep",
-    "toPath": "https://sklep.green-tech.com.pl/"
+    "toPath": "https://sklep.green-tech.com.pl/",
+    "statusCode": 200
   },
   {
     "fromPath": "/+48%2018%20473%2018%2062",
