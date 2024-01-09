@@ -38,8 +38,7 @@ RewriteRule ^$ /? [R=301,L]
       options: {
         prefix: '<IfModule mod_rewrite.c>\nRewriteEngine On',
         suffix: '</IfModule>',
-        isPermanent: false,
-        pattern: 'RewriteRule ^%1/?$ %2 [R=%3,L]'
+        pattern: 'RewriteRule ^%1/?$ %2 [R=301,L]'
       },
     },
     {
