@@ -110,5 +110,9 @@
   {
     "fromPath": "/zapytaj-o-oferte",
     "toPath": "/kontakt/"
+  },
+  {
+    "fromPath": "/pompy-ciepla-i-rekuperacja-realizacje",
+    "toPath": "/nasze-realizacje"
   }
 ]
