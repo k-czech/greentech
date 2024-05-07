@@ -100,7 +100,7 @@ const BlogPost = ({ data }: PageProps) => {
                   <div key={index} className="mb-8">
                     <div
                       id={`${index}`}
-                      className="flex justify-between max-w-[500px] cursor-pointer mb-4"
+                      className="flex justify-between max-w-[500px] cursor-pointer mb-4 rotate-img"
                       onClick={toggleAccordion}
                     >
                       <h4 className="m-0 text-lg">{district}</h4>
@@ -111,7 +111,7 @@ const BlogPost = ({ data }: PageProps) => {
                     </div>
                     <ul
                       id={`list-${index}`}
-                      className="hidden scale-0 transition-transform"
+                      className="hidden scale-0 transition-transform open"
                     >
                       {districtsWithCities[district].map(
                         (
